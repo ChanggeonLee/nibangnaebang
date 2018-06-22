@@ -11,4 +11,3 @@ node_js:
   - "10"
 install:
     - npm install
-    - bower install
