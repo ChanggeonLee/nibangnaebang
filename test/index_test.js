@@ -23,7 +23,7 @@ describe('test - index.js', function() {
   describe('test index', function() {
     it('path / .', function(done) {
         request(app)
-            .get('/')
+            .get('')
             .expect(200)
             .end((err, res) => {
                 if (err) throw err;
