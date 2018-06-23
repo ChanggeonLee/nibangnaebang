@@ -1,6 +1,7 @@
 const assert = require("assert"); //nodejs에서 제공하는 aseert 모듈
-const catchErrors = require('../lib/async-error');
 const httpMocks = require('node-mocks-http');
+const app = require('../app.js');
+const request = require('supertest');
 
 describe('name', function() {
   before(function() {
@@ -12,19 +13,22 @@ describe('name', function() {
   });
 
   beforeEach(function() {
-    // excuted before every test
-    req = httpMocks.createRequest();
-    res = httpMocks.createResponse();
-    next = null;
+    // excuted// excuted before every test
   });
 
   afterEach(function() {
     // excuted after every test
   });
-  
-  describe('async catecherror', function() {
-    it('test cateherror.', function() {
-      assert(catchErrors( async(req, res, next)=>{}));
+
+  describe('test index', function() {
+    it('path / .', function(done) {
+        request(app)
+            .get('/')
+            .expect(200)
+            .end((err, res) => {
+                if (err) throw err;
+                done();
+            })
     });
   });
 });

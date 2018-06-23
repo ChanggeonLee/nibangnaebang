@@ -7,6 +7,4 @@ router.get('/', catchErrors( async( req, res, next ) => {
     res.render('index', { title: '똥땅이네'});
 }));
 
-
-
 module.exports = router;
