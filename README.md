@@ -1,6 +1,8 @@
 #teamA
+
 [![Build Status](https://travis-ci.org/Leechanggun/teamA.svg?branch=master)](https://travis-ci.org/travis-ci/travis-web)
 
+[![codecov](https://codecov.io/gh/Leechanggun/teamA/branch/master/graph/badge.svg)](https://codecov.io/gh/Leechanggun/teamA)
 
 ================
 node js
