@@ -2,3 +2,20 @@ parsers:
   javascript:
     enable_partials: yes
 
+codecov:
+ branch: master
+ bot: "Leechanggun"
+
+coverage:
+ precision: 2
+ round: nearest
+ range: "10...90"
+
+status:
+  project: true
+  patch: true
+  changes: true
+
+comment:
+  layout: "header, diff, changes, sunburst, uncovered"
+  behavior: default
