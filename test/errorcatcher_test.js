@@ -2,7 +2,7 @@ const assert = require("assert"); //nodejs에서 제공하는 aseert 모듈
 const catchErrors = require('../lib/async-error');
 const httpMocks = require('node-mocks-http');
 
-describe('name', function() {
+describe('test - async-error catcher', function() {
   before(function() {
     // excuted before test suite
   });

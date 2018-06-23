@@ -3,7 +3,7 @@ const httpMocks = require('node-mocks-http');
 const app = require('../app.js');
 const request = require('supertest');
 
-describe('test - index.js', function() {
+describe('test - user.js', function() {
   before(function() {
     // excuted before test suite
   });
@@ -20,10 +20,10 @@ describe('test - index.js', function() {
     // excuted after every test
   });
 
-  describe('test index', function() {
-    it('path / .', function(done) {
+  describe('test users', function() {
+    it('path /users .', function(done) {
         request(app)
-            .get('/')
+            .get('/users')
             .expect(200)
             .end((err, res) => {
                 if (err) throw err;
