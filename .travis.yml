@@ -11,10 +11,11 @@ node_js:
   - "10"
 install:
     - npm install -g istanbul
+    - npm i --save-dev istanbul@v1.1.0-alpha.1
     - npm install -g codecov
     - npm install
 script:
-#- istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && codecov
+  - istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && codecov
   - npm test
   - codecov
 
