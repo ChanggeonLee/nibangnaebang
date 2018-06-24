@@ -15,6 +15,11 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
+// html예쁘게 출력
+//if (app.get('env') == 'development') {
+app.locals.pretty = true;  
+//}
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
