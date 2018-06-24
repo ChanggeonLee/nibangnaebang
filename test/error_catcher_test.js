@@ -22,9 +22,20 @@ describe('test - async-error catcher', function() {
     // excuted after every test
   });
   
-  describe('async catecherror', function() {
-    it('test cateherror.', function() {
-      assert(catchErrors( async(req, res, next)=>{}));
+  describe('async catecher', function() {
+    it('test catch error.', function() {
+      assert(catchErrors( async(req, res, next)=>{
+      }));
     });
   });
+
+  describe('async catch error', function() {
+    it('test catch error - error', function() {
+      assert(catchErrors( async(req, res, next)=>{
+        error
+        error
+      }));
+    });
+  });
+
 });
