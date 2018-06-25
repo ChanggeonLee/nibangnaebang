@@ -19,6 +19,84 @@ describe('test - index.js', function() {
     // excuted after every test
   });
 
+  describe('test index', function() {
+    console.log("index");
+    it('path / .', function(done) {
+        request(app)
+            .get('')
+            .expect(200)
+            .end((err, res) => {
+                if (err) throw err;
+                done();
+            })
+    });
+  });
+
+  describe('test users', function() {
+    console.log("users");
+    it('path /users .', function(done) {
+        request(app)
+            .get('/users')
+            .expect(200)
+            .end((err, res) => {
+                if (err) throw err;
+                done();
+            })
+    });
+  });
+
+  describe('test home', function() {
+    console.log("home");
+    it('path /home .', function(done) {
+        request(app)
+            .get('/home')
+            .expect(200)
+            .end((err, res) => {
+                if (err) throw err;
+                done();
+            })
+    });
+  });
+
+  describe('test assessment', function() {
+    console.log("assessment");
+    it('path /assessment .', function(done) {
+        request(app)
+            .get('/assessment')
+            .expect(200)
+            .end((err, res) => {
+                if (err) throw err;
+                done();
+            })
+    });
+  });
+
+  describe('test recipe', function() {
+    console.log("recipe");
+    it('path /recipe .', function(done) {
+        request(app)
+            .get('/recipe')
+            .expect(200)
+            .end((err, res) => {
+                if (err) throw err;
+                done();
+            })
+    });
+  });
+
+  describe('test shopping', function() {
+    console.log("shopping");
+    it('path /shopping .', function(done) {
+        request(app)
+            .get('/shopping')
+            .expect(200)
+            .end((err, res) => {
+                if (err) throw err;
+                done();
+            })
+    });
+  });
+
   describe('test 404', function() {
     console.log("404 not found");
     it('path /error .', function(done) {
