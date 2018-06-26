@@ -7,12 +7,9 @@ var sassMiddleware = require('node-sass-middleware');
 var mongoose = require('mongoose');
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var homeRouter  = require('./routes/home');
-var assessmentRouter = require('./routes/assessment');
 var recipeRouter = require('./routes/recipe');
-var shoppingRouter = require('./routes/shopping');
 var authRouter = require('./routes/auth');
+var rentRouter = require('./routes/rent');
 
 var app = express();
 
@@ -46,14 +43,11 @@ app.use(sassMiddleware({
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+//Route
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/home', homeRouter);
-app.use('/assessment', assessmentRouter);
 app.use('/recipe', recipeRouter);
-app.use('/shopping',shoppingRouter);
-app.use('/auth',authRouter);
-
+app.use('/auth', authRouter);
+app.use('/rent', rentRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
