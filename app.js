@@ -41,7 +41,7 @@ app.use(cookieParser());
 app.use(sassMiddleware({
   src: path.join(__dirname, 'public'),
   dest: path.join(__dirname, 'public'),
-  indentedSyntax: true, // true = .sass and false = .scss
+  indentedSyntax: false, // true = .sass and false = .scss
   sourceMap: true
 }));
 app.use(express.static(path.join(__dirname, 'public')));
@@ -52,7 +52,8 @@ app.use('/home', homeRouter);
 app.use('/assessment', assessmentRouter);
 app.use('/recipe', recipeRouter);
 app.use('/shopping',shoppingRouter);
-app.use('/signin',authRouter);
+app.use('/auth',authRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
