@@ -29,7 +29,8 @@ const connStr = 'mongodb://localhost/test';
 // 아래는 mLab을 사용하는 경우의 예: 본인의 접속 String으로 바꾸세요.
 // const connStr = 'mongodb://dbuser1:mju12345@ds113825.mlab.com:13825/sampledb1';
 mongoose.connect(connStr);
-mongoose.connection.on('error', console.error);
+//mongoose.connection.on('error', console.error);
+mongoose.connection.on('error');
 
 app.use(logger('dev'));
 app.use(express.json());
