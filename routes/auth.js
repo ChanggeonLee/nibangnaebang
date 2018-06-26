@@ -7,9 +7,14 @@ router.get('/', catchErrors( async( req, res, next ) => {
   res.render('index');
 }));
 
-/* GET home page. */
+// signin
 router.get('/signin', catchErrors( async( req, res, next ) => {
   res.render('signin/index');
+}));
+
+// signup
+router.get('/signup', catchErrors( async( req, res, next ) => {
+  res.render('signup/index');
 }));
 
 // mypage
