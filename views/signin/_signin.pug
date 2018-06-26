@@ -1,0 +1,30 @@
+.col-lg-8.mx-auto
+    .card.border-0
+        h1.card-title.mx-auto.mt-5 니방내방
+        .card-body.col-lg-10.mx-auto
+            form
+                .form-group.row
+                    label.col-sm-2.col-form-label(for='inputID') ID
+                    .col-sm-10
+                        input#inputID.form-control(type='ID', placeholder='ID')
+                |
+                .form-group.row
+                    label.col-sm-2.col-form-label(for='inputPassword') Password
+                    .col-sm-10
+                        input#inputPassword.form-control(type='password', placeholder='Password')
+            |
+            .row.col-lg-10.mx-auto.mt-5
+                .col-sm-4
+                    a.btn.facebookbutton(href='/auth/facebook')
+                        i.fab.fa-facebook.fa-5x.mb-3.mr-2
+                |
+                .col-sm-4    
+                    a.btn.googlebutton(href='/auth/google')
+                        i.fab.fa-google.fa-5x.mb-3.mr-2
+                |
+                .col-sm-4
+                    a.btn.kakaobutton(href='/auth/kakao')
+                        i.fab.fa-kickstarter-k.fa-5x.mb-3.mr-2
+
+
+
