@@ -1,7 +1,7 @@
 const app = require('../app.js');
 const request = require('supertest');
 
-describe('test - index.js', function() {
+describe('test - rent.js', function() {
   before(function() {
     // excuted before test suite
   });
@@ -18,16 +18,16 @@ describe('test - index.js', function() {
     // excuted after every test
   });
 
-  describe('test 404', function() {
-    console.log("404 not found");
-    it('path /error .', function(done) {
-        request(app)
-            .get('/error')
-            .expect(404)
-            .end((err, res) => {
-                if (err) throw err;
-                done();
-            })
+  describe('GET /rent', function() {
+    it('path /rent', function(done) {
+      request(app)
+        .get('/rent')
+        .expect(200)
+        .end((err, res) => {
+            if (err) throw err;
+            done();
+        })
     });
   });
+  
 });
