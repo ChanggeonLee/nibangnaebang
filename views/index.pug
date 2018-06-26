@@ -3,3 +3,20 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
+
+  main.img
+  .jumbotron
+    #carouselExampleSlidesOnly.carousel.slide(data-ride='carousel')
+      .carousel-inner
+        .carousel-item.active
+          img.d-block.w-50(src='http://nordicn.kr/files/attach/images/146/554/018/c16604420938eeda7ce742a3b705ff77.jpeg', alt='first-slide')
+        .carousel-item
+          img.d-block.w-50(src='http://nordicn.kr/files/attach/images/146/240/016/8240a2b5707c49706608973b87045c32.jpg', alt='Second slide')
+        .carousel-item
+          img.d-block.w-50(src='https://post-phinf.pstatic.net/MjAxNzAzMTdfNTgg/MDAxNDg5NzIzMzIzMDY3.vZa52onGlLbiyviPror8PnLU0I0ubED0e-cxi0Of4uAg.J7rxRsMliRwkvGu10qsMNwy_unE2nPJCLpBaLDazQxwg.JPEG/0.jpg?type=w1200', alt='Third slide')
+    |
+
+
+
+  <i class="far fa-building fa-10x"></i> 
+  <i class="fas fa-utensils fa-10x"></i>
