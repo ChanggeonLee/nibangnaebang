@@ -1,0 +1,53 @@
+extends ../layout
+
+block content
+  .container
+    h1.main-title= user.name
+          
+    dl.row
+      dt.col-sm-3 Email
+      dd.col-sm-9
+        a(href=`mailto:${user.email}`)= user.email
+
+      dt.col-sm-3 Created At
+      dd.col-sm-9= user.createdAt
+      
+      if user.facebook.id
+        dt.col-sm-3 Facebook
+        dd.col-sm-9
+          img.rounded-circle.facebookimg(src= user.facebook.photo)
+
+      if user.kakao.id
+        dt.col-sm-3 Kakao
+        dd.col-sm-9
+          img.rounded-circle.kakaoimg(src= user.kakao.photo)
+
+      if user.kakao.id
+        dt.col-sm-3 Kakao
+        dd.col-sm-9
+          img.rounded-circle.kakaoimg(src= user.kakao.photo)
+
+          
+    hr
+    .container
+        form.col-10.mx-auto(action=`/users/root/${user._id}?_method=PUT`,method='POST')
+            .form-group
+                label(for='name') Name
+                input.form-control(type='text', id='name', name='name', placeholder='Your name' , value=user.name)
+            .form-group
+                label(for='email') Email address
+                input.form-control(type='email', id='email', name='email', placeholder='Email' , value=user.email)
+            if (user.password)
+                .form-group
+                    label(for='new_password') New Password
+                    input.form-control(type='password', id='new_password', name='new_password', placeholder='Password')
+                    button.btn.registerbutton.mt-3(type="submit") Register
+                                                                                                    
+        form.col-10.mx-auto(action=`/users/${user._id}?_method=DELETE`,method='POST')
+            button.btn.registerbutton(type="submit") 회원탈퇴
+
+    hr
+    .container
+    방 좋아요
+    레시피 좋아요        
+
