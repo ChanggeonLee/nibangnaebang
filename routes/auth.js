@@ -14,6 +14,6 @@ router.get('/signin', catchErrors( async( req, res, next ) => {
 
 // mypage
 router.get('/mypage', catchErrors( async( req, res, next ) => {
-  res.render('index');
+    res.render('./users/index');
 }));
 module.exports = router;

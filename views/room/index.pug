@@ -1,0 +1,46 @@
+extends ../layout
+
+block content
+  .form-group#file-section
+    label(for="img")
+    input#file.form-control(type="file" , multiple="multiple")
+    if event.img
+      -for (var i = 0; i < event.img.length; i++)
+          input(name='img[]' , value=event.img[i])
+    img#preview.img-fluid(src="https://dummyimage.com/200x200/ccc/fff")
+
+script.
+    $(function() {
+        $("#preview").hide();
+        $("#file").change(function() {
+            var files = $("#file")[0].files;
+            console.log(files)
+            for(file of files){
+                console.log(file)
+                if (file) {
+                    var url = "/s3?filename=" + encodeURIComponent(file.name) + 
+                            "&type=" + encodeURIComponent(file.type);
+                    console.log(url);
+                    const img_file = file;
+                    $.getJSON(url, function(resp) {
+                        console.log(resp.signedRequest);
+                        $.ajax({
+                            url: resp.signedRequest,
+                            method: 'PUT',
+                            data: img_file,
+                            headers: {'x-amz-acl': 'public-read', 'Content-Type': img_file.type},
+                            processData: false, 
+                            contentType: img_file.type,
+                            success: function() {
+                                $("#preview").attr("src", resp.url).show();
+                                $("#file-section").append("<input name='img[]' value='" + resp.url + "'>");
+                                //- $("#url").val(resp.url);
+                            }
+                        });
+                    });
+                }
+            }
+        });
+    });
+
+    

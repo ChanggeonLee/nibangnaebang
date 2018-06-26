@@ -62,10 +62,7 @@ typings/
 
 .DS_Store
 
-# css
-*.css
-*.css.map
-
 # DL 
 DL/
 
+package-lock.json
