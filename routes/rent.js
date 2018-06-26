@@ -3,7 +3,7 @@ var router = express.Router();
 const catchErrors = require('../lib/async-error');
 
 router.get('/', catchErrors( async( req, res, next ) => {
-  res.render('./room/index');
+  res.render('rent/index');
 }));
 
 module.exports = router;
