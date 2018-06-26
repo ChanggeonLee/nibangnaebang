@@ -4,27 +4,27 @@
         .card-body.col-lg-10.mx-auto
             form
                 .form-group.row
-                    label.col-sm-2.col-form-label(for='inputID') ID
-                    .col-sm-10
+                    .col-sm-10.mx-auto
                         input#inputID.form-control(type='ID', placeholder='ID')
                 |
                 .form-group.row
-                    label.col-sm-2.col-form-label(for='inputPassword') Password
-                    .col-sm-10
+                    .col-sm-10.mx-auto
                         input#inputPassword.form-control(type='password', placeholder='Password')
             |
+            button.col-lg-10.col-sm-10.btn.btn-primary.btn-lg.btn-block.mx-auto(type="button")
+                | Block level button
             .row.col-lg-10.mx-auto.mt-5
-                .col-sm-4
+                .col-sm-3.mx-auto
                     a.btn.facebookbutton(href='/auth/facebook')
-                        i.fab.fa-facebook.fa-5x.mb-3.mr-2
+                        i.fab.fa-facebook.fa-5x.mb-3
                 |
-                .col-sm-4    
+                .col-sm-3.mx-auto
                     a.btn.googlebutton(href='/auth/google')
-                        i.fab.fa-google.fa-5x.mb-3.mr-2
+                        i.fab.fa-google.fa-5x.mb-3
                 |
-                .col-sm-4
+                .col-sm-3.mx-auto
                     a.btn.kakaobutton(href='/auth/kakao')
-                        i.fab.fa-kickstarter-k.fa-5x.mb-3.mr-2
+                        i.fab.fa-kickstarter-k.fa-5x.mb-3
 
 
 
