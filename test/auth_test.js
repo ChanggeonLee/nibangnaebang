@@ -1,9 +1,7 @@
-const assert = require("assert"); //nodejs에서 제공하는 aseert 모듈
-const httpMocks = require('node-mocks-http');
 const app = require('../app.js');
 const request = require('supertest');
 
-describe('test - user.js', function() {
+describe('test - auth.js', function() {
   before(function() {
     // excuted before test suite
   });
@@ -61,6 +59,6 @@ describe('test - user.js', function() {
             done();
         })
     });
-    
+
   });
 });
