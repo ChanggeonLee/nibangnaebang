@@ -1,0 +1,32 @@
+.col-lg-6.mx-auto.mt-5
+    .card.border-0
+        a.card-title.mx-auto.mt-5(href='/')
+            h1 니방내방
+        .card-body.col-lg-10.mx-auto
+            form
+                .form-group.row
+                    .col-sm-10.mx-auto
+                        label(for='exampleInputID') 아이디
+                        input#exampleInputID1.form-control(type='ID', aria-describedby='IDHelp')
+                |
+                .form-group.row
+                    .col-sm-10.mx-auto
+                        label(for='exampleInputPassword1') 비밀번호
+                        input#exampleInputPassword1.form-control(type='password')
+                .form-group.row
+                    .col-sm-10.mx-auto
+                        label(for='exampleInputPassword1') 비밀번호 재확인
+                        input#exampleInputPassword1.form-control(type='Reconfirmpassword')
+                |
+                .form-group.row
+                    .col-sm-10.mx-auto
+                        label(for='exampleInputEmail1') 이메일
+                        input#exampleInputEmail1.form-control(type='email', aria-describedby='emailHelp')
+                |
+                .form-group.row
+                    .col-sm-10.mx-auto
+                        label(for='exampleInputName') 이름
+                        input#exampleInputName1.form-control(type='name', aria-describedby='nameHelp')
+                |
+            button.col-lg-10.col-sm-10.btn.btn-primary.btn-lg.btn-block.mx-auto(type="submit") 가입하기
+                
