@@ -4,6 +4,6 @@ const catchErrors = require('../lib/async-error');
 
 /* GET home page. */
 router.get('/', catchErrors( async( req, res, next ) => {
-  res.send('respond with a resource');
+  res.render('recipe/index', { title: '똥땅이네'});
 }));
 module.exports = router;
