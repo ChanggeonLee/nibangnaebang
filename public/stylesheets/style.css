@@ -5,4 +5,12 @@ body {
 a {
   color: #00B7FF; }
 
+#mainPageDiv {
+  position: relative;
+  left: 10px;
+  top: -100px; }
+
+#carouselExampleSlidesOnly {
+  right: 30em; }
+
 /*# sourceMappingURL=style.css.map */

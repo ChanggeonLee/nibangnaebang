@@ -4,12 +4,12 @@ const catchErrors = require('../lib/async-error');
 
 /* GET home page. */
 router.get('/', catchErrors( async( req, res, next ) => {
-    res.render('index');
+  res.render('index');
 }));
 
 /* GET home page. */
 router.get('/signin', catchErrors( async( req, res, next ) => {
-    res.render('index');
+  res.render('index');
 }));
 
 // mypage
