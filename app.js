@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var sassMiddleware = require('node-sass-middleware');
+var mongoose = require('mongoose');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -22,6 +23,15 @@ app.set('view engine', 'pug');
 //if (app.get('env') == 'development') {
 app.locals.pretty = true;  
 //}
+
+// mongodb connect
+mongoose.Promise = global.Promise; // ES6 Native Promise를 mongoose에서 사용한다.
+const connStr = 'mongodb://localhost/test';
+// const connStr = process.env.MONGOURL;
+// 아래는 mLab을 사용하는 경우의 예: 본인의 접속 String으로 바꾸세요.
+// const connStr = 'mongodb://dbuser1:mju12345@ds113825.mlab.com:13825/sampledb1';
+mongoose.connect(connStr);
+mongoose.connection.on('error', console.error);
 
 app.use(logger('dev'));
 app.use(express.json());
