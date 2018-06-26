@@ -18,16 +18,16 @@ describe('test - index.js', function() {
     // excuted after every test
   });
 
-  describe('test 404', function() {
-    console.log("404 not found");
-    it('path /error .', function(done) {
-        request(app)
-            .get('/error')
-            .expect(404)
-            .end((err, res) => {
-                if (err) throw err;
-                done();
-            })
+  describe('GET /', function() {
+    it('path /', function(done) {
+      request(app)
+        .get('/')
+        .expect(200)
+        .end((err, res) => {
+            if (err) throw err;
+            done();
+        })
     });
   });
+  
 });
