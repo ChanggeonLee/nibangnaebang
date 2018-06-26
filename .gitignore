@@ -61,3 +61,8 @@ typings/
 .next
 
 .DS_Store
+
+# css
+*.css
+*.css.map
+
