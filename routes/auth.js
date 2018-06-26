@@ -4,6 +4,6 @@ const catchErrors = require('../lib/async-error');
 
 /* GET home page. */
 router.get('/', catchErrors( async( req, res, next ) => {
-    res.render('index');
+    res.render('signin/index');
 }));
 module.exports = router;
