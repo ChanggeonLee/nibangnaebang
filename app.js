@@ -38,10 +38,11 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+
 app.use(sassMiddleware({
   src: path.join(__dirname, 'public'),
   dest: path.join(__dirname, 'public'),
-  indentedSyntax: true, // true = .sass and false = .scss
+  indentedSyntax: false, // true = .sass and false = .scss
   sourceMap: true
 }));
 app.use(express.static(path.join(__dirname, 'public')));
@@ -52,21 +53,7 @@ app.use('/home', homeRouter);
 app.use('/assessment', assessmentRouter);
 app.use('/recipe', recipeRouter);
 app.use('/shopping',shoppingRouter);
-app.use('/signin',authRouter);
-
-
-// sass, scss를 사용할 수 있도록
-app.use(sassMiddleware({
-  src: path.join(__dirname, 'public'),
-  dest: path.join(__dirname, 'public'),
-  indentedSyntax: false, // true = .sass and false = .scss
-  debug: true,
-  sourceMap: true
-}));
-app.use(express.static(path.join(__dirname, 'public')));
-app.use('/users',express.static(path.join(__dirname, 'public')));
-app.use('/event',express.static(path.join(__dirname, 'public')));
-
+app.use('/auth',authRouter);
 
 
 // catch 404 and forward to error handler
