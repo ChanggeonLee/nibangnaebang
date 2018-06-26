@@ -54,6 +54,21 @@ app.use('/recipe', recipeRouter);
 app.use('/shopping',shoppingRouter);
 app.use('/signin',authRouter);
 
+
+// sass, scss를 사용할 수 있도록
+app.use(sassMiddleware({
+  src: path.join(__dirname, 'public'),
+  dest: path.join(__dirname, 'public'),
+  indentedSyntax: false, // true = .sass and false = .scss
+  debug: true,
+  sourceMap: true
+}));
+app.use(express.static(path.join(__dirname, 'public')));
+app.use('/users',express.static(path.join(__dirname, 'public')));
+app.use('/event',express.static(path.join(__dirname, 'public')));
+
+
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
