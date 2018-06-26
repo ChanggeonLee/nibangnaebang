@@ -1,8 +1,9 @@
 const assert = require("assert"); //nodejs에서 제공하는 aseert 모듈
+const httpMocks = require('node-mocks-http');
 const app = require('../app.js');
 const request = require('supertest');
 
-describe('test - index.js', function() {
+describe('test - user.js', function() {
   before(function() {
     // excuted before test suite
   });
@@ -19,16 +20,15 @@ describe('test - index.js', function() {
     // excuted after every test
   });
 
-  describe('test 404', function() {
-    console.log("404 not found");
-    it('path /error .', function(done) {
-        request(app)
-            .get('/error')
-            .expect(404)
-            .end((err, res) => {
-                if (err) throw err;
-                done();
-            })
+  describe('test users', function() {
+    it('path /users .', function(done) {
+      request(app)
+        .get('/')
+        .expect(200)
+        .end((err, res) => {
+            if (err) throw err;
+            done();
+        })
     });
   });
 });
