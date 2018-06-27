@@ -10,10 +10,11 @@ var flash = require('connect-flash');
 var methodOverride = require('method-override');
 var passport = require('passport');
 
+// router require
 var indexRouter = require('./routes/index');
 var recipeRouter = require('./routes/recipe');
-var authRouter = require('./routes/auth');
 var rentRouter = require('./routes/rent');
+var userRouter = require('./routes/user');
 
 // require passportconfig
 var passportConfig = require('./lib/passport-config');
@@ -37,9 +38,6 @@ const connStr = 'mongodb://localhost/test';
 // const connStr = 'mongodb://dbuser1:mju12345@ds113825.mlab.com:13825/sampledb1';
 mongoose.connect(connStr);
 mongoose.connection.on('error', console.error);
-
-
-
 
 
 // _method를 통해서 method를 변경할 수 있도록 함. PUT이나 DELETE를 사용할 수 있도록.
@@ -85,8 +83,9 @@ app.use(function(req, res, next) {
 //Route
 app.use('/', indexRouter);
 app.use('/recipe', recipeRouter);
-app.use('/auth', authRouter);
 app.use('/rent', rentRouter);
+app.use('/user', userRouter);
+require('./routes/auth')(app, passport);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
