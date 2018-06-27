@@ -5,11 +5,19 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var sassMiddleware = require('node-sass-middleware');
 var mongoose = require('mongoose');
+var session = require('express-session');
+var flash = require('connect-flash');
+var methodOverride = require('method-override');
+var passport = require('passport');
 
+// router require
 var indexRouter = require('./routes/index');
 var recipeRouter = require('./routes/recipe');
-var authRouter = require('./routes/auth');
 var rentRouter = require('./routes/rent');
+var userRouter = require('./routes/user');
+
+// require passportconfig
+var passportConfig = require('./lib/passport-config');
 
 var app = express();
 
@@ -31,6 +39,10 @@ const connStr = 'mongodb://localhost/test';
 mongoose.connect(connStr);
 mongoose.connection.on('error', console.error);
 
+
+// _method를 통해서 method를 변경할 수 있도록 함. PUT이나 DELETE를 사용할 수 있도록.
+app.use(methodOverride('_method', {methods: ['POST', 'GET']}));
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -43,11 +55,37 @@ app.use(sassMiddleware({
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+// session을 사용
+app.use(session({
+  name: 'mjoverflow',
+  resave: true,
+  saveUninitialized: true,
+  secret: 'long-longlonglong123asdasdaszxcasdq1123123sdasdlkjlkjaflkvna;ls123'
+}));
+
+app.use(flash()); // flash message를 사용할 수 있도록
+
+//=======================================================
+// Passport 초기화
+//=======================================================
+app.use(passport.initialize());
+app.use(passport.session());
+passportConfig(passport);
+
+// pug의 local에 현재 사용자 정보와 flash 메시지를 전달하자.
+app.use(function(req, res, next) {
+  res.locals.currentUser = req.user;  // passport는 req.user로 user정보 전달
+  res.locals.flashMessages = req.flash();
+  next();
+});
+
 //Route
 app.use('/', indexRouter);
 app.use('/recipe', recipeRouter);
-app.use('/auth', authRouter);
 app.use('/rent', rentRouter);
+app.use('/user', userRouter);
+require('./routes/auth')(app, passport);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
