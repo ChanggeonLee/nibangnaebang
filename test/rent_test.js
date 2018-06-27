@@ -28,6 +28,16 @@ describe('test - rent.js', function() {
             done();
         })
     });
+
+    it('path /rent/rent_detail', function(done) {
+      request(app)
+        .get('/rent/rent_detail')
+        .expect(200)
+        .end((err, res) => {
+            if (err) throw err;
+            done();
+        })
+    });
+
   });
-  
 });
