@@ -6,4 +6,8 @@ router.get('/', catchErrors( async( req, res, next ) => {
   res.render('rent/index');
 }));
 
+router.get('/rent_detail', catchErros( async( req, res, next) => {
+  res.render('rent/rent_detail');
+}));
+
 module.exports = router;
