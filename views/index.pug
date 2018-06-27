@@ -1,11 +1,17 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
 
   main.img
-  .jumbotron
+  .div#subimg
+    #mainicon
+      #firsticon.i.far.fa-building.fa-4x
+      
+      #secondicon.i.fas.fa-utensils.fa-4x
+      #thirdicon.i.i.fas.fa-map-marked-alt.fa-4x
+      #fourthicon.i.fas.fa-sign-in-alt.fa-4x
+
+  .div
     #carouselExampleSlidesOnly.carousel.slide(data-ride='carousel')
       .carousel-inner
         .carousel-item.active
@@ -15,6 +21,3 @@ block content
         .carousel-item
           img.d-block.w-50(src='https://post-phinf.pstatic.net/MjAxNzAzMTdfNTgg/MDAxNDg5NzIzMzIzMDY3.vZa52onGlLbiyviPror8PnLU0I0ubED0e-cxi0Of4uAg.J7rxRsMliRwkvGu10qsMNwy_unE2nPJCLpBaLDazQxwg.JPEG/0.jpg?type=w1200', alt='Third slide')
     |
-  #main_image
-    i.far.fa-building.fa-10x
-    i.fas.fa-utensils.fa-10x
