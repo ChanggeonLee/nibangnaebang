@@ -5,12 +5,12 @@ module.exports = (app, passport) => {
     res.render('signin/index');
   });
   
-  // // local login
-  // app.post('/signin', passport.authenticate('local-signin', {
-  //   successRedirect : '/', // redirect to the secure profile section
-  //   failureRedirect : '/signin', // redirect back to the signup page if there is an error
-  //   failureFlash : true // allow flash messages
-  // }));
+  // local login
+  app.post('/signin', passport.authenticate('local-signin', {
+    successRedirect : '/', // redirect to the secure profile section
+    failureRedirect : '/signin', // redirect back to the signup page if there is an error
+    failureFlash : true // allow flash messages
+  }));
   
   // // facebook login
   // app.get('/auth/facebook',
@@ -42,10 +42,11 @@ module.exports = (app, passport) => {
   //   }
   // );
 
-  // // logout
-  // app.get('/signout', (req, res) => {
-  //   req.logout();
-  //   req.flash('success', 'Successfully signed out');
-  //   res.redirect('/');
-  // });
+  // logout
+  app.get('/signout', (req, res) => {
+    console.log("로그아웃 성공~");
+    req.logout();
+    req.flash('success', 'Successfully signed out');
+    res.redirect('/');
+  });
 };

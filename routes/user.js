@@ -47,7 +47,7 @@ router.get('/signup', catchErrors( async( req, res, next ) => {
   res.render('signup/index');
 }));
 
-// 회원가입
+// signup
 router.post('/signup' , catchErrors( async( req , res , next) => {
 // 데이터가 잘넘어오는지 확인을 위해서
 console.log(req.body);
@@ -84,12 +84,13 @@ await user.save();
 console.log("회원 가입 완료");
 // 홈화면으로 리다이렉션 해주자.
 return res.redirect('/');
+
 }));
+
 
 // mypage
 router.get('/mypage', catchErrors( async( req, res, next ) => {
     res.render('./users/index');
 }));
-
 
 module.exports = router;

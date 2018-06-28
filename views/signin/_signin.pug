@@ -4,16 +4,16 @@
             h1 니방내방
         .card-body.col-lg-10.mx-auto
             form(action='/signin', method='POST')
-                .form-group.row
-                    .col-sm-10.mx-auto
-                        input#inputID.form-control(type='ID', placeholder='ID')
-                |
-                .form-group.row
-                    .col-sm-10.mx-auto
-                        input#inputPassword.form-control(type='password', placeholder='Password')
-            |
-            button.col-lg-10.col-sm-10.btn.btn-primary.btn-lg.btn-block.mx-auto(type="button")
-                | 로그인
+              .form-group.row
+                  .col-sm-10.mx-auto
+                      input#inputID.form-control(type='email', name='email', placeholder='email')
+              |
+              .form-group.row
+                  .col-sm-10.mx-auto
+                      input#inputPassword.form-control(type='password', name='password', placeholder='Password')
+              |
+              button.col-lg-10.col-sm-10.btn.btn-primary.btn-lg.btn-block.mx-auto(type="submit")
+                  | 로그인
             .row.col-lg-10.mx-auto.mt-5
                 .col-sm-3.mx-auto
                     a.btn.facebookbutton(href='/auth/facebook')
