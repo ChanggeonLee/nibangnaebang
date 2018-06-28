@@ -66,3 +66,5 @@ typings/
 DL/
 
 package-lock.json
+
+style.css
