@@ -6,7 +6,7 @@ const recipe = require('../models/recipe-default');
 
 /* GET home page. */
 router.get('/', catchErrors( async( req, res, next ) => {
-  res.render('recipe/index', { title: '똥땅이네' ,recipes : recipe });
+  res.render('recipe/index');
   console.log(recipe);
 }));
 module.exports = router;
