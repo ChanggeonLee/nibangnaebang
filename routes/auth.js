@@ -12,22 +12,22 @@ module.exports = (app, passport) => {
     failureFlash : true // allow flash messages
   }));
   
-  // // facebook login
-  // app.get('/auth/facebook',
-  //   passport.authenticate('facebook', { scope : 'email' })
-  // );
+  // facebook login
+  app.get('/auth/facebook',
+    passport.authenticate('facebook', { scope : 'email' })
+  );
 
-  // app.get('/auth/facebook/callback',
-  //   passport.authenticate('facebook', {
-  //     failureRedirect : '/signin',
-  //     failureFlash : true // allow flash messages
-  //   }), (req, res, next) => {
-  //     req.flash('success', 'Welcome!');
-  //     res.redirect('/');
-  //   }
-  // );
+  app.get('/auth/facebook/callback',
+    passport.authenticate('facebook', {
+      failureRedirect : '/signin',
+      failureFlash : true // allow flash messages
+    }), (req, res, next) => {
+      req.flash('success', 'Welcome!');
+      res.redirect('/');
+    }
+  );
 
-  // // // kakaotalk login 
+  // kakaotalk login 
   app.get('/auth/kakao', 
     passport.authenticate('kakao')
   );
