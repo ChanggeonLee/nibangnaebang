@@ -1,7 +1,7 @@
 extends ../layout
 
 block content
-  h1= title
-  p Welcome to #{title}
-
-  include ./_rent_upload
+  .container
+    form.col-10.mx-auto(action=`/upload/${currentUser._id}`,method='POST')
+      include _rent_upload 
+      button.btn.registerbutton.btn-color(type="submit") 니방올리기     
