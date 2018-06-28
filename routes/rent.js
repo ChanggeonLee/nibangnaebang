@@ -4,15 +4,7 @@ const catchErrors = require('../lib/async-error');
 
 var Room = require('../models/room');
 
-// 로그인 확인
-function needAuth(req, res, next) {
-  if (req.isAuthenticated()) {
-    next();
-  } else {
-    req.flash('danger', 'Please signin first.');
-    res.redirect('/signin');
-  }
-}
+const needAuth = require('../lib/need-auth');
 
 // rent
 router.get('/', catchErrors( async( req, res, next ) => {

@@ -5,6 +5,9 @@ const catchErrors = require('../lib/async-error');
 // 필요한 디비 require
 var User = require('../models/user');
 
+// 로그인 확인
+const needAuth = require('../lib/need-auth');
+
 // 회원 가입 폼을 검사하는 함수 만들어야됨
 function validateSignupform (form){
   var id = form.id || "";
@@ -88,9 +91,43 @@ return res.redirect('/');
 }));
 
 
+// 비밀번호 변경
+router.put('/:id' ,needAuth , catchErrors( async( req , res , next ) => {
+  var user = await User.findById(req.params.id);
+  if(!user){
+    req.flash('danger' , 'no users');
+    return res.redirect('back');
+  }
+
+  if(!user.password){
+    req.flash('danger' , '카카오톡 , 페이스북 , 구글 사용자는 비밀번호를 변경 할수 없습니다.');
+    return res.redirect('back');
+  }
+
+  if(req.body.new_password != req.body.new_password_confirmation){
+    req.flash('danger' , '비밀번호가 일치 하지 않아요~~!!');
+    return res.redirect('back');
+  }
+
+  user.password = await user.generateHash(req.body.new_password);
+
+  await user.save();
+  req.flash('success', '비밀번호 변경 완료');
+  res.redirect('/');
+}));
+
+router.delete('/:id' ,needAuth , catchErrors( async(req,res,next) => {
+  var user = await User.findById(req.params.id);
+  // 다른거 지울거 있으면 같이 지우자~!
+  await user.remove();
+  req.flash('danger', '회원탈퇴 완료~!');
+  res.redirect('/signout');
+}));
+
 // mypage
-router.get('/mypage', catchErrors( async( req, res, next ) => {
-    res.render('./users/index');
+router.get('/mypage',needAuth, catchErrors( async( req, res, next ) => {
+  var user = await User.findById(req.user.id);
+  res.render('./mypage/index' , {user:user});
 }));
 
 module.exports = router;
