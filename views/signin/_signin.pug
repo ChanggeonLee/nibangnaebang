@@ -3,7 +3,7 @@
         a.card-title.mx-auto.mt-5(href='/') 
             h1 니방내방
         .card-body.col-lg-10.mx-auto
-            form
+            form(action='/signin', method='POST')
                 .form-group.row
                     .col-sm-10.mx-auto
                         input#inputID.form-control(type='ID', placeholder='ID')
