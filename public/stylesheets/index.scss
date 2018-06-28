@@ -14,13 +14,43 @@ a{
 }
   
 #carouselExampleSlidesOnly{
+  top: 10em;
   right : 30em;
+  left: 20em;
+  width: 95%;
 } 
 
 #main_image{
   top : 100em;
 }
 
-i{
-  color: yellow;
+
+#subimg{
+  left: 50em;
+  top: 35em;
+  background-color:#F2F2F2;
+  width: 55%;
+  height: 55%;
+  position: absolute;
 }
+
+
+
+
+#mainicon{
+  margin-top: 24em;
+}
+
+#firsticon{
+  margin-left: 2em;
+}
+#secondicon{
+  margin-left: 2em;
+}
+#thirdicon{
+  margin-left: 2em;
+}
+#fourthicon{
+  margin-left: 2em;
+}
+
