@@ -1,7 +1,6 @@
 extends ../layout
 
 block content
-  .container
-    form.col-10.mx-auto(action=`/upload/${currentUser._id}`,method='POST')
-      include _rent_upload 
-      button.btn.registerbutton.btn-color(type="submit") 니방올리기     
+  form.col-10.mx-auto(action=`${currentUser._id}`,method='POST')
+    include _rent_upload 
+    button.btn.registerbutton.btn-color(type="submit") 니방올리기     
