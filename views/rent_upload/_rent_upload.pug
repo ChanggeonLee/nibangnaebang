@@ -74,6 +74,18 @@ script.
     input.form-control(type='suitable_person', id='suitable_person', name='suitable_person', placeholder='suitable_person' value=rent.suitable_person)
 
 //- 옵션
+.form-check.form-check-inline
+  label.form-check-label
+    input#inlineCheckbox1.form-check-input(type='checkbox', value='option1')
+    |  1
+.form-check.form-check-inline
+  label.form-check-label
+    input#inlineCheckbox2.form-check-input(type='checkbox', value='option2')
+    |  2
+.form-check.form-check-inline
+  label.form-check-label
+    input#inlineCheckbox2.form-check-input(type='checkbox', value='option3')
+    |  2
 
 
 //- WYSIWYG
@@ -89,3 +101,8 @@ script.
             .catch( error => {
                 console.error( error );
             } );
+
+
+
+
+<input class="btn btn-primary" type="submit" value="등록하기">
