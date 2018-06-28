@@ -42,6 +42,21 @@ module.exports = (app, passport) => {
     }
   );
 
+  // google login
+  app.get('/auth/google',
+    passport.authenticate('google', { scope: ['email profile'] })
+  );
+
+  app.get('/auth/google/callback',
+    passport.authenticate('google', {
+      failureRedirect : '/signin',
+      failureFlash : true // allow flash messages
+    }), (req, res, next) => {
+      req.flash('success', 'Welcome!');
+      res.redirect('/');
+    }
+  );
+
   // logout
   app.get('/signout', (req, res) => {
     console.log("로그아웃 성공~");
