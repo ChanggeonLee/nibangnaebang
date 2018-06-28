@@ -1,0 +1,139 @@
+.form-group
+    label(for='title') 이벤트 이름
+    input.form-control(type='text', id='title', name='title', placeholder="What's your event title?" , value=event.title)
+
+//- 사진업로드
+.form-group#file-section
+    label(for="img")
+    input#file.form-control(type="file" , multiple="multiple")
+    if event.img
+      -for (var i = 0; i < event.img.length; i++)
+          input(name='img[]' , value=event.img[i])
+    img#preview.img-fluid(src="https://dummyimage.com/200x200/ccc/fff")
+
+script.
+    $(function() {
+        $("#preview").hide();
+        $("#file").change(function() {
+            var files = $("#file")[0].files;
+            console.log(files)
+            for(file of files){
+                console.log(file)
+                if (file) {
+                    var url = "/s3?filename=" + encodeURIComponent(file.name) + 
+                            "&type=" + encodeURIComponent(file.type);
+                    console.log(url);
+                    const img_file = file;
+                    $.getJSON(url, function(resp) {
+                        console.log(resp.signedRequest);
+                        $.ajax({
+                            url: resp.signedRequest,
+                            method: 'PUT',
+                            data: img_file,
+                            headers: {'x-amz-acl': 'public-read', 'Content-Type': img_file.type},
+                            processData: false, 
+                            contentType: img_file.type,
+                            success: function() {
+                                $("#preview").attr("src", resp.url).show();
+                                $("#file-section").append("<input name='img[]' value='" + resp.url + "'>");
+                                //- $("#url").val(resp.url);
+                            }
+                        });
+                    });
+                }
+            }
+        });
+    });
+
+
+    //- WYSIWYG
+//- CK editor
+//- 상세설명
+.form-group
+    label(for='info') 상세설명 (다시 입력해주세요)
+    textarea#editor(name="info" value=event.info)
+        |
+    script.
+        ClassicEditor
+            .create( document.querySelector( '#editor' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+
+
+//- 등록 조직
+.form-group
+    label(for='organize') 등록 조직
+    input.form-control(type='organize', id='organize', name='organize', placeholder='organize' value=event.organize)
+
+//- 등록 조직 설명
+.form-group
+    label(for='organize_info') 등록 조직 설명   (다시 입력해주세요)
+    textarea#organize_info(name="organize_info" value=event.organize_info)
+        |
+    script.
+        ClassicEditor
+            .create( document.querySelector( '#organize_info' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+    
+//- 이벤트 종류
+.form-group
+ 
+  label(for='event_type') 이벤트 종류 
+  select.custom-select#event_type(name='event_type')
+      option(value='' selected) 이벤트 유형 선택  
+      option(value='캠프') 캠프
+      option(value='수업') 수업
+      option(value='콘서트') 콘서트
+      option(value='회의') 회의
+      option(value='협약') 협약
+      option(value='축제') 축제
+      option(value='파티') 파티
+      option(value='세미나') 세미나
+      option(value='전시회') 전시회
+
+  script.
+    var type = "#event_type option[value=#{event.event_type}]";
+    $(type).attr('selected', 'selected');
+    
+//- 이벤트 분야
+.form-group
+    label(for='event_field') 이벤트 분야
+    select.custom-select#event_field(name='event_field')
+        option(value='' selected) 주제 선택 
+        option(value='자동차') 자동차
+        option(value='비즈니스') 비즈니스
+        option(value='지역 사회 및 문화') 지역 사회 및 문화
+        option(value='패션') 패션
+        option(value='가족') 가족
+        option(value='음식') 음식
+        option(value='영화') 영화
+        option(value='건강') 건강
+        option(value='취미') 취미
+        option(value='음악') 음악
+        option(value='종교') 종교
+        option(value='과학') 과학
+        option(value='스포츠') 스포츠
+    script.
+      var field = "#event_field option[value=#{event.event_field}]";
+      $(field).attr('selected', 'selected');
+
+//- 티켓 수정 필요
+.form-group
+    label(for='ticket') Tickets
+    |   ( 유료 티켓 일때 첵크해주세요 )
+    .col-lg-6
+      .input-group
+        span.input-group-addon
+          input.checkbox_ticket(type='checkbox', aria-label='Checkbox for following text input' ,name='free' ,checked=!event.ticket.free)          
+        span.input-group-addon 유료 티켓 이름
+        input.form-control(type='text', aria-label='Text input with checkbox' ,name='ticket_name' ,value=event.ticket.name)
+        span.input-group-addon :
+        input.form-control(type='text', aria-label='Text input with checkbox' ,name='ticket_price' ,value=event.ticket.cost)
+
+//-  최대인원 
+.form-group 
+    label(for='attendance_max') 최대인원
+    input.form-control(type='attendance_max', id='attendance_max', name='attendance_max', placeholder='attendance_max' , value=event.attendance_max)
