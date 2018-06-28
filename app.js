@@ -15,6 +15,7 @@ var indexRouter = require('./routes/index');
 var recipeRouter = require('./routes/recipe');
 var rentRouter = require('./routes/rent');
 var userRouter = require('./routes/user');
+var reviewRouter = require('./routes/review');
 
 // require passportconfig
 var passportConfig = require('./lib/passport-config');
@@ -85,6 +86,7 @@ app.use('/', indexRouter);
 app.use('/recipe', recipeRouter);
 app.use('/rent', rentRouter);
 app.use('/user', userRouter);
+app.use('/review', reviewRouter);
 require('./routes/auth')(app, passport);
 
 // catch 404 and forward to error handler
