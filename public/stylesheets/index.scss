@@ -4,9 +4,26 @@ body{
 }
   
 a{
-  color: #00B7FF;
+  color: #0738be;
 }
   
+nav.navbar{
+  background-color: white!important;
+  height: 15em!important;
+  #logo{
+    top: -0.2em;
+    position: absolute;
+    left: 43%;
+  }
+  ul{
+    top: 10%;
+    a{
+      color: black!important;
+      font-size: 1.2em;
+    }
+  }
+}
+
 #mainPageDiv{
   position : relative;
   left : 10px;
@@ -14,10 +31,7 @@ a{
 }
   
 #carouselExampleSlidesOnly{
-  top: 10em;
-  right : 30em;
-  left: 20em;
-  width: 95%;
+  left: 25%;
 } 
 
 #main_image{
@@ -25,20 +39,10 @@ a{
 }
 
 
-#subimg{
-  left: 50em;
-  top: 35em;
-  background-color:#F2F2F2;
-  width: 55%;
-  height: 55%;
-  position: absolute;
-}
-
-
-
-
 #mainicon{
-  margin-top: 24em;
+  padding-top: 2em;
+  margin-left: 35em;
+  color: #0738be;
 }
 
 #firsticon{
