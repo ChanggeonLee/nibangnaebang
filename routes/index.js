@@ -1,6 +1,8 @@
 const express = require('express');
 const catchErrors = require('../lib/async-error');
 const router = express.Router();
+const aws = require('aws-sdk');
+const uuidv4 = require('uuid/v4');
 
 /* GET home page. */
 router.get('/', catchErrors( async( req, res, next ) => {

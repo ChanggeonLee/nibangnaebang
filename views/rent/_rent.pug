@@ -5,46 +5,11 @@
         option(value='1') 명지대학교 정문
         option(value='2') 덕곡마을
         option(value='3') 동진마을
-
-.row.col-lg-10.col-md-10.col-sm-12.col-12.mx-auto.mt-4
+.row.col-lg-10.col-md-10.col-sm-12.col-12.mx-auto.mt-4        
+  each rent in rents
     a.card.mb-3.col-lg-4.col-md-5.col-sm-12.col-12.mx-auto.p-1(href='/rent/rent_detail')
-        img.card-img-top(src='.../100px180/?text=Image cap', alt='Card image cap')
-        .card-body
-            p.card-text
-                p 명지대학교 정문
-                p 성현빌딩
-    |
-    a.card.mb-3.col-lg-4.col-md-5.col-sm-12.col-12.mx-auto.p-1(href='/rent/rent_detail')
-        img.card-img-top(src='.../100px180/?text=Image cap', alt='Card image cap')
-        .card-body
-            p.card-text
-                p 명지대학교 정문
-                p 성현빌딩
-    |
-    a.card.mb-3.col-lg-4.col-md-5.col-sm-12.col-12.mx-auto.p-1(href='/rent/rent_detail')
-        img.card-img-top(src='.../100px180/?text=Image cap', alt='Card image cap')
-        .card-body
-            p.card-text
-                p 명지대학교 정문
-                p 성현빌딩
-    |
-    a.card.mb-3.col-lg-4.col-md-5.col-sm-12.col-12.mx-auto.p-1(href='/rent/rent_detail')
-        img.card-img-top(src='.../100px180/?text=Image cap', alt='Card image cap')
-        .card-body
-            p.card-text
-                p 명지대학교 정문
-                p 성현빌딩
-    |
-    a.card.mb-3.col-lg-4.col-md-5.col-sm-12.col-12.mx-auto.p-1(href='/rent/rent_detail')
-        img.card-img-top(src='.../100px180/?text=Image cap', alt='Card image cap')
-        .card-body
-            p.card-text
-                p 명지대학교 정문
-                p 성현빌딩
-    |
-    a.card.mb-3.col-lg-4.col-md-5.col-sm-12.col-12.mx-auto.p-1(href='/rent/rent_detail')
-        img.card-img-top(src='.../100px180/?text=Image cap', alt='Card image cap')
-        .card-body
-            p.card-text
-                p 명지대학교 정문
-                p 성현빌딩
+      img.card-img-top(src=rent.img[0], alt='Card image cap')
+      .card-body
+        p.card-text
+          p=rent.locate
+          p=rent.detail_address
