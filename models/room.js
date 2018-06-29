@@ -4,27 +4,34 @@ const Schema = mongoose.Schema;
 
 var schema = new Schema({
     author: { type: Schema.Types.ObjectId, ref: 'User' },
+    // 이미지
+    img: [String],
     //지역
     locate: {type: String, required: true, trim: true},
     //건물이름, 호수
-    detail_address: {type: String, required: true, trim: false},
+    detail_address: {type: String, trim: false},
     // 기간
-    // start_time: {
-    //     date:{type: String, required: true, trim: true},
-    //     time:{type: String, required: true, trim: true}
-    // },
-    // end_time: {
-    //     date:{type: String, required: true, trim: true},
-    //     time:{type: String, required: true, trim: true}
-    // },
+    start_time: {type: String , required: true},
+    end_time: {type: String , required: true},
     // 적정 인원
     suitable_person: {type: String, required: true, trim: true},
-    // option: {type: Boolean, required : true, default: false},
-    // info: {type: String, required: true, trim: false},
-    // sell : {type: Boolean, required: true, default: false},
+    // 옵션
+    option: {type: Boolean, required : true, default: false},
+    // 상세 설명
+    info: {type: String, required: true, trim: false},
+    // 옵션
+    tv: {type: Boolean , default: false},
+    elevator: {type: Boolean , default: false},
+    bed: {type: Boolean , default: false},
+    wardrobe: {type: Boolean , default: false},
+    washer: {type: Boolean , default: false},
+    gaslens: {type: Boolean , default: false},
+    internet: {type: Boolean , default: false},
+    water: {type: Boolean , default: false},
+    // 판매자만
+    sell : {type: Boolean, required: true, default: false},
     // 좋아요 수
     numLikes: {type: Number, default: 0},
-    img: [String],
     createdAt: {type: Date, default: Date.now}
 }, {
   toJSON: { virtuals: true},
