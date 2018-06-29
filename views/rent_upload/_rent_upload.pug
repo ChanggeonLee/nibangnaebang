@@ -7,38 +7,38 @@
       input(name='img[]' , value=rent.img[i])
   img#preview.img-fluid(src="")
 
-  script.
+script.
     $(function() {
-      $("#preview").hide();
-      $("#file").change(function() {
-        var files = $("#file")[0].files;
-        console.log(files)
-        for(file of files){
-          console.log(file)
-          if (file) {
-            var url = "/s3?filename=" + encodeURIComponent(file.name) + 
-                      "&type=" + encodeURIComponent(file.type);
-            console.log(url);
-            const img_file = file;
-            $.getJSON(url, function(resp) {
-              console.log(resp.signedRequest);
-              $.ajax({
-                url: resp.signedRequest,
-                method: 'PUT',
-                data: img_file,
-                headers: {'x-amz-acl': 'public-read', 'Content-Type': img_file.type},
-                processData: false, 
-                contentType: img_file.type,
-                success: function() {
-                  $("#preview").attr("src", resp.url).show();
-                  $("#file-section").append("<input name='img[]' value='" + resp.url + "'>");
-                  //- $("#url").val(resp.url);
+        $("#preview").hide();
+        $("#file").change(function() {
+            var files = $("#file")[0].files;
+            console.log(files)
+            for(file of files){
+                console.log(file)
+                if (file) {
+                    var url = "/s3?filename=" + encodeURIComponent(file.name) + 
+                            "&type=" + encodeURIComponent(file.type);
+                    console.log(url);
+                    const img_file = file;
+                    $.getJSON(url, function(resp) {
+                        console.log(resp.signedRequest);
+                        $.ajax({
+                            url: resp.signedRequest,
+                            method: 'PUT',
+                            data: img_file,
+                            headers: {'x-amz-acl': 'public-read', 'Content-Type': img_file.type},
+                            processData: false, 
+                            contentType: img_file.type,
+                            success: function() {
+                                $("#preview").attr("src", resp.url).show();
+                                $("#file-section").append("<input name='img[]' value='" + resp.url + "'>");
+                                //- $("#url").val(resp.url);
+                            }
+                        });
+                    });
                 }
-              });
-            });
-          }
-        }
-      });
+            }
+        });
     });
 
 

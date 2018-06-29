@@ -8,7 +8,8 @@ const needAuth = require('../lib/need-auth');
 
 // rent
 router.get('/', catchErrors( async( req, res, next ) => {
-  res.render('rent/index');
+  rents = await Room.find();
+  res.render('rent/index',{rent : rents});
 }));
 
 // 방세부정보
@@ -74,6 +75,7 @@ router.post('/upload/:id', needAuth ,catchErrors( async (req , res, next ) => {
 
   rent = option(req.body , rent);
 
+  rent.img = req.body.img;
   console.log(rent);
 
   await rent.save();
