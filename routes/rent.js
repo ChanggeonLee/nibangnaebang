@@ -13,8 +13,10 @@ router.get('/', catchErrors( async( req, res, next ) => {
 }));
 
 // 방세부정보
-router.get('/detail', catchErrors( async( req, res, next) => {
-  res.render('rent_detail/index');
+router.get('/detail/:id', catchErrors( async( req, res, next) => {
+  rent = await Room.findById(req.params.id);
+  console.log(rent);
+  res.render('rent_detail/index', {rent:rent});
 }));
 
 // 방 올리기
