@@ -30,6 +30,8 @@ var schema = new Schema({
     sell : {type: Boolean, required: true, default: false},
     // 좋아요 수
     numLikes: {type: Number, default: 0},
+    // 금액
+    amount: {type: String , required: true},
     createdAt: {type: Date, default: Date.now}
 }, {
   toJSON: { virtuals: true},

@@ -1,25 +1,38 @@
 .row.col-lg-12.col-md-12.col-sm-12.col-12.mx-auto.mt-5
     #carouselExampleFade.carousel.slide.carousel-fade.col-lg-8.col-md-8.col-sm-12(data-ride='carousel')
         .carousel-inner
-            .carousel-item.active
-                img.d-block.w-100(src='/images/test1.jpg', style='width: 700px, height: auto', alt='First slide')
+          .carousel-item.active
+            img.d-block.w-100(src=rent.img[0], style='width: 700px, height: auto', alt='First slide')
+          - var len = rent.img.length;        
+          - var n = 1;
+          while n < len
             .carousel-item
-                img.d-block.w-100(src='/images/test2.jpg', style='width: 700px; height: auto;', alt='Second slide')
-            .carousel-item
-                img.d-block.w-100(src='/images/test3.jpg', style='width: 700px; height: auto;', alt='Third slide')
+                img.d-block.w-100(src=rent.img[n], style='width: 700px; height: auto', alt='slide')
+            - n++
         a.carousel-control-prev(href='#carouselExampleFade', role='button', data-slide='prev')
             span.carousel-control-prev-icon(aria-hidden='true')
             span.sr-only Previous
         a.carousel-control-next(href='#carouselExampleFade', role='button', data-slide='next')
             span.carousel-control-next-icon(aria-hidden='true')
             span.sr-only Next
+    //- 상세정보 
     .card.col-lg-4.col-md-4.col-sm-12.border-0
-        .card-body
-            p 지역 :
-            p 건물이름 :
-            p 기간 :
-            p 가격 :
-            p 적정인원 :
+        .card-body    
+            p 지역 : #{rent.locate}
+            p 건물이름 : #{rent.detail_address}
+            p 기간 : #{rent.start_time} ~ #{rent.end_time}
+            p 가격 : #{rent.amount}
+            p 적정인원 : #{rent.suitable_person}
+            p 좋아요 : #{rent.numLikes}
+            .buttons
+              if currentUser
+                button.btn.btn-color.event-like-btn(data-id=rent.id) 
+                  span.for-loading #[i.fa.fa-spin.fa-refresh] Loading
+                  span #[i.fa.fa-thumbs-up] Like
             a.btn.btn-primary.btn-lg(href='#') 판매자에게 이메일 보내기
+            
+//- 옵션
+include _option
+  
     
 
