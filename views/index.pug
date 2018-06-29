@@ -3,14 +3,6 @@ extends layout
 block content
 
   main.img
-  .div#subimg
-    #mainicon
-      #firsticon.i.far.fa-building.fa-4x
-      
-      #secondicon.i.fas.fa-utensils.fa-4x
-      #thirdicon.i.i.fas.fa-map-marked-alt.fa-4x
-      #fourthicon.i.fas.fa-sign-in-alt.fa-4x
-
   .div
     #carouselExampleSlidesOnly.carousel.slide(data-ride='carousel')
       .carousel-inner
@@ -21,3 +13,18 @@ block content
         .carousel-item
           img.d-block.w-50(src='https://post-phinf.pstatic.net/MjAxNzAzMTdfNTgg/MDAxNDg5NzIzMzIzMDY3.vZa52onGlLbiyviPror8PnLU0I0ubED0e-cxi0Of4uAg.J7rxRsMliRwkvGu10qsMNwy_unE2nPJCLpBaLDazQxwg.JPEG/0.jpg?type=w1200', alt='Third slide')
     |
+ 
+    #mainicon
+      ul
+        li
+          #firsticon.i.far.fa-building.fa-4x
+          h5 니방대여
+        li
+          #secondicon.i.fas.fa-utensils.fa-4x
+          h5 레시피
+        li
+          #thirdicon.i.i.fas.fa-map-marked-alt.fa-4x
+          h5 로그인
+        li
+          #fourthicon.i.fas.fa-sign-in-alt.fa-4x
+          h5 건물평가
