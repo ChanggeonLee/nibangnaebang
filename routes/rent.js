@@ -62,7 +62,8 @@ var option = function(form , rent){
 // 방 올리기 post
 router.post('/upload/:id', needAuth ,catchErrors( async (req , res, next ) => {
   console.log(req.body);
-  
+  console.log(req.body.img);
+
   var rent = new Room({
     author: req.user.id,
     locate: req.body.locate,
@@ -72,10 +73,12 @@ router.post('/upload/:id', needAuth ,catchErrors( async (req , res, next ) => {
     suitable_person: req.body.suitable_person,
     info: req.body.info
   });
+  console.log(req.body.img);
+
+  rent.img = req.body.img;
 
   rent = option(req.body , rent);
 
-  rent.img = req.body.img;
   console.log(rent);
 
   await rent.save();
