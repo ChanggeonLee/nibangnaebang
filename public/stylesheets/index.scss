@@ -20,25 +20,36 @@ nav.navbar{
   height: 8em!important;
   padding: 0;
   #logo{
-    top:1em;
+    top:0.05em;
     position: absolute;
     left: 45%;
   }
   ul{
     top: 10%;
     a{
-      color: black!important;
+      color:white!important;
       font-size: 1.2em;
       text-shadow:0em;
     }
   }
 }
 #maincomment{
+  //margin-top: -35%;
+  //margin-left: 32%;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
   margin-top: -35%;
-  margin-left: 32%;
+  float: none;
   height: 45em;
   width: auto!important;
 }
+
+.center-icon{
+  margin: 0 auto;
+  float: none;
+}
+
 #mainPageDiv{
   position : relative;
   left : 10px;
@@ -55,11 +66,12 @@ nav.navbar{
 
 #mainicon{
   padding-top: 5%;
-  margin-left: 33em;
-  color: #0738be;
+  color: violet;
   border-color: black;
   outline-color: black;
   ul{
+    margin: 0 auto;
+    float: none;
     list-style: none;
     li{
       margin-left: 8em;
