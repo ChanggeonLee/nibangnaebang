@@ -14,9 +14,7 @@ var schema = new Schema({
     start_time: {type: String , required: true},
     end_time: {type: String , required: true},
     // 적정 인원
-    suitable_person: {type: String, required: true, trim: true},
-    // 옵션
-    option: {type: Boolean, required : true, default: false},
+    suitable_person: {type: String, required: true, trim: true},  
     // 상세 설명
     info: {type: String, required: true, trim: false},
     // 옵션

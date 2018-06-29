@@ -1,103 +1,122 @@
 //- 사진업로드
 .form-group#file-section
-    label(for="img")
-    input#file.form-control(type="file" , multiple="multiple")
-    if rent.img
-      -for (var i = 0; i < rent.img.length; i++)
-          input(name='img[]' , value=rent.img[i])
-    img#preview.img-fluid(src="https://dummyimage.com/200x200/ccc/fff")
+  label(for="img")
+  input#file.form-control(type="file" , multiple="multiple")
+  if rent.img
+    -for (var i = 0; i < rent.img.length; i++)
+      input(name='img[]' , value=rent.img[i])
+  img#preview.img-fluid(src="")
 
-//- script.
+  script.
     $(function() {
-        $("#preview").hide();
-        $("#file").change(function() {
-            var files = $("#file")[0].files;
-            console.log(files)
-            for(file of files){
-                console.log(file)
-                if (file) {
-                    var url = "/s3?filename=" + encodeURIComponent(file.name) + 
-                            "&type=" + encodeURIComponent(file.type);
-                    console.log(url);
-                    const img_file = file;
-                    $.getJSON(url, function(resp) {
-                        console.log(resp.signedRequest);
-                        $.ajax({
-                            url: resp.signedRequest,
-                            method: 'PUT',
-                            data: img_file,
-                            headers: {'x-amz-acl': 'public-read', 'Content-Type': img_file.type},
-                            processData: false, 
-                            contentType: img_file.type,
-                            success: function() {
-                                $("#preview").attr("src", resp.url).show();
-                                $("#file-section").append("<input name='img[]' value='" + resp.url + "'>");
-                                //- $("#url").val(resp.url);
-                            }
-                        });
-                    });
+      $("#preview").hide();
+      $("#file").change(function() {
+        var files = $("#file")[0].files;
+        console.log(files)
+        for(file of files){
+          console.log(file)
+          if (file) {
+            var url = "/s3?filename=" + encodeURIComponent(file.name) + 
+                      "&type=" + encodeURIComponent(file.type);
+            console.log(url);
+            const img_file = file;
+            $.getJSON(url, function(resp) {
+              console.log(resp.signedRequest);
+              $.ajax({
+                url: resp.signedRequest,
+                method: 'PUT',
+                data: img_file,
+                headers: {'x-amz-acl': 'public-read', 'Content-Type': img_file.type},
+                processData: false, 
+                contentType: img_file.type,
+                success: function() {
+                  $("#preview").attr("src", resp.url).show();
+                  $("#file-section").append("<input name='img[]' value='" + resp.url + "'>");
+                  //- $("#url").val(resp.url);
                 }
-            }
-        });
+              });
+            });
+          }
+        }
+      });
     });
 
 
 //- 지역
 .form-group
-    label(for='locate') 지역
-    input.form-control(type='locate', id='locate', name='locate', placeholder='locate' value = rent.locate)
+  label(for='locate') 지역
+  input.form-control(type='locate', id='locate', name='locate', placeholder='locate' value = rent.locate)
 
 //- 건물이름, 호수
 .form-group
-    label(for='detail_address') 건물이름, 호수
-    input.form-control(type='detail_address', id='detail_address', name='detail_address', placeholder='detail_address' value=rent.detail_address)
+  label(for='detail_address') 건물이름, 호수
+  input.form-control(type='detail_address', id='detail_address', name='detail_address', placeholder='detail_address' value=rent.detail_address)
 
 //- 기간
 //- 시작 기간
 .form-group
-    label(for='start_time') 시작 날짜
-    input.form-control(type='start_time', id='start_time', name='start_time', placeholder='start_time' value=rent.start_time)
+  label(for='start_time') 시작 날짜
+  input.form-control(type='start_time', id='start_time', name='start_time', placeholder='start_time' value=rent.start_time)
 
 //- 끝나는 기간
 .form-group
-    label(for='end_time') 종료 날짜
-    input.form-control(type='end_time', id='end_time', name='end_time', placeholder='end_time' value=rent.end_time)
+  label(for='end_time') 종료 날짜
+  input.form-control(type='end_time', id='end_time', name='end_time', placeholder='end_time' value=rent.end_time)
 
 //- 가격
 .form-group
-    label(for='sell') 가격
-    input.form-control(type='sell', id='sell', name='sell', placeholder='sell' value=rent.sell)
+  label(for='sell') 가격
+  input.form-control(type='sell', id='sell', name='sell', placeholder='sell' value=rent.sell)
 
 //- 적정인원
 .form-group
-    label(for='suitable_person') 적정 인원
-    input.form-control(type='suitable_person', id='suitable_person', name='suitable_person', placeholder='suitable_person' value=rent.suitable_person)
+  label(for='suitable_person') 적정 인원
+  input.form-control(type='suitable_person', id='suitable_person', name='suitable_person', placeholder='suitable_person' value=rent.suitable_person)
 
 //- 옵션
 .form-check.form-check-inline
   label.form-check-label
-    input#inlineCheckbox1.form-check-input(type='checkbox', value='option1')
-    |  1
+    input#inlineCheckbox1.form-check-input(type='checkbox', name="tv")
+    |  TV
 .form-check.form-check-inline
   label.form-check-label
-    input#inlineCheckbox2.form-check-input(type='checkbox', value='option2')
-    |  2
+    input#inlineCheckbox2.form-check-input(type='checkbox', name='elevator')
+    |  엘베
 .form-check.form-check-inline
   label.form-check-label
-    input#inlineCheckbox2.form-check-input(type='checkbox', value='option3')
-    |  2
-
+    input#inlineCheckbox2.form-check-input(type='checkbox', name='bed')
+    |  침대
+.form-check.form-check-inline
+  label.form-check-label
+    input#inlineCheckbox2.form-check-input(type='checkbox', name='wardrobe')
+    |  옷장
+.form-check.form-check-inline
+  label.form-check-label
+    input#inlineCheckbox2.form-check-input(type='checkbox', name='washer')
+    |  세탁기
+.form-check.form-check-inline
+  label.form-check-label
+    input#inlineCheckbox2.form-check-input(type='checkbox', name='gaslens')
+    |  가스레인지
+.form-check.form-check-inline
+  label.form-check-label
+    input#inlineCheckbox2.form-check-input(type='checkbox', name='internet')
+    |  랜서
+.form-check.form-check-inline
+  label.form-check-label
+    input#inlineCheckbox2.form-check-input(type='checkbox', name='water')
+    |  정수기                    
 
 //- WYSIWYG
 //- CK editor
 //- 상세설명
 .form-group
-    label(for='info') 상세설명 (다시 입력해주세요)
-    textarea#editor(name="info" value=rent.info)
-        |
-    script.
-        ClassicEditor
-            .create( document.querySelector( '#editor' ) )
-            .catch( error => {
-                console.error( error );
-            } );
+  label(for='info') 상세설명 (다시 입력해주세요)
+  textarea#editor(name="info" value=rent.info)
+    |
+  script.
+    ClassicEditor
+      .create( document.querySelector( '#editor' ) )
+      .catch( error => {
+        console.error( error );
+      } );
