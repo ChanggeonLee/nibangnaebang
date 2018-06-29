@@ -9,6 +9,7 @@ var session = require('express-session');
 var flash = require('connect-flash');
 var methodOverride = require('method-override');
 var passport = require('passport');
+var bodyParser = require('body-parser');
 
 // router require
 var indexRouter = require('./routes/index');
@@ -40,6 +41,9 @@ const connStr = 'mongodb://localhost/test';
 mongoose.connect(connStr);
 mongoose.connection.on('error', console.error);
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cookieParser());
 
 // _method를 통해서 method를 변경할 수 있도록 함. PUT이나 DELETE를 사용할 수 있도록.
 app.use(methodOverride('_method', {methods: ['POST', 'GET']}));
