@@ -7,7 +7,11 @@ body{
 a{
   color: #0738be;
 }
-  
+#mainlogo{
+  position: absolute;
+  left: 44%;
+  top: -40%;
+}
 nav.navbar{
 
   border-width: 0px!important;
@@ -20,8 +24,6 @@ nav.navbar{
   height: 8em!important;
   padding: 0;
   #logo{
-    width: 10em;
-    height: auto;
     position: absolute;
     left: 44%;
   }
