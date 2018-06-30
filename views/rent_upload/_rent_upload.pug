@@ -1,6 +1,6 @@
 //- 사진업로드
 .row.col-lg-12.col-md-12.col-sm-12.col-12.mx-auto
-  .form-group#file-section.col-12.mx-auto
+  .form-group#file-section.col-lg-7.col-12.mx-auto
     label(for="img")
     input#file.form-control(type="file" , multiple="multiple")
     if rent.img
@@ -81,31 +81,34 @@
     label.form-check-label.mx-auto
       input#inlineCheckbox1.form-check-input(type='checkbox', name="tv")
       |  TV
-  .form-check.col-lg-6.col-10.mx-auto
+  .form-check.col-lg-4.col-10.mx-auto
     label.form-check-label.mx-auto
       input#inlineCheckbox2.form-check-input(type='checkbox', name='elevator')
       |  엘베
+.row.col-lg-12.col-md-12.col-sm-12.mx-auto
   .form-check.col-lg-6.col-10.mx-auto
     label.form-check-label.mx-auto
       input#inlineCheckbox2.form-check-input(type='checkbox', name='bed')
       |  침대
-  .form-check.col-lg-6.col-10.mx-auto
+  .form-check.col-lg-4.col-10.mx-auto
     label.form-check-label.mx-auto
       input#inlineCheckbox2.form-check-input(type='checkbox', name='wardrobe')
       |  옷장
+.row.col-lg-12.col-md-12.col-sm-12.mx-auto
   .form-check.col-lg-6.col-10.mx-auto
     label.form-check-label.mx-auto
       input#inlineCheckbox2.form-check-input(type='checkbox', name='washer')
       |  세탁기
-  .form-check.col-lg-6.col-10.mx-auto
+  .form-check.col-lg-4.col-10.mx-auto
     label.form-check-label.mx-auto
       input#inlineCheckbox2.form-check-input(type='checkbox', name='gaslens')
       |  가스레인지
+.row.col-lg-12.col-md-12.col-sm-12.mx-auto
   .form-check.col-lg-6.col-10.mx-auto
     label.form-check-label.mx-auto
       input#inlineCheckbox2.form-check-input(type='checkbox', name='internet')
       |  랜선
-  .form-check.col-lg-6.col-10.mx-auto
+  .form-check.col-lg-4.col-10.mx-auto
     label.form-check-label.mx-auto
       input#inlineCheckbox2.form-check-input(type='checkbox', name='water')
       |  정수기                    
@@ -114,7 +117,7 @@
   //- CK editor
   //- 상세설명
   .row.col-lg-12.col-md-12.col-sm-12.mx-auto.mt-3
-    .form-group.col-lg-7.col-12.mx-auto
+    .form-group.col-lg-10.col-12.mx-auto
       label(for='info') 상세설명 (다시 입력해주세요)
       textarea#editor(name="info" value=rent.info)
         |

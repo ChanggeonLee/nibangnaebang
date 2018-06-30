@@ -9,8 +9,9 @@
   if (currentUser)
     a.btn.btn-primary(href=`/rent/upload/${currentUser._id}`,role="button")
       | 니방 올리기
+.row.col-lg-10.col-md-10.col-sm-12.mx-auto
   each rent in rents
-    a.card.mb-3.col-lg-4.col-md-5.col-sm-12.col-12.mx-auto.p-1(href=`/rent/detail/${rent.id}`)
+    a.card.mb-3.col-lg-4.col-md-6.col-sm-12.mt-3(href=`/rent/detail/${rent.id}`)
       img.card-img-top(src=rent.img[0], alt='Card image cap')
       .card-body
         p.card-text

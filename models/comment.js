@@ -4,10 +4,9 @@ const Schema = mongoose.Schema;
 
 var schema = new Schema({
   author: { type: Schema.Types.ObjectId, ref: 'User' },
-  room: { type: Schema.Types.ObjectId, ref: 'Room' },
-  recipe: { type: Schema.Types.ObjectId, ref: 'Recipe' },
+  rent: { type: Schema.Types.ObjectId, ref: 'Rent' },
+  building: { type: Schema.Types.ObjectId, ref: 'Building' },
   content: {type: String, trim: false, required: true},
-  star: {type: number, default: 0},
   createdAt: {type: Date, default: Date.now}
 }, {
   toJSON: { virtuals: true},

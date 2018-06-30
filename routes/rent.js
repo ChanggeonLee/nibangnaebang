@@ -2,7 +2,9 @@ var express = require('express');
 var router = express.Router();
 const catchErrors = require('../lib/async-error');
 
+// D.B
 var Rent = require('../models/rent');
+var Comment = require('../models/comment');
 
 const needAuth = require('../lib/need-auth');
 
@@ -15,8 +17,8 @@ router.get('/', catchErrors( async( req, res, next ) => {
 // 방세부정보
 router.get('/detail/:id', catchErrors( async( req, res, next) => {
   rent = await Rent.findById(req.params.id);
-  console.log(rent);
-  res.render('rent_detail/index', {rent:rent});
+  comment = await Comment.find({rent : rent._id}).populate('author');
+  res.render('rent_detail/index', {rent:rent , comments : comment});
 }));
 
 // 방 올리기
@@ -81,5 +83,19 @@ router.post('/upload/:id', needAuth ,catchErrors( async (req , res, next ) => {
   await rent.save();
   
   res.redirect('/rent');
+}));
+
+// 방 댓글 달기
+router.post('/detail/comment/:id', needAuth, catchErrors(async (req , res, next) => {
+  // console.log(req.body);
+  var rent = await Rent.findById(req.params.id);
+  var comment = new Comment({
+    author : rent.author._id,
+    rent : rent._id,
+    content : req.body.content
+  });
+  console.log(comment);
+  await comment.save();
+  res.redirect('back');
 }));
 module.exports = router;
