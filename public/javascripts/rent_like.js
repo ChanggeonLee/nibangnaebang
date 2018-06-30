@@ -10,7 +10,7 @@ $(function() {
       dataType: 'json',
       success: function(data) {
         $('.rent .num-likes').text(data.numLikes);
-        $('.rent-like-btn').hide();
+        $('.rent-likegi-btn').hide();
       },
       error: function(data, status) {
         if (data.status == 401) {

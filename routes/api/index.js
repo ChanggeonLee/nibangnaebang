@@ -3,7 +3,6 @@ const catchErrors = require('../../lib/async-error');
 const Room = require('../../models/room');
 const LikeLog = require('../../models/like-log');
 const router = express.Router();
-const catchErrors = require("../../lib/async-error");
 
 // Like for Rent
 router.post('/rent/detail/:id/like', catchErrors(async (req, res, next) => {
@@ -18,8 +17,8 @@ router.post('/rent/detail/:id/like', catchErrors(async (req, res, next) => {
       rent.save(),
       LikeLog.create({
         author: req.user._id, 
-        rent: rent._id,
-        rent_name: rent.author.name
+        room: rent._id,
+        room_name: rent.author.name
       })
     ]);
   }
