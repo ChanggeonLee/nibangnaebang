@@ -1,4 +1,4 @@
-#map(style='width:1150px;height:1200px;')
+#map(style='width:100;height:1200px;position:relative;overflow:hidden;')
 
 table.table.table-hover
   thead
@@ -10,7 +10,9 @@ table.table.table-hover
     tr
       th(scope='row') 1
       td
-        a(href="/review/detail") Mark
+        a(href="/review/detail") 
+          -var info = '${building.locate}'
+          p= info
      
     tr
       th(scope='row') 2
@@ -23,7 +25,23 @@ table.table.table-hover
         a(href="/review/detail") Jae Hwan
 
 
+
+
+
+
 p
+  em &#xB9C8;&#xCEE4;&#xB97C; &#xD074;&#xB9AD;&#xD574;&#xC8FC;&#xC138;&#xC694;!
+script(type='text/javascript', src='//dapi.kakao.com/v2/maps/sdk.js?appkey=fe565950737f0e6adc238c81423130f6')
+script.
+  var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+  mapOption = {
+  center: new daum.maps.LatLng(37.2314175,127.18914730000006), // 지도의 중심좌표
+  level: 3 // 지도의 확대 레벨
+  };
+  var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+  // 마커를 표시할 위치입니다
+  
+ p
   em &#xB9C8;&#xCEE4;&#xB97C; &#xD074;&#xB9AD;&#xD574;&#xC8FC;&#xC138;&#xC694;!
 script(type='text/javascript', src='//dapi.kakao.com/v2/maps/sdk.js?appkey=fe565950737f0e6adc238c81423130f6')
 script.
@@ -46,7 +64,7 @@ script.
   // 마커를 지도에 표시합니다.
   marker.setMap(map);
   // 마커를 클릭했을 때 마커 위에 표시할 인포윈도우를 생성합니다
-  var iwContent = '<div style="padding:5px;">Hello World!</div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+  var iwContent = '<div style="padding:5px;"> 명지대정문</div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
   iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
   // 인포윈도우를 생성합니다
   var infowindow = new daum.maps.InfoWindow({
@@ -59,3 +77,4 @@ script.
     infowindow.open(map, marker);
     
   });
+ 
