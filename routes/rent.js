@@ -88,9 +88,9 @@ router.post('/upload/:id', needAuth ,catchErrors( async (req , res, next ) => {
 // 방 댓글 달기
 router.post('/detail/comment/:id', needAuth, catchErrors(async (req , res, next) => {
   // console.log(req.body);
-  var rent = await Rent.findById(req.params.id);
+  var rent = await Rent.findById(req.params.id).populate('author');
   var comment = new Comment({
-    author : rent.author._id,
+    author : rent.author,
     rent : rent._id,
     content : req.body.content
   });
@@ -99,3 +99,11 @@ router.post('/detail/comment/:id', needAuth, catchErrors(async (req , res, next)
   res.redirect('back');
 }));
 module.exports = router;
+
+
+//방 댓글 삭제
+router.delete('/detail/comment/:id/', needAuth , catchErrors(async (req, res, next) => {
+  await Comment.findByIdAndRemove(req.params.id);
+  res.redirect('back');
+}));
+
