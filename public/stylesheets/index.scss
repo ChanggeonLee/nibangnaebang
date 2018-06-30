@@ -20,9 +20,10 @@ nav.navbar{
   height: 8em!important;
   padding: 0;
   #logo{
-    top:0.05em;
+    width: 10em;
+    height: auto;
     position: absolute;
-    left: 45%;
+    left: 44%;
   }
   ul{
     top: 10%;
@@ -33,6 +34,7 @@ nav.navbar{
     }
   }
 }
+
 #maincomment{
   //margin-top: -35%;
   //margin-left: 32%;
@@ -63,22 +65,5 @@ nav.navbar{
 #mainimg{
   height: 55em;
 }
-
-#mainicon{
-  padding-top: 5%;
-  color: violet;
-  border-color: black;
-  outline-color: black;
-  ul{
-    margin: 0 auto;
-    float: none;
-    list-style: none;
-    li{
-      margin-left: 8em;
-      float: left;
-    }
-  }
-}
-
 
 

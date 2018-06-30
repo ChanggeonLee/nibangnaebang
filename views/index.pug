@@ -5,28 +5,6 @@ block content
   img.d-block.w-100(src='/images/maincomment2.png', alt='first-slide')#maincomment
   main.img
   
-  .div
-    //#mainicon
-      .div
-        ul
-          li
-            a(href='/rent')
-              #firsticon.i.far.fa-building.fa-4x
-              p 니방대여
-          li
-            a(href='/recipe')
-              #secondicon.i.fas.fa-utensils.fa-4x
-              p 레시피
-          li
-            a(href='') 
-              #thirdicon.i.i.fas.fa-map-marked-alt.fa-4x
-              p 건물평가
-          li
-            a(href='/signin') 
-              #fourthicon.i.fas.fa-sign-in-alt.fa-4x
-              p 로그인
-              .card-group
-  
   .col-7.center-icon
     .card-group
       .card
@@ -53,16 +31,21 @@ block content
             a(href='/signin') 
               #fourthicon.i.fas.fa-sign-in-alt.fa-4x
               p 로그인
+        .card   
+          .card-body.center-icon
+            a(href='/user/signup') 
+              #fourthicon.i.fas.fa-user-plus.fa-4x
+              p 회원가입
       else
         .card   
             .card-body.center-icon
-              a(href='/signin') 
-                #fourthicon.i.fas.fa-sign-in-alt.fa-4x
+              a(href='/mypage') 
+                #fourthicon.i.fa.fa-user
                 p 마이페이지
         
         .card   
           .card-body.center-icon
-            a(href='/signin') 
-              #fourthicon.i.fas.fa-sign-in-alt.fa-4x
+            a(href='/signout') 
+              #fourthicon.i.glyphicon.glyphicon-log-out
               p 로그아웃
 
