@@ -1,0 +1,16 @@
+.rent-like-btn {
+  .for-loading {display: none;}
+  cursor: pointer; 
+
+  &.loading {
+    & > span {display: none;}
+    .for-loading {display: inline-block;}
+    filter: opacity(30%);
+    cursor: wait;
+  }
+
+  &.disabled {
+    color: #bbb;
+    cursor: default;
+  }
+}

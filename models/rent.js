@@ -39,7 +39,7 @@ var schema = new Schema({
 });
 
 schema.plugin(mongoosePaginate);
-var Room = mongoose.model('Room', schema);
+var Rent = mongoose.model('Rent', schema);
 
-module.exports = Room;
+module.exports = Rent;
 
