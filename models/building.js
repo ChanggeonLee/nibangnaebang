@@ -6,7 +6,7 @@ var schema = new Schema({
     //지역
     locate: {type: String, required: true, trim: true},
     //건물이름
-    building_name: {type: String, required: true, trim: false}
+    building_name: [String]
 }, {
   toJSON: { virtuals: true},
   toObject: {virtuals: true}
