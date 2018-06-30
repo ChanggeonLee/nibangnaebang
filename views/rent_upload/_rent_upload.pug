@@ -1,6 +1,6 @@
 //- 사진업로드
-.row.col-lg-10.col-md-12.col-sm-12.mx-auto
-  .form-group#file-section.col-lg-7.mx-auto
+.row.col-lg-12.col-md-12.col-sm-12.col-12.mx-auto
+  .form-group#file-section.col-12.mx-auto
     label(for="img")
     input#file.form-control(type="file" , multiple="multiple")
     if rent.img
@@ -42,79 +42,79 @@
           });
       });
 
-.row.col-lg-10.col-md-12.col-sm-12.mx-auto
+.row.col-lg-12.col-md-12.col-sm-12.mx-auto
   //- 지역
     
-  .form-group.col-lg-7.mx-auto
+  .form-group.col-lg-7.col-sm-12.mx-auto
     label(for='locate') 지역
     input.form-control(type='locate', id='locate', name='locate', placeholder='locate' value = rent.locate)
 
   //- 건물이름, 호수
-  .form-group.col-lg-7.mx-auto
+  .form-group.col-lg-7.col-sm-12.mx-auto
     label(for='detail_address') 건물이름, 호수
     input.form-control(type='detail_address', id='detail_address', name='detail_address', placeholder='detail_address' value=rent.detail_address)
 
   //- 기간
   //- 시작 기간
-  .form-group.col-lg-7.mx-auto
+  .form-group.col-lg-7.col-sm-12.mx-auto
     label(for='start_time') 시작 날짜
     input.form-control(type='start_time', id='start_time', name='start_time', placeholder='start_time' value=rent.start_time)
 
   //- 끝나는 기간
-  .form-group.col-lg-7.mx-auto
+  .form-group.col-lg-7.col-sm-12.mx-auto
     label(for='end_time') 종료 날짜
     input.form-control(type='end_time', id='end_time', name='end_time', placeholder='end_time' value=rent.end_time)
 
   //- 가격
-  .form-group.col-lg-7.mx-auto
+  .form-group.col-lg-7.col-sm-12.mx-auto
     label(for='amount') 가격
     input.form-control(type='amount', id='amount', name='amount', placeholder='amount' value=rent.amount)
 
   //- 적정인원
-  .form-group.col-lg-7.mx-auto
+  .form-group.col-lg-7.col-sm-12.mx-auto
     label(for='suitable_person') 적정 인원
     input.form-control(type='suitable_person', id='suitable_person', name='suitable_person', placeholder='suitable_person' value=rent.suitable_person)
 
 //- 옵션
-.row.col-lg-10.col-md-12.col-sm-12.mx-auto
-  .form-check.form-check-inline.col-lg-5.mx-auto
-    label.form-check-label
+.row.col-lg-12.col-md-12.col-sm-12.mx-auto
+  .form-check.col-lg-6.col-10.mx-auto
+    label.form-check-label.mx-auto
       input#inlineCheckbox1.form-check-input(type='checkbox', name="tv")
       |  TV
-  .form-check.form-check-inline.col-lg-5.mx-auto
-    label.form-check-label
+  .form-check.col-lg-6.col-10.mx-auto
+    label.form-check-label.mx-auto
       input#inlineCheckbox2.form-check-input(type='checkbox', name='elevator')
       |  엘베
-  .form-check.form-check-inline.col-lg-5.mx-auto
-    label.form-check-label
+  .form-check.col-lg-6.col-10.mx-auto
+    label.form-check-label.mx-auto
       input#inlineCheckbox2.form-check-input(type='checkbox', name='bed')
       |  침대
-  .form-check.form-check-inline.col-lg-5.mx-auto
-    label.form-check-label
+  .form-check.col-lg-6.col-10.mx-auto
+    label.form-check-label.mx-auto
       input#inlineCheckbox2.form-check-input(type='checkbox', name='wardrobe')
       |  옷장
-  .form-check.form-check-inline.col-lg-5.mx-auto
-    label.form-check-label
+  .form-check.col-lg-6.col-10.mx-auto
+    label.form-check-label.mx-auto
       input#inlineCheckbox2.form-check-input(type='checkbox', name='washer')
       |  세탁기
-  .form-check.form-check-inline.col-lg-5.mx-auto
-    label.form-check-label
+  .form-check.col-lg-6.col-10.mx-auto
+    label.form-check-label.mx-auto
       input#inlineCheckbox2.form-check-input(type='checkbox', name='gaslens')
       |  가스레인지
-  .form-check.form-check-inline.col-lg-5.mx-auto
-    label.form-check-label
+  .form-check.col-lg-6.col-10.mx-auto
+    label.form-check-label.mx-auto
       input#inlineCheckbox2.form-check-input(type='checkbox', name='internet')
-      |  랜서
-  .form-check.form-check-inline.col-lg-5.mx-auto
-    label.form-check-label
+      |  랜선
+  .form-check.col-lg-6.col-10.mx-auto
+    label.form-check-label.mx-auto
       input#inlineCheckbox2.form-check-input(type='checkbox', name='water')
       |  정수기                    
 
   //- WYSIWYG
   //- CK editor
   //- 상세설명
-  .row.col-lg-10.col-md-12.col-sm-12.mx-auto
-    .form-group.col-lg-9.col-12.mx-auto
+  .row.col-lg-12.col-md-12.col-sm-12.mx-auto.mt-3
+    .form-group.col-lg-7.col-12.mx-auto
       label(for='info') 상세설명 (다시 입력해주세요)
       textarea#editor(name="info" value=rent.info)
         |
