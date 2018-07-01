@@ -1,8 +1,10 @@
 const express = require('express');
 const catchErrors = require('../../lib/async-error');
-const Rent = require('../../models/rent');
-const LikeLog = require('../../models/like-log');
 const router = express.Router();
+
+const LikeLog = require('../../models/like-log');
+const Rent = require('../../models/rent');
+const Building = require('../../models/building');
 
 // Like for Rent
 router.post('/rent/:id/like', catchErrors(async (req, res, next) => {
@@ -24,6 +26,20 @@ router.post('/rent/:id/like', catchErrors(async (req, res, next) => {
   }
   return res.json(rent);
 }));
+
+// Like for Rent
+router.get('/review/select/:id', catchErrors(async (req, res, next) => {
+  console.log(req.params.id);
+  const building = await Building.findOne({locate : req.params.id});
+  if (!building) {
+    return next({status: 404, msg: 'Not exist rent'});
+  }
+
+  console.log(building);
+  return res.json(building);
+}));
+
+
 
 router.use((err, req, res, next) => {
   res.status(err.status || 500);
