@@ -9,8 +9,11 @@ const needAuth = require('../lib/need-auth');
 // review
 router.get('/', catchErrors( async( req, res, next ) => {
   building = await Building.find();
-  console.log(building);
   res.render('review/index' , {building : building});
+}));
+
+router.get('/detail/:id',catchErrors( async( req, res , next) => {
+  res.render('review_detail/index');
 }));
 
 module.exports = router;
