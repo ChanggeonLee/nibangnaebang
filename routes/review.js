@@ -9,7 +9,6 @@ const needAuth = require('../lib/need-auth');
 // review
 router.get('/', catchErrors( async( req, res, next ) => {
   building = await Building.find();
-  console.log(building);
   res.render('review/index' , {building : building});
 }));
 

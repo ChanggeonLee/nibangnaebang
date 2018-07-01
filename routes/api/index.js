@@ -27,15 +27,12 @@ router.post('/rent/:id/like', catchErrors(async (req, res, next) => {
   return res.json(rent);
 }));
 
-// Like for Rent
+// review
 router.get('/review/select/:id', catchErrors(async (req, res, next) => {
-  console.log(req.params.id);
   const building = await Building.findOne({locate : req.params.id});
   if (!building) {
     return next({status: 404, msg: 'Not exist rent'});
   }
-
-  console.log(building);
   return res.json(building);
 }));
 

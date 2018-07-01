@@ -1,6 +1,6 @@
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
   mapOption = { 
-      center: new daum.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+      center: new daum.maps.LatLng(37.22504793094649, 127.18783656486625 ), // 지도의 중심좌표
       level: 3 // 지도의 확대 레벨
   };
 
@@ -10,22 +10,22 @@ var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니�
 var positions = [
     {
         content: '명지대정문', 
-        latlng: new daum.maps.LatLng(33.450705, 126.570677),
+        latlng: new daum.maps.LatLng(37.22527380763559,127.18744838616914),
         removable : true
     },
     {
-        content: '생태연못', 
-        latlng: new daum.maps.LatLng(33.450936, 126.569477),
+        content: '동진마을', 
+        latlng: new daum.maps.LatLng(37.22633821733953,127.19233567782348),
         removable : true
     },
     {
-        content: '텃밭', 
-        latlng: new daum.maps.LatLng(33.450879, 126.569940),
+        content: '명지대 후문', 
+        latlng: new daum.maps.LatLng(37.22454884869307, 127.18141556262005),
         removable : true
     },
     {
-        content: '근린공원',
-        latlng: new daum.maps.LatLng(33.451393, 126.570738),
+        content: '덕곡마을',
+        latlng: new daum.maps.LatLng(37.22512574010548,127.18563390838324),
         removable : true
     }
 ];
@@ -61,24 +61,17 @@ function makrkerclick(map, marker, infowindow) {
           method: 'GET',
           dataType: 'json',
           success: function(data) {
-            console.log(data);
+            $(".list").remove();
             for (var i = 0; i < data.building_name.length; i++) {
-              console.log(i);
-              $('.building_list').append($('<tr><th scope="row">' + i +'</th><td><a href="/review/detail/' + data.building_name[i] + '">' + data.building_name[i] + '</a></td></tr>'));
+              $('.building_list').append($('<tr class=list><th scope="row">' + i +'</th><td><a href="/review/detail/' + data.building_name[i] + '">' + data.building_name[i] + '</a></td></tr>'));
             }
-            // $('.rent .num-likes').text(data.numLikes);
-            // $('.rent-like-btn').hide();
           },
           error: function(data, status) {
             if (data.status == 401) {
               alert('Login required!');
               location = '/signin';
             }
-            console.log(data, status);
           }
-          // complete: function(data) {
-          //   $el.removeClass('loading');
-          // }
         });
     };
 }
