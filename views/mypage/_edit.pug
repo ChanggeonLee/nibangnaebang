@@ -1,12 +1,14 @@
-form.col-10.mx-auto(action=`/user/${currentUser._id}?_method=PUT`,method='POST')
-  .form-group
-    label(for='new_password') New Password
-    input.form-control(type='password', id='new_password', name='new_password', placeholder='Password')
-  .form-group
-    label(for='password_confirmation') Password Confirmation
-    input.form-control(type='password', id='new_password_confirmation', name='new_password_confirmation', placeholder='Password')
-  button.btn.registerbutton.mt-3(type="submit") 저장하기
-
-form.col-10.mx-auto(action=`/user/${currentUser._id}?_method=DELETE`,method='POST')
-  button.btn.registerbutton(type="submit") 회원탈퇴
+.row.col-lg-12.col-12.mx-auto
+  form.col-lg-5.col-12.mx-auto.mt-3(action=`/user/${currentUser._id}?_method=PUT`,method='POST')
+    .form-group
+      label(for='new_password') New Password
+      input.form-control(type='password', id='new_password', name='new_password', placeholder='Password')
+    .form-group
+      label(for='password_confirmation') Password Confirmation
+      input.form-control(type='password', id='new_password_confirmation', name='new_password_confirmation', placeholder='Password')
+    button.btn.btn-primary.registerbutton.mt-3(type="submit") 저장하기
+|
+.row.col-lg-12.col-12.mx-auto
+  form.col-lg-5.col-12.mx-auto.mt-3(action=`/user/${currentUser._id}?_method=DELETE`,method='POST')
+    button.btn.btn-primary.registerbutton(type="submit") 회원탈퇴
 

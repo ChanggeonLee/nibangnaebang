@@ -116,14 +116,16 @@
   //- WYSIWYG
   //- CK editor
   //- 상세설명
-  .row.col-lg-12.col-md-12.col-sm-12.mx-auto.mt-3
-    .form-group.col-lg-10.col-12.mx-auto
-      label(for='info') 상세설명 (다시 입력해주세요)
-      textarea#editor(name="info" value=rent.info)
-        |
-      script.
-        ClassicEditor
-          .create( document.querySelector( '#editor' ) )
-          .catch( error => {
-            console.error( error );
-          } );
+.row.col-lg-12.col-md-12.col-sm-12.mx-auto.mt-3
+  .form-group.col-lg-7.col-md-12.col-sm-12.mx-auto
+    label(for='info') 상세설명 (다시 입력해주세요)
+    textarea#editor(name="info" value=rent.info)
+      |
+    script.
+      ClassicEditor
+        .create( document.querySelector( '#editor' ) )
+        .catch( error => {
+          console.error( error );
+        } );
+.row.col-lg-12.col-md-12.col-sm-12.mx-auto.mt-3
+  button.btn.registerbutton.btn-primary.col-lg-6.col-10.mx-auto(type="submit") 니방올리기 
