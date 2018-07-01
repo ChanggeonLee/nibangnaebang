@@ -1,0 +1,31 @@
+#exampleModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true')
+    .modal-dialog(role='document')
+        .modal-content
+            .modal-header
+                h5#exampleModalLabel.modal-title 로그인
+                button.close(type='button', data-dismiss='modal', aria-label='Close')
+                span(aria-hidden='true') ×
+            .modal-body
+                form(action='/signin', method='POST')
+                    .form-group
+                        label.col-form-label(for='Email') 이메일:
+                        input#inputEmail.form-control(type='email', name='email', placeholder='email')
+                    .form-group
+                        label.col-form-label(for='Password') 비밀번호:
+                        input#inputPassword.form-control(type='password', name='password', placeholder='Password')
+                    .row.col-lg-10.mx-auto.mt-3
+                        .col-sm-3.mx-auto
+                            a.btn.facebookbutton(href='/auth/facebook')
+                                i.fab.fa-facebook.fa-3x.mb-3
+                        |
+                        .col-sm-3.mx-auto
+                            a.btn.googlebutton(href='/auth/google')
+                                i.fab.fa-google.fa-3x.mb-3
+                        |
+                        .col-sm-3.mx-auto
+                            a.btn.kakaobutton(href='/auth/kakao')
+                                i.fab.fa-kickstarter-k.fa-3x.mb-3
+
+                    .modal-footer
+                        button.btn.btn-primary(type="submit") 로그인
+                        button.btn.btn-secondary(type='button', data-dismiss='modal') Close

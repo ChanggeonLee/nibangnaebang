@@ -22,7 +22,10 @@ nav.nav.navbar.navbar-expand-lg.navbar-light.bg-light
       // 로그인 전 후 
       if (!currentUser) 
         li.nav-item
-          a.nav-link(href='/signin') 로그인
+          //a.nav-link(href='/signin') 로그인
+          button.btn.btn-white(type='button', data-toggle='modal', data-target='#exampleModal', data-whatever='@mdo') 로그인
+          include ./_signin
+
         |
         li.nav-item
           a.nav-link(href='/user/signup') 회원가입
