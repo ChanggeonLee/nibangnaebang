@@ -8,7 +8,7 @@ p
         p
           | 작성자 : #{comment.author.name} (#{comment.createdAt})
         p=comment.content
-        if(currentUser.id == comment.author)       
+        if( currentUser && currentUser.id == comment.author)       
           a.btn.btn-sm.need-confirm-btn.btn-outline-danger(href=`/review/detail/comment/${comment._id}?_method=DELETE`)
             | 댓글 삭제
   form(action=`/review/detail/comment/${building_detail._id}`,method='POST')
