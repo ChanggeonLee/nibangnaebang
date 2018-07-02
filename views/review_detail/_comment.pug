@@ -1,0 +1,19 @@
+p
+  button.btn.btn-primary(type='button', data-toggle='collapse', data-target='#collapseExample', aria-expanded='false', aria-controls='collapseExample')
+    | 댓글
+#collapseExample.collapse.col-10
+  each comment in comments
+    .card
+      .card-body
+        p
+          | 작성자 : #{comment.author.name} (#{comment.createdAt})
+        p=comment.content
+        if(currentUser.id == comment.author)       
+          a.btn.btn-sm.need-confirm-btn.btn-outline-danger(href=`/review/detail/comment/${comment._id}?_method=DELETE`)
+            | 댓글 삭제
+  form(action=`/review/detail/comment/${building_detail._id}`,method='POST')
+    .input-group.mb-3
+      input.form-control(type='content', id='content' , name='content')
+      .input-group-append
+        button.btn.btn-outline-secondary(type='submit') 댓글 달기
+      
