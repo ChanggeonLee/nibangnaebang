@@ -31,11 +31,11 @@
             span #[i.fa.fa-thumbs-up] Like
             
           script(src='/javascripts/rent_like.js')
-          if rent.author && rent.author.id == currentUser.id
-            a.btn.btn-sm.need-confirm-btn(href=`/rent/detail/comment/${rent._id}?_method=DELETE`)
-              | 방 삭제
-        else
-          a.btn.btn-primary.btn-lg(href='#') 판매자에게 이메일 보내기  
+      if currentUser && rent.author == currentUser.id
+        a.btn.btn-primary.btn-lg(href=`/rent/${rent._id}?_method=DELETE`)
+          | 방 삭제
+      else
+        a.btn.btn-primary.btn-lg(href='#') 판매자에게 이메일 보내기  
 
 //- 옵션
 include _option
