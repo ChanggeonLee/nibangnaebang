@@ -37,40 +37,44 @@ html(lang='en')
     
 
 block content
-  img.d-block.w-100(src='/images/mainimg11.jpg', alt='first-slide')#mainimg
-  img.d-block.w-100(src='/images/maincomment2.png', alt='first-slide')#maincomment
+  nav.nav.navbar.navbar-expand-lg.navbar-light.bg-light#mainnav
+      a.navbar-brand.justify-content-center(href='/')#mainlogo
+        img(src='/images/mainlogo2.png', width='160', height='auto', alt='logo')
+
+  img.d-block.w-100(src='/images/mainimg11.jpg', alt='mainimg')#mainimg
+  img.d-block.w-100(src='/images/maincomment2.png', alt='maincomment')#maincomment
   main.img
   
  
-  .row.col-lg-10.col-md-12.col-sm-12.mx-auto.mb-5
+  .row.col-lg-10.col-md-12.col-sm-12.mx-auto.mb-5.mt-5
     //.col-lg-10.col-12.mx-auto.center-icon
-    .card.col-lg-2.col-md-4.col-sm-12.mx-auto.border-0
+    .card.col-lg-2.col-md-4.col-sm-6.mx-auto.border-0
       .card-body.center-icon
         a(href='/rent')
           #firsticon.i.far.fa-building.fa-4x
           p 니방대여
     |  
-    .card.col-lg-2.col-md-4.col-sm-12.mx-auto.border-0
+    .card.col-lg-2.col-md-4.col-sm-6.mx-auto.border-0
       .card-body.center-icon
         a(href='/recipe')
           #secondicon.i.fas.fa-utensils.fa-4x
           p 레시피
     |   
-    .card.col-lg-2.col-md-4.col-sm-12.mx-auto.border-0
+    .card.col-lg-2.col-md-4.col-sm-6.mx-auto.border-0
       .card-body.center-icon
         a(href='/review') 
           #thirdicon.i.i.fas.fa-map-marked-alt.fa-4x
           p 건물평가
     |
     if (!currentUser)
-      .card.col-lg-2.col-md-4.col-sm-12.mx-auto.border-0
+      .card.col-lg-2.col-md-4.col-sm-6.mx-auto.border-0
         .card-body.center-icon
           #fourthicon.i.fas.fa-sign-in-alt.fa-4x
           button.btn.btn-white(type='button', data-toggle='modal', data-target='#exampleModal', data-whatever='@mdo') 로그인
           include ./_signin
           //a(href='/signin') 
             p 로그인
-      .card.col-lg-2.col-md-4.col-sm-12.mx-auto.border-0
+      .card.col-lg-2.col-md-4.col-sm-6.mx-auto.border-0
         .card-body.center-icon
           a(href='/user/signup') 
             #fourthicon.i.fas.fa-user-plus.fa-4x
