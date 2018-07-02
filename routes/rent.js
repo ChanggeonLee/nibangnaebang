@@ -5,6 +5,7 @@ const catchErrors = require('../lib/async-error');
 // D.B
 var Rent = require('../models/rent');
 var Comment = require('../models/comment');
+var LikeLog = require('../models/like-log');
 
 const needAuth = require('../lib/need-auth');
 
@@ -107,3 +108,13 @@ router.delete('/detail/comment/:id/', needAuth , catchErrors(async (req, res, ne
   res.redirect('back');
 }));
 
+//방 삭제
+// delete event page
+router.delete('/:id/', catchErrors(async (req, res, next)=> {
+  const rent = await Rent.findById(req.params.id);
+  await LikeLog.findOneAndRemove({rent : rent._id});
+  await Comment.findOneAndRemove({rent : rent._id});
+  await rent.remove();
+
+  res.redirect('/rent/');
+}));

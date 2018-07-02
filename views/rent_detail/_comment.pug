@@ -8,8 +8,8 @@ p
         p
           | 작성자 : #{comment.author.name} (#{comment.createdAt})
         p=comment.content
-        if(currentUser.id == comment.author)       
-          a.btn.btn-sm.need-confirm-btn.btn-outline-danger(href=`/detail/comment/${comment._id}?_method=DELETE`)
+        if(currentUser && comment.author && comment.author.id  == currentUser.id)       
+          a.btn.btn-sm.need-confirm-btn(href=`/rent/detail/comment/${comment._id}?_method=DELETE`)
             | 댓글 삭제
   form(action=`/rent/detail/comment/${rent._id}`,method='POST')
     .input-group.mb-3
@@ -17,10 +17,3 @@ p
       .input-group-append
         button.btn.btn-outline-secondary(type='submit') 댓글 달기
 
-
-
-
-  //if currentUser && answer.author && answer.author == currentUser.id       
-    a.btn.btn-sm.need-confirm-btn.btn-outline-danger(href=`/event/answer/${answer._id}?_method=DELETE`)
-      | #[i.fa.fa-trash] 댓글 삭제
-      
