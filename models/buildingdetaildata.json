@@ -1,24 +1,31 @@
 [
   {
-    "building_name": "성현빌딩"
+    "building_name": "성현빌딩",
+    "numLikes" : 0
   },
   {
-    "building_name": "우영빌딩"
+    "building_name": "우영빌딩",
+    "numLikes" : 0
   },
   {
-    "building_name": "꿈의 도시텔"
+    "building_name": "꿈의 도시텔",
+    "numLikes" : 0
   },
   {
-    "building_name": "황제관"
+    "building_name": "황제관",
+    "numLikes" : 0
   },
   {
-    "building_name": "해와별"
+    "building_name": "해와별",
+    "numLikes" : 0
   },
   {
-    "building_name": "힐 하우스"
+    "building_name": "힐 하우스",
+    "numLikes" : 0
   },
   {
-    "building_name":"트라움 하우스"
+    "building_name":"트라움 하우스",
+    "numLikes" : 0
   }
 ]
 

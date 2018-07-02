@@ -6,6 +6,7 @@ var schema = new Schema({
    // 건물 이름
    building_name: {type: String},
    img: {type: String},
+   numLikes: {type: Number, default: 0},
 }, {
   toJSON: { virtuals: true},
   toObject: {virtuals: true}
