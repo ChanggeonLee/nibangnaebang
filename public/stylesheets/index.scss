@@ -14,13 +14,12 @@ a{
 nav.navbar{
 
   background-color: white!important;
-  //height: 7em!important;
+  height: 7em!important;
   padding: 0;
-  /*
   #logo{
     position: relative;
     left: 44%;
-  }*/
+  }
   ul{
     a{
       color:black!important;
@@ -36,7 +35,7 @@ nav.navbar{
   position: relative;
   margin-left: auto;
   margin-right: auto;
-  margin-top: -35%;
+  margin-top: -700px;
   float: none;
   height: 45em;
   width: auto!important;
@@ -61,4 +60,25 @@ nav.navbar{
   height: 55em;
 }
 
+.bottom_icon{
+  top : 100px !important;
+}
 
+
+
+
+
+@media only screen and (max-device-width : 768px) {
+
+  #mainimg{
+    //position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    float: none;
+    width: auto!important;
+  }
+
+  .row{
+    left:300px !important;
+  }
+}
