@@ -2,9 +2,12 @@ const express = require('express');
 const catchErrors = require('../../lib/async-error');
 const router = express.Router();
 
+// D.B
 const LikeLog = require('../../models/like-log');
 const Rent = require('../../models/rent');
 const Building = require('../../models/building');
+const Building_detail = require('../../models/building_detail');
+const User = require('../../models/user');
 
 // Like for Rent
 router.post('/rent/:id/like', catchErrors(async (req, res, next) => {
@@ -27,7 +30,31 @@ router.post('/rent/:id/like', catchErrors(async (req, res, next) => {
   return res.json(rent);
 }));
 
-// review
+// Review for Rent
+router.post('/review/:id/like', catchErrors(async (req, res, next) => {
+  const building_detail = await Building_detail.findById(req.params.id);
+  const user = await User.findById(req.user.id);
+  
+  if (!building_detail) {
+    return next({status: 404, msg: 'Not exist review'});
+  }
+
+  var likeLog = await LikeLog.findOne({author: req.user._id, building_detail: building_detail._id});
+  if (!likeLog) {
+    building_detail.numLikes++;
+    await Promise.all([
+      building_detail.save(),
+      LikeLog.create({
+        author: req.user._id, 
+        building_detail: building_detail._id,
+        building_name: user.name
+      })
+    ]);
+  }
+  return res.json(building_detail);
+}));
+
+// review select
 router.get('/review/select/:id', catchErrors(async (req, res, next) => {
   const building = await Building.findOne({locate : req.params.id});
   if (!building) {
