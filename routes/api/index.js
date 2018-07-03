@@ -63,7 +63,12 @@ router.get('/review/select/:id', catchErrors(async (req, res, next) => {
   return res.json(building);
 }));
 
-
+// rent select
+router.get('/rent/:id', catchErrors(async (req, res, next) => {
+  var rent = await Rent.find({locate : req.params.id});
+  console.log(rent);
+  return res.json(rent);
+}));
 
 router.use((err, req, res, next) => {
   res.status(err.status || 500);
