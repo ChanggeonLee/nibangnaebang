@@ -49,7 +49,14 @@
     
   .form-group.col-lg-7.col-sm-12.mx-auto
     label(for='locate') 지역
-    input.form-control(type='locate', id='locate', name='locate', placeholder='locate' value = rent.locate)
+    //- input.form-control(type='locate', id='locate', name='locate', placeholder='locate' value = rent.locate)
+    select(name='locate')#inlineFormCustomSelect.custom-select
+      option(selected='') 전체
+      option(type='locate', id='locate', name='locate', value='명지대정문') 명지대정문
+      option(type='locate', id='locate', name='locate', value='명지대후문') 명지대후문
+      option(type='locate', id='locate', name='locate', value='덕곡마을') 덕곡마을
+      option(type='locate', id='locate', name='locate', value='동진마을') 동진마을
+      
 
   //- 건물이름, 호수
   .form-group.col-lg-7.col-sm-12.mx-auto

@@ -2,15 +2,18 @@
   h1.col-lg-3.col-md-4.col-sm-6 방목록
   select#inlineFormCustomSelect.custom-select.mr-sm-2.col-lg-2.col-md-3.col-sm-4
       option(selected='') 전체
-      option(value='1') 명지대학교 정문
-      option(value='2') 덕곡마을
-      option(value='3') 동진마을
+      option(value='명지대정문') 명지대정문
+      option(value='명지대후문') 명지대후문
+      option(value='덕곡마을') 덕곡마을
+      option(value='동진마을') 동진마을
+|
 .row.col-lg-10.col-md-10.col-sm-12.col-12.mx-auto.mt-4        
   if (currentUser)
     a.btn.btn-primary(href=`/rent/upload/${currentUser._id}`,role="button")
       | 니방 올리기
+|
 .row.col-lg-10.col-md-10.col-sm-12.mx-auto
-  each rent in rents
+  each rent in rents  
     a.card.mb-3.col-lg-4.col-md-6.col-sm-12.mt-3(href=`/rent/detail/${rent.id}`)
       img.card-img-top(src=rent.img[0], alt='Card image cap')
       .card-body
