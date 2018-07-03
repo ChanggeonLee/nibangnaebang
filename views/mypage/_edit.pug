@@ -1,12 +1,19 @@
 .row.col-lg-9.col-12.mx-auto
   form.col-lg-5.col-12.mt-3(action=`/user/${currentUser._id}?_method=PUT`,method='POST')
-    .form-group
-      label(for='new_password') 새로운 비밀번호
-      input.form-control(type='password', id='new_password', name='new_password', placeholder='Password')
-    .form-group
-      label(for='password_confirmation') 비밀번호 재확인
-      input.form-control(type='password', id='new_password_confirmation', name='new_password_confirmation', placeholder='Password')
+    if(!user.kakao && !user.google && !user.facebook)
+      .form-group
+        label(for='new_password') 새로운 비밀번호
+        input.form-control(type='password', id='new_password', name='new_password', placeholder='Password')
+      .form-group
+        label(for='password_confirmation') 비밀번호 재확인
+        input.form-control(type='password', id='new_password_confirmation', name='new_password_confirmation', placeholder='Password')
+      button.btn.btn-primary.registerbutton.mt-3(type="submit") 저장하기
+    if(user.email == 'no-email)
+      .form-group
+        label(for='email') email
+        input.form-control(type='text', id='email', name='email', placeholder='Email')
     button.btn.btn-primary.registerbutton.mt-3(type="submit") 저장하기
+
 |
 .row.col-lg-9.col-12.mx-auto
   form.col-lg-5.col-12.mt-3(action=`/user/${currentUser._id}?_method=DELETE`,method='POST')
