@@ -57,8 +57,6 @@ app.use(sassMiddleware({
   sourceMap: true
 }));
 app.use(express.static(path.join(__dirname, 'public')));
-// app.use('/rent',express.static(path.join(__dirname, 'public')));
-// app.use('/event',express.static(path.join(__dirname, 'public')));
 
 // session을 사용
 app.use(session({

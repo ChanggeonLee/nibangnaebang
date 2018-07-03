@@ -69,10 +69,8 @@ block content
     if (!currentUser)
       .card.col-lg-2.col-md-4.col-sm-6.mx-auto.border-0
         .card-body.center-icon.main-icon-color
-          a(href='#' data-toggle='modal', data-target='#exampleModal', data-whatever='@mdo') 
-            #fourthicon.i.fas.fa-sign-in-alt.fa-4x 
-            p
-              |로그인
+            #fourthicon.i.fas.fa-sign-in-alt.fa-4x( data-toggle='modal', data-target='#exampleModal', data-whatever='@mdo') 
+            p 로그인
             include ./_signin
          
       .card.col-lg-2.col-md-4.col-sm-6.mx-auto.border-0
