@@ -5,6 +5,7 @@ const catchErrors = require('../lib/async-error');
 // D.B
 var Rent = require('../models/rent');
 var Comment = require('../models/comment');
+var LikeLog = require('../models/like-log');
 
 const needAuth = require('../lib/need-auth');
 
@@ -98,7 +99,6 @@ router.post('/detail/comment/:id', needAuth, catchErrors(async (req , res, next)
   await comment.save();
   res.redirect('back');
 }));
-module.exports = router;
 
 
 //방 댓글 삭제
@@ -107,3 +107,35 @@ router.delete('/detail/comment/:id/', needAuth , catchErrors(async (req, res, ne
   res.redirect('back');
 }));
 
+
+//방 삭제
+router.delete('/:id/', catchErrors(async (req, res, next)=> {
+  const rent = await Rent.findById(req.params.id);
+  await LikeLog.findOneAndRemove({rent : rent._id});
+  await Comment.findOneAndRemove({rent : rent._id});
+  await rent.remove();
+
+  res.redirect('/rent/');
+}));
+
+
+// 방 판매
+router.put('/:id/', catchErrors(async (req, res, next)=>{
+  //예외처리
+  //console.log("adf");
+  //var err = validateForm(req.body);
+  //if (err) {
+    //req.flash('danger', err);
+   // return res.redirect('back');
+  //}
+
+  var rent = await Rent.findById(req.params.id);
+  rent.sell = true;
+
+  await rent.save();
+
+  req.flash('success', '방 판매 완료~');
+  res.redirect('/rent/');
+}));
+
+module.exports = router;

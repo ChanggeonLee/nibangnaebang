@@ -1,4 +1,6 @@
 //- 사진업로드
+.row.col-lg-12.col-md-12.col-sm-12.mx-auto
+  h1.mx-auto 방올리기
 .row.col-lg-12.col-md-12.col-sm-12.col-12.mx-auto
   .form-group#file-section.col-lg-7.col-12.mx-auto
     label(for="img")
@@ -76,8 +78,8 @@
     input.form-control(type='suitable_person', id='suitable_person', name='suitable_person', placeholder='suitable_person' value=rent.suitable_person)
 
 //- 옵션
-.row.col-lg-12.col-md-12.col-sm-12.mx-auto
-  .form-check.col-lg-6.col-10.mx-auto
+.row.col-lg-8.col-md-12.col-sm-12.mx-auto
+  .form-check.col-lg-4.col-10.mx-auto
     label.form-check-label.mx-auto
       input#inlineCheckbox1.form-check-input(type='checkbox', name="tv")
       |  TV
@@ -85,8 +87,8 @@
     label.form-check-label.mx-auto
       input#inlineCheckbox2.form-check-input(type='checkbox', name='elevator')
       |  엘베
-.row.col-lg-12.col-md-12.col-sm-12.mx-auto
-  .form-check.col-lg-6.col-10.mx-auto
+.row.col-lg-8.col-md-12.col-sm-12.mx-auto
+  .form-check.col-lg-4.col-10.mx-auto
     label.form-check-label.mx-auto
       input#inlineCheckbox2.form-check-input(type='checkbox', name='bed')
       |  침대
@@ -94,8 +96,8 @@
     label.form-check-label.mx-auto
       input#inlineCheckbox2.form-check-input(type='checkbox', name='wardrobe')
       |  옷장
-.row.col-lg-12.col-md-12.col-sm-12.mx-auto
-  .form-check.col-lg-6.col-10.mx-auto
+.row.col-lg-8.col-md-12.col-sm-12.mx-auto
+  .form-check.col-lg-4.col-10.mx-auto
     label.form-check-label.mx-auto
       input#inlineCheckbox2.form-check-input(type='checkbox', name='washer')
       |  세탁기
@@ -103,8 +105,8 @@
     label.form-check-label.mx-auto
       input#inlineCheckbox2.form-check-input(type='checkbox', name='gaslens')
       |  가스레인지
-.row.col-lg-12.col-md-12.col-sm-12.mx-auto
-  .form-check.col-lg-6.col-10.mx-auto
+.row.col-lg-8.col-md-12.col-sm-12.mx-auto
+  .form-check.col-lg-4.col-10.mx-auto
     label.form-check-label.mx-auto
       input#inlineCheckbox2.form-check-input(type='checkbox', name='internet')
       |  랜선
@@ -112,6 +114,7 @@
     label.form-check-label.mx-auto
       input#inlineCheckbox2.form-check-input(type='checkbox', name='water')
       |  정수기                    
+
 
   //- WYSIWYG
   //- CK editor
@@ -127,5 +130,5 @@
         .catch( error => {
           console.error( error );
         } );
-.row.col-lg-12.col-md-12.col-sm-12.mx-auto.mt-3
+.row.col-lg-12.col-md-12.col-sm-12.mx-auto.mt-3.mb-5
   button.btn.registerbutton.btn-primary.col-lg-6.col-10.mx-auto(type="submit") 니방올리기 
