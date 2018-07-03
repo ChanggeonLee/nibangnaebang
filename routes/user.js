@@ -10,7 +10,6 @@ const needAuth = require('../lib/need-auth');
 
 // 회원 가입 폼을 검사하는 함수 만들어야됨
 function validateSignupform (form){
-  var id = form.id || "";
   var name = form.name || "";
   var email = form.email || "";
   var password = form.password || "";
@@ -28,10 +27,6 @@ function validateSignupform (form){
 
   if( !email ){
     return "유효한 이메일을 입력하세요";
-  }
-
-  if( !id ){
-    return "유효한 아이디를 입력하세요";
   }
 
   if( !password ){
