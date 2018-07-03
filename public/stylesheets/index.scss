@@ -4,7 +4,7 @@ body{
     font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
   
-a{
+.main-icon-color{
   color: #0738be;
 }
 #mainlogo{
@@ -68,6 +68,13 @@ nav.navbar{
   left : 30%
 }
 
+.background_none{
+  background-color: white;
+}
+
+.line_none{
+  border : 0;
+}
 
 
 @media only screen and (max-device-width : 768px) {
