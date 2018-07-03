@@ -35,8 +35,8 @@ app.locals.pretty = true;
 
 // mongodb connect
 mongoose.Promise = global.Promise; // ES6 Native Promise를 mongoose에서 사용한다.
-// const connStr = 'mongodb://localhost/test';
-const connStr = process.env.MONGOURL;
+const connStr = 'mongodb://localhost/test';
+// const connStr = process.env.MONGOURL;
 mongoose.connect(connStr);
 mongoose.connection.on('error', console.error);
 
