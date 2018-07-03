@@ -131,4 +131,33 @@ router.put('/:id/sell', catchErrors(async (req, res, next)=>{
   res.redirect('/rent/');
 }));
 
+
+//방 수정
+router.get('/:id/edit' , catchErrors(async (req , res, next)=> {
+  const rent = await Rent.findById(req.params.id);
+  res.render('rent/edit' ,{ rent : rent});
+}));
+
+//방정보 변경
+router.put('/:id/', catchErrors(async (req, res, next)=>{
+  //console.log("dfadsf")
+  var rent = await Rent.findById(req.params.id);
+  
+  rent.locate = req.body.locate;
+  rent.detail_address = req.body.detail_address;
+  rent.start_time = req.body.start_time;
+  rent.end_time = req.body.end_time;
+  rent.suitable_person = req.body.suitable_person;
+  rent.info = req.body.info;
+  rent.amount = req.body.amount;
+
+  await rent.save();
+
+  req.flash('success', '방 수정 완료~!~!');
+
+  res.redirect('/');
+ 
+}));
+
+
 module.exports = router;
