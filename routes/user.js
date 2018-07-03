@@ -90,9 +90,9 @@ router.put('/:id' ,needAuth , catchErrors( async( req , res , next ) => {
   }
 
   if(req.body.email){
-    
+    console.log(await User.findOne({email : req.body.email}));
     // email 설정
-    if(!await User.findOne({email : req.body.email})){
+    if( await User.findOne({email : req.body.email})!=null){
       req.flash('danger' , '사용중 email 입니다.');
       return res.redirect('back');
     }else{
