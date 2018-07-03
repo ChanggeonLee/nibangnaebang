@@ -47,39 +47,38 @@ router.get('/signup', catchErrors( async( req, res, next ) => {
 
 // signup
 router.post('/signup' , catchErrors( async( req , res , next) => {
-// 데이터가 잘넘어오는지 확인을 위해서
-console.log(req.body);
-// 회원 가입 폼 검사하고 req.body로 넘어옴
-var err = validateSignupform(req.body , {needpw: true});
-if(err){
-  // flash 설정은 나중에
-  req.flash('danger', err);
-  return res.redirect('back');
-}
+  // 데이터가 잘넘어오는지 확인을 위해서
+  console.log(req.body);
+  // 회원 가입 폼 검사하고 req.body로 넘어옴
+  var err = validateSignupform(req.body , {needpw: true});
+  if(err){
+    // flash 설정은 나중에
+    req.flash('danger', err);
+    return res.redirect('back');
+  }
 
-// 가입된 유저인지 환인
-var user = await User.findOne({email:req.body.email});
-// 에러처리는 알아서 잘하자
-if(user){
+  // 가입된 유저인지 환인
+  var user = await User.findOne({email:req.body.email});
+  // 에러처리는 알아서 잘하자
+  if(user){
+    req.flash('danger', "중복된 사용자가 있습니다.");
+    return res.redirect('back');
+  }
+
+  // 스키마에 저장하고
+  user = new User({
+    email:req.body.email,
+    name:req.body.name
+  });
+
+  // 비밀번호는 hash해서 저장하자
+  user.password = await user.generateHash(req.body.password);
+  // 새로운 디비를 저장하자
+  await user.save();
+  // req.flash('success', 'Registered successfully. Please sign in.');
   req.flash('danger', "중복된 사용자가 있습니다.");
-  return res.redirect('back');
-}
-
-// 스키마에 저장하고
-user = new User({
-  id:req.body.id,
-  email:req.body.email,
-  name:req.body.name
-});
-
-// 비밀번호는 hash해서 저장하자
-user.password = await user.generateHash(req.body.password);
-// 새로운 디비를 저장하자
-await user.save();
-// req.flash('success', 'Registered successfully. Please sign in.');
-req.flash('danger', "중복된 사용자가 있습니다.");
-// 홈화면으로 리다이렉션 해주자.
-return res.redirect('/');
+  // 홈화면으로 리다이렉션 해주자.
+  return res.redirect('/');
 
 }));
 
