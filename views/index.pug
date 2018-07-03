@@ -49,45 +49,46 @@ block content
   .row.col-lg-10.col-md-12.col-sm-12.mx-auto.mb-5.mt-5
     //.col-lg-10.col-12.mx-auto.center-icon
     .card.col-lg-2.col-md-4.col-sm-6.mx-auto.border-0
-      .card-body.center-icon
+      .card-body.center-icon.main-icon-color 
         a(href='/rent')
           #firsticon.i.far.fa-building.fa-4x
           p 니방대여
     |  
     .card.col-lg-2.col-md-4.col-sm-6.mx-auto.border-0
-      .card-body.center-icon
+      .card-body.center-icon.main-icon-color 
         a(href='/recipe')
           #secondicon.i.fas.fa-utensils.fa-4x
           p 레시피
     |   
     .card.col-lg-2.col-md-4.col-sm-6.mx-auto.border-0
-      .card-body.center-icon
+      .card-body.center-icon.main-icon-color 
         a(href='/review') 
           #thirdicon.i.i.fas.fa-map-marked-alt.fa-4x
           p 건물평가
     |
     if (!currentUser)
       .card.col-lg-2.col-md-4.col-sm-6.mx-auto.border-0
-        .card-body.center-icon
-          #fourthicon.i.fas.fa-sign-in-alt.fa-4x
-          button.btn.btn-white(type='button', data-toggle='modal', data-target='#exampleModal', data-whatever='@mdo') 로그인
-          include ./_signin
-          //a(href='/signin') 
-            p 로그인
+        .card-body.center-icon.main-icon-color
+          a(href='#' data-toggle='modal', data-target='#exampleModal', data-whatever='@mdo') 
+            #fourthicon.i.fas.fa-sign-in-alt.fa-4x 
+            p
+              |로그인
+            include ./_signin
+         
       .card.col-lg-2.col-md-4.col-sm-6.mx-auto.border-0
-        .card-body.center-icon
+        .card-body.center-icon.main-icon-color 
           a(href='/user/signup') 
             #fourthicon.i.fas.fa-user-plus.fa-4x
             p 회원가입
     else
       .card.col-lg-2.col-md-4.col-sm-12.mx-auto.border-0
-        .card-body.center-icon
+        .card-body.center-icon.main-icon-color 
           a(href='/user/mypage') 
             #fourthicon.i.fa.fa-user.fa-4x
             p 마이페이지
       
       .card.col-lg-2.col-md-4.col-12.mx-auto.border-0
-        .card-body.center-icon
+        .card-body.center-icon.main-icon-color 
           a(href='/signout') 
             #fourthicon.i.fas.fa-sign-out-alt.fa-4x
             p 로그아웃
