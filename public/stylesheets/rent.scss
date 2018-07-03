@@ -14,3 +14,25 @@
     cursor: default;
   }
 }
+#slideimg {
+  width: 700px;
+  height: 600px;
+}
+
+#rentimg {
+  height: 300px;
+}
+
+// .rentcard {
+//   width: 18rem;
+// }
+
+@media only screen and (max-device-width : 576px) {
+  #slideimg {
+    height: 260px;
+  }
+  
+  #rentimg {
+    height: 200px;
+  }
+}

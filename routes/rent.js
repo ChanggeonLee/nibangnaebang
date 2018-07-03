@@ -84,6 +84,7 @@ router.post('/:id/', needAuth ,catchErrors( async (req , res, next ) => {
   await rent.save();
   
   res.redirect('/rent');
+  console.log('방올리기 성공~!~!~!~!');
 }));
 
 // 방 댓글 달기
