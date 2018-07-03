@@ -7,7 +7,7 @@
       option(value='3') 동진마을
 .row.col-lg-10.col-md-10.col-sm-12.col-12.mx-auto.mt-4        
   if (currentUser)
-    a.btn.btn-primary(href=`/rent/upload/${currentUser._id}`,role="button")
+    a.btn.btn-primary(href=`/rent/${currentUser._id}?_method=GET`)
       | 니방 올리기
 .row.col-lg-10.col-md-10.col-sm-12.mx-auto
   each rent in rents
