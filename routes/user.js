@@ -58,8 +58,7 @@ console.log(req.body);
 var err = validateSignupform(req.body , {needpw: true});
 if(err){
   // flash 설정은 나중에
-  //req.flash('danger', err);
-  console.log(err);
+  req.flash('danger', err);
   return res.redirect('back');
 }
 
@@ -67,7 +66,7 @@ if(err){
 var user = await User.findOne({email:req.body.email});
 // 에러처리는 알아서 잘하자
 if(user){
-  console.log("중복된 사용자가 있습니다.");
+  req.flash('danger', "중복된 사용자가 있습니다.");
   return res.redirect('back');
 }
 
@@ -80,11 +79,10 @@ user = new User({
 
 // 비밀번호는 hash해서 저장하자
 user.password = await user.generateHash(req.body.password);
-console.log(user);
 // 새로운 디비를 저장하자
 await user.save();
 // req.flash('success', 'Registered successfully. Please sign in.');
-console.log("회원 가입 완료");
+req.flash('danger', "중복된 사용자가 있습니다.");
 // 홈화면으로 리다이렉션 해주자.
 return res.redirect('/');
 
