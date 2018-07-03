@@ -17,7 +17,6 @@ function validateSignupform (form){
   
   name = name.trim();
   email = email.trim();
-  id = id.trim();
   password = password.trim();
   Reconfirmpassword = Reconfirmpassword.trim();
 
@@ -75,8 +74,7 @@ router.post('/signup' , catchErrors( async( req , res , next) => {
   user.password = await user.generateHash(req.body.password);
   // 새로운 디비를 저장하자
   await user.save();
-  // req.flash('success', 'Registered successfully. Please sign in.');
-  req.flash('danger', "중복된 사용자가 있습니다.");
+  req.flash('success', "회원가입 성공~!!!");
   // 홈화면으로 리다이렉션 해주자.
   return res.redirect('/');
 
