@@ -155,7 +155,7 @@ router.put('/:id/', catchErrors(async (req, res, next)=>{
 
   req.flash('success', '방 수정 완료~!~!');
 
-  res.redirect('/');
+  res.redirect('/rent/');
  
 }));
 
