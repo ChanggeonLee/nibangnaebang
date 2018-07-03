@@ -11,6 +11,6 @@ var schema = new Schema({
 });
 
 //schema.plugin(mongoosePaginate);
-var recipe_default = mongoose.model('recipe_default', schema);
+var recipe_default = mongoose.model('default', schema);
 
 module.exports = recipe_default;
