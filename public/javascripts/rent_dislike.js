@@ -1,11 +1,11 @@
 $(function() {
   // like btn
-  $('.rent-like-btn').click(function(e) {
+  $('.rent-dislike-btn').click(function(e) {
     var $el = $(e.currentTarget);
     if ($el.hasClass('loading')) return;
     $el.addClass('loading');
     $.ajax({
-      url: '/api/rent/' + $el.data('id') + '/like',
+      url: '/api/rent/' + $el.data('id') + '/dislike',
       method: 'POST',
       dataType: 'json',
       success: function(data) {

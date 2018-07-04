@@ -30,6 +30,24 @@ router.post('/rent/:id/like', catchErrors(async (req, res, next) => {
   return res.json(rent);
 }));
 
+
+// Like for Rent
+router.post('/rent/:id/dislike', catchErrors(async (req, res, next) => {
+  const rent = await Rent.findById(req.params.id).populate('author');
+  if (!rent) {
+    return next({status: 404, msg: 'Not exist rent'});
+  }
+  var likeLog = await LikeLog.findOne({author: req.user._id, rent: rent._id});
+  if (likeLog) {
+    rent.numLikes--;
+    await Promise.all([
+      rent.save(),
+      likeLog.remove()
+    ]);
+  }
+  return res.json(rent);
+}));
+
 // Review for Rent
 router.post('/review/:id/like', catchErrors(async (req, res, next) => {
   const building_detail = await Building_detail.findById(req.params.id);
