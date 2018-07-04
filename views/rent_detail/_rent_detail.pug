@@ -39,8 +39,7 @@
           | 방 수정
         a.btn.btn-primary.btn-lg(href=`/rent/${rent._id}/sell?_method=PUT`) 
           | 판매 완료
-
-      else
+      else currentUser
         a.btn.btn-primary.btn-lg(href=`/rent/${rent._id}/${currentUser.id}/email?_method=POST`) 판매자에게 이메일 보내기
         p 로그인 후 이용 가능합니다.
 
