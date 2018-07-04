@@ -24,13 +24,20 @@
       p 기간 : #{rent.start_time} ~ #{rent.end_time}
       p 가격 : #{rent.amount}
       p 적정인원 : #{rent.suitable_person}
-      p 좋아요 : #{rent.numLikes}
+      p.num-likes 좋아요 : #{rent.numLikes}
       .buttons
-        if currentUser
+        if currentUser && !likelog
           button.btn.btn-color.rent-like-btn(data-id=rent.id) 
             span.for-loading #[i.fa.fa-spin.fa-refresh] Loading
             span #[i.fa.fa-thumbs-up] Like
           script(src='/javascripts/rent_like.js')
+
+        else if currentUser
+          button.btn.btn-color.rent-dislike-btn(data-id=rent.id) 
+            span.for-loading #[i.fa.fa-spin.fa-refresh] Loading
+            span #[i.fa.fa-thumbs-up] Dislike
+          script(src='/javascripts/rent_dislike.js')
+
 
         if currentUser && currentUser.id==rent.author.id
           p

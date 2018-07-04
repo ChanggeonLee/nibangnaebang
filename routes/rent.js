@@ -22,7 +22,13 @@ router.get('/', catchErrors( async( req, res, next ) => {
 router.get('/detail/:id', catchErrors( async( req, res, next) => {
   rent = await Rent.findById(req.params.id).populate('author');
   comment = await Comment.find({rent : rent._id}).populate('author');
-  res.render('rent_detail/index', {rent:rent , comments : comment});
+  if(req.user){
+    likelog = await LikeLog.find({rent : rent._id , author : req.user.id});
+    console.log(likelog);
+    res.render('rent_detail/index', {rent:rent , comments : comment , likelog : likelog});
+  }else{
+    res.render('rent_detail/index', {rent:rent , comments : comment});
+  }
 }));
 
 // 방 올리기
