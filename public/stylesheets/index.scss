@@ -76,6 +76,17 @@ nav.navbar{
   border : 0;
 }
 
+#signinicon{
+  color:#007bff!important;
+}
+
+#signinicon:hover{
+   color:#0738be!important;
+}
+
+#signintext:hover{
+  text-decoration: underline;
+}
 
 @media only screen and (max-device-width : 768px) {
 
