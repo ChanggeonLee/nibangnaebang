@@ -32,7 +32,7 @@
             span #[i.fa.fa-thumbs-up] Like
             
           script(src='/javascripts/rent_like.js')
-      if currentUser && rent.author == currentUser.id
+      if rent.author.id && rent.author == currentUser.id
         a.btn.btn-primary.btn-lg(href=`/rent/${rent._id}?_method=DELETE`)
           | 방 삭제
         a.btn.btn-primary.btn-lg(href=`/rent/${rent._id}/edit`) 
@@ -50,3 +50,5 @@
 //- 옵션
 include _option
 include _comment
+
+//if event.author && event.author.id == currentUser.id
