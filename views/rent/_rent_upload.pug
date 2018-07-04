@@ -5,7 +5,7 @@ block content
   form.col-10.mx-auto(action=`${currentUser._id}`,method='POST')
     .row.col-lg-12.col-md-12.col-sm-12.mx-auto
       h1.mx-auto 방올리기
-    .row.col-lg-12.col-md-12.col-sm-12.col-12.mx-auto
+    .row.col-lg-12.col-md-12.col-sm-12.col-12.mx-auto.no-gutters
       .form-group#file-section.col-lg-7.col-12.mx-auto
         label(for="img")
         input#file.form-control(type="file" , multiple="multiple")
@@ -48,12 +48,17 @@ block content
               });
           });
 
-    .row.col-lg-12.col-md-12.col-sm-12.mx-auto
+    .row.col-lg-12.col-md-12.col-sm-12.mx-auto.no-gutters
       //- 지역
         
       .form-group.col-lg-7.col-sm-12.mx-auto
         label(for='locate') 지역
-        input.form-control(type='locate', id='locate', name='locate', placeholder='locate' value = rent.locate)
+        select(name='locate')#inlineFormCustomSelect.custom-select
+          option(selected='') 전체
+          option(type='locate', id='locate', name='locate', value='명지대정문') 명지대정문
+          option(type='locate', id='locate', name='locate', value='명지대후문') 명지대후문
+          option(type='locate', id='locate', name='locate', value='덕곡마을') 덕곡마을
+          option(type='locate', id='locate', name='locate', value='동진마을') 동진마을
 
       //- 건물이름, 호수
       .form-group.col-lg-7.col-sm-12.mx-auto
@@ -123,7 +128,7 @@ block content
       //- WYSIWYG
       //- CK editor
       //- 상세설명
-    .row.col-lg-12.col-md-12.col-sm-12.mx-auto.mt-3
+    .row.col-lg-12.col-md-12.col-sm-12.mx-auto.mt-3.no-gutters
       .form-group.col-lg-7.col-md-12.col-sm-12.mx-auto
         label(for='info') 상세설명 (다시 입력해주세요)
         textarea#editor(name="info" value=rent.info)
@@ -134,5 +139,5 @@ block content
             .catch( error => {
               console.error( error );
             } );
-    .row.col-lg-12.col-md-12.col-sm-12.mx-auto.mt-3.mb-5
+    .row.col-lg-12.col-md-12.col-sm-12.mx-auto.mt-3.mb-5.no-gutters
       button.btn.registerbutton.btn-primary.col-lg-6.col-10.mx-auto(type="submit") 니방올리기 
