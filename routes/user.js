@@ -4,6 +4,8 @@ const catchErrors = require('../lib/async-error');
 
 // 필요한 디비 require
 var User = require('../models/user');
+var LikeLog = require('../models/like-log');
+var Rent =require('../models/rent');
 
 // 로그인 확인
 const needAuth = require('../lib/need-auth');
@@ -130,9 +132,11 @@ router.delete('/:id' ,needAuth , catchErrors( async(req,res,next) => {
 }));
 
 // mypage
-router.get('/mypage',needAuth, catchErrors( async( req, res, next ) => {
-  var user = await User.findById(req.user.id);
-  res.render('./mypage/index' , {user:user});
+router.get('/mypage/:id',needAuth, catchErrors( async( req, res, next ) => {
+  var user = await User.findById(req.params.id);
+  var like_logs = await LikeLog.find({author : req.params.id}).populate('rent');
+  // console.log(like_log);
+  res.render('./mypage/index' , {user:user , like_logs:like_logs});
 }));
 
 module.exports = router;

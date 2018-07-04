@@ -81,7 +81,7 @@ block content
     else
       .card.col-lg-2.col-md-4.col-sm-12.mx-auto.border-0
         .card-body.center-icon.main-icon-color 
-          a(href='/user/mypage') 
+          a(href=`/user/mypage/${currentUser.id}`) 
             #fourthicon.i.fa.fa-user.fa-4x
             p 마이페이지
       
