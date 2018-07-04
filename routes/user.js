@@ -120,7 +120,7 @@ router.put('/:id' ,needAuth , catchErrors( async( req , res , next ) => {
 
   await user.save();
   req.flash('success', '회원 정보 수정 완료');
-  res.redirect('/mypage/');
+  res.redirect('/user/');
 }));
 
 router.delete('/:id' ,needAuth , catchErrors( async(req,res,next) => {
