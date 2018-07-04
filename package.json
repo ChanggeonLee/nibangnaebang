@@ -6,7 +6,7 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
-    "aws-sdk": "^2.266.1",
+    "aws-sdk": "^2.267.1",
     "bcrypt": "^2.0.1",
     "body-parser": "^1.18.3",
     "connect-flash": "^0.1.1",
@@ -16,11 +16,12 @@
     "express-session": "^1.15.6",
     "http-errors": "~1.6.2",
     "method-override": "^2.3.10",
-    "mongoose": "^5.1.6",
+    "mongoose": "^5.2.0",
     "mongoose-paginate": "^5.0.3",
     "morgan": "~1.9.0",
     "node-mocks-http": "^1.7.0",
     "node-sass-middleware": "0.11.0",
+    "nodemailer": "^4.6.7",
     "passport": "^0.4.0",
     "passport-facebook": "^2.1.1",
     "passport-google": "^0.3.0",

@@ -63,7 +63,23 @@ router.get('/review/select/:id', catchErrors(async (req, res, next) => {
   return res.json(building);
 }));
 
+// rent select
+router.get('/rent/:id', catchErrors(async (req, res, next) => {
+  if (req.params.id == "전체"){
+    var rent = await Rent.find();
+  }else{
+    var rent = await Rent.find({locate : req.params.id});
+  }
 
+  // console.log(rent);
+  return res.json(rent);
+}));
+
+
+//send email
+router.get('/rent/:id/sendemail', catchErrors(async (req , res, next) => {
+  console.log(req.params.id);
+}));
 
 router.use((err, req, res, next) => {
   res.status(err.status || 500);

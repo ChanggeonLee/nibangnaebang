@@ -81,28 +81,43 @@ router.post('/signup' , catchErrors( async( req , res , next) => {
 }));
 
 
-// 비밀번호 변경
+// 회원 정보 변경
 router.put('/:id' ,needAuth , catchErrors( async( req , res , next ) => {
   var user = await User.findById(req.params.id);
   if(!user){
-    req.flash('danger' , 'no users');
-    return res.redirect('back');
+    req.flash('danger' , '등록된 회원이 아닙니다.');
+    return res.redirect('/');
   }
 
-  if(!user.password){
-    req.flash('danger' , '카카오톡 , 페이스북 , 구글 사용자는 비밀번호를 변경 할수 없습니다.');
-    return res.redirect('back');
+  if(req.body.email){
+    console.log(await User.findOne({email : req.body.email}));
+    // email 설정
+    if( await User.findOne({email : req.body.email})!=null){
+      req.flash('danger' , '사용중 email 입니다.');
+      return res.redirect('back');
+    }else{
+      user.email = req.body.email;
+    }
+
   }
 
-  if(req.body.new_password != req.body.new_password_confirmation){
-    req.flash('danger' , '비밀번호가 일치 하지 않아요~~!!');
-    return res.redirect('back');
-  }
+  // 비밀 번호 설정
+  if(req.body.new_password){
 
-  user.password = await user.generateHash(req.body.new_password);
+    if(!user.password){
+      req.flash('danger' , '카카오톡 , 페이스북 , 구글 사용자는 비밀번호를 변경 할수 없습니다.');
+      return res.redirect('back');
+    }
+  
+    if(req.body.new_password != req.body.new_password_confirmation){
+      req.flash('danger' , '비밀번호가 일치 하지 않아요~~!!');
+      return res.redirect('back');
+    }
+    user.password = await user.generateHash(req.body.new_password);
+  }
 
   await user.save();
-  req.flash('success', '비밀번호 변경 완료');
+  req.flash('success', '회원 정보 수정 완료');
   res.redirect('/');
 }));
 

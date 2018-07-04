@@ -6,8 +6,11 @@ const catchErrors = require('../lib/async-error');
 var Rent = require('../models/rent');
 var Comment = require('../models/comment');
 var LikeLog = require('../models/like-log');
+var User = require('../models/user');
 
 const needAuth = require('../lib/need-auth');
+
+var nodemail = require('../lib/node-mail');
 
 // rent
 router.get('/', catchErrors( async( req, res, next ) => {
@@ -17,15 +20,15 @@ router.get('/', catchErrors( async( req, res, next ) => {
 
 // 방세부정보
 router.get('/detail/:id', catchErrors( async( req, res, next) => {
-  rent = await Rent.findById(req.params.id);
+  rent = await Rent.findById(req.params.id).populate('author');
   comment = await Comment.find({rent : rent._id}).populate('author');
   res.render('rent_detail/index', {rent:rent , comments : comment});
 }));
 
 // 방 올리기
-router.get('/upload/:id',needAuth, catchErrors( async (req , res, next) => {
+router.get('/:id',needAuth, catchErrors( async (req , res, next) => {
   rent = new Rent();
-  res.render('rent_upload/index' , {rent : rent});
+  res.render('rent/_rent_upload' , {rent : rent});
 }));
 
 var option = function(form , rent){
@@ -65,7 +68,7 @@ var option = function(form , rent){
 }
 
 // 방 올리기 post
-router.post('/upload/:id', needAuth ,catchErrors( async (req , res, next ) => {
+router.post('/:id/', needAuth ,catchErrors( async (req , res, next ) => {
   var rent = new Rent({
     author: req.user.id,
     locate: req.body.locate,
@@ -102,6 +105,17 @@ router.post('/detail/comment/:id', needAuth, catchErrors(async (req , res, next)
 }));
 
 
+// email 보내기
+router.post('/:id/:cid/email', needAuth, catchErrors(async (req, res , next) => {
+  rent = await Rent.findById(req.params.id).populate('author');
+  user = await User.findById(req.params.cid);
+  
+  nodemail.test(rent.author.email, user.email , rent.detail_address);
+  
+  req.falsh('success' , "이메일 전송 완료~!");
+  res.redirect('back');  
+}));
+
 //방 댓글 삭제
 router.delete('/detail/comment/:id/', needAuth , catchErrors(async (req, res, next) => {
   await Comment.findByIdAndRemove(req.params.id);
@@ -121,15 +135,7 @@ router.delete('/:id/', catchErrors(async (req, res, next)=> {
 
 
 // 방 판매
-router.put('/:id/', catchErrors(async (req, res, next)=>{
-  //예외처리
-  //console.log("adf");
-  //var err = validateForm(req.body);
-  //if (err) {
-    //req.flash('danger', err);
-   // return res.redirect('back');
-  //}
-
+router.put('/:id/sell', catchErrors(async (req, res, next)=>{
   var rent = await Rent.findById(req.params.id);
   rent.sell = true;
 
@@ -138,5 +144,34 @@ router.put('/:id/', catchErrors(async (req, res, next)=>{
   req.flash('success', '방 판매 완료~');
   res.redirect('/rent/');
 }));
+
+
+//방 수정
+router.get('/:id/edit' , catchErrors(async (req , res, next)=> {
+  const rent = await Rent.findById(req.params.id);
+  res.render('rent/_edit' ,{ rent : rent});
+}));
+
+//방정보 변경
+router.put('/:id/', catchErrors(async (req, res, next)=>{
+ // console.log("dfadsf");
+  var rent = await Rent.findById(req.params.id);
+  
+  rent.locate = req.body.locate;
+  rent.detail_address = req.body.detail_address;
+  rent.start_time = req.body.start_time;
+  rent.end_time = req.body.end_time;
+  rent.suitable_person = req.body.suitable_person;
+  rent.info = req.body.info;
+  rent.amount = req.body.amount;
+
+  await rent.save();
+
+  req.flash('success', '방 수정 완료~!~!');
+
+  res.redirect('/rent/');
+ 
+}));
+
 
 module.exports = router;
