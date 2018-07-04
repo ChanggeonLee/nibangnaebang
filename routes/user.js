@@ -10,6 +10,10 @@ var Rent =require('../models/rent');
 // 로그인 확인
 const needAuth = require('../lib/need-auth');
 
+router.get('/', catchErrors( async( req, res, next ) => {
+  res.render('mypage/index');
+}));
+
 // 회원 가입 폼을 검사하는 함수 만들어야됨
 function validateSignupform (form){
   var name = form.name || "";
@@ -120,7 +124,7 @@ router.put('/:id' ,needAuth , catchErrors( async( req , res , next ) => {
 
   await user.save();
   req.flash('success', '회원 정보 수정 완료');
-  res.redirect('/user/');
+  res.redirect('/');
 }));
 
 router.delete('/:id' ,needAuth , catchErrors( async(req,res,next) => {
