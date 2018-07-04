@@ -18,12 +18,14 @@
      
 
   .row
-    .card-body    
+    .card-body   
+      p 판매자 : #{rent.author.name} 
       p 지역 : #{rent.locate}
       p 건물이름 : #{rent.detail_address}
       p 기간 : #{rent.start_time} ~ #{rent.end_time}
       p 가격 : #{rent.amount}
       p 적정인원 : #{rent.suitable_person}
+      p 작성일 : #{rent.createdAt}
       p 좋아요 : #{rent.numLikes}
       .buttons
         if currentUser
