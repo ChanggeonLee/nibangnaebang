@@ -109,9 +109,10 @@ router.post('/detail/comment/:id', needAuth, catchErrors(async (req , res, next)
 router.post('/:id/:cid/email', needAuth, catchErrors(async (req, res , next) => {
   rent = await Rent.findById(req.params.id).populate('author');
   user = await User.findById(req.params.cid);
-  console.log(rent.author.email);
-  console.log(user.email);
+  
   nodemail.test(rent.author.email, user.email , rent.detail_address);
+  
+  req.falsh('success' , "이메일 전송 완료~!");
   res.redirect('back');  
 }));
 
