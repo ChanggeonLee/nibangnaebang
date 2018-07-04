@@ -22,13 +22,19 @@ router.get('/', catchErrors( async( req, res, next ) => {
 router.get('/detail/:id', catchErrors( async( req, res, next) => {
   rent = await Rent.findById(req.params.id).populate('author');
   comment = await Comment.find({rent : rent._id}).populate('author');
-  res.render('rent_detail/index', {rent:rent , comments : comment});
+  if(req.user){
+    likelog = await LikeLog.find({rent : rent._id , author : req.user.id});
+    console.log(likelog);
+    res.render('rent_detail/index', {rent:rent , comments : comment , likelog : likelog});
+  }else{
+    res.render('rent_detail/index', {rent:rent , comments : comment});
+  }
 }));
 
 // 방 올리기
 router.get('/:id',needAuth, catchErrors( async (req , res, next) => {
   rent = new Rent();
-  res.render('rent/_rent_upload' , {rent : rent});
+  res.render('rent/upload' , {rent : rent});
 }));
 
 var option = function(form , rent){
@@ -70,7 +76,7 @@ var option = function(form , rent){
 // 방 올리기 post
 router.post('/:id/', needAuth ,catchErrors( async (req , res, next ) => {
   var rent = new Rent({
-    author: req.user.id,
+    author: req.params.id,
     locate: req.body.locate,
     detail_address: req.body.detail_address,
     start_time: req.body.start_time,
