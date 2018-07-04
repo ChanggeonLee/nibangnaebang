@@ -18,14 +18,12 @@
      
 
   .row
-    .card-body   
-      p 판매자 : #{rent.author.name} 
+    .card-body    
       p 지역 : #{rent.locate}
       p 건물이름 : #{rent.detail_address}
       p 기간 : #{rent.start_time} ~ #{rent.end_time}
       p 가격 : #{rent.amount}
       p 적정인원 : #{rent.suitable_person}
-      p 작성일 : #{rent.createdAt}
       p 좋아요 : #{rent.numLikes}
       .buttons
         if currentUser
@@ -34,7 +32,7 @@
             span #[i.fa.fa-thumbs-up] Like
             
           script(src='/javascripts/rent_like.js')
-      if rent.author && rent.author.id == currentUser.id
+      if currentUser && rent.author == currentUser.id
         a.btn.btn-primary.btn-lg(href=`/rent/${rent._id}?_method=DELETE`)
           | 방 삭제
         a.btn.btn-primary.btn-lg(href=`/rent/${rent._id}/edit`) 
