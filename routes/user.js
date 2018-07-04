@@ -10,10 +10,6 @@ var Rent =require('../models/rent');
 // 로그인 확인
 const needAuth = require('../lib/need-auth');
 
-router.get('/', catchErrors( async( req, res, next ) => {
-  res.render('mypage/index');
-}));
-
 // 회원 가입 폼을 검사하는 함수 만들어야됨
 function validateSignupform (form){
   var name = form.name || "";
@@ -82,7 +78,7 @@ router.post('/signup' , catchErrors( async( req , res , next) => {
   await user.save();
   req.flash('success', "회원가입 성공~!!!");
   // 홈화면으로 리다이렉션 해주자.
-  return res.redirect('/');
+  return res.redirect('/mypage/:id');
 
 }));
 
