@@ -9,7 +9,7 @@
   script(src='/javascripts/select_rent.js')
 .row.col-lg-10.col-md-10.col-sm-12.col-12.mx-auto.mt-4        
   if (currentUser)
-    a.btn.btn-primary(href=`/rent/upload/${currentUser._id}`,role="button")
+    a.btn.btn-primary(href=`/rent/${currentUser._id}?_method=GET`)
       | 니방 올리기
 |
 .row.col-lg-10.col-md-12.col-sm-12.mx-auto.no-gutters.rent_list
