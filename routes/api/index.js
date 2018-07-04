@@ -65,8 +65,13 @@ router.get('/review/select/:id', catchErrors(async (req, res, next) => {
 
 // rent select
 router.get('/rent/:id', catchErrors(async (req, res, next) => {
-  var rent = await Rent.find({locate : req.params.id});
-  console.log(rent);
+  if (req.params.id == "전체"){
+    var rent = await Rent.find();
+  }else{
+    var rent = await Rent.find({locate : req.params.id});
+  }
+
+  // console.log(rent);
   return res.json(rent);
 }));
 

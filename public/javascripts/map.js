@@ -70,6 +70,7 @@ function makrkerclick(map, marker, infowindow) {
               alert('Login required!');
               location = '/signin';
             }
+            console.log(data, status);
           }
         });
     };
