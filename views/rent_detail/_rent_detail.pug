@@ -40,7 +40,7 @@
         a.btn.btn-primary.btn-lg(href=`/rent/${rent._id}/sell?_method=PUT`) 
           | 판매 완료
 
-      if currentUser
+      else if currentUser
         a.btn.btn-primary.btn-lg(href=`/rent/${rent._id}/${currentUser.id}/email?_method=POST`) 판매자에게 이메일 보내기
       else
         a.btn.btn-primary.btn-lg 판매자에게 이메일 보내기
