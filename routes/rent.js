@@ -28,7 +28,7 @@ router.get('/detail/:id', catchErrors( async( req, res, next) => {
 // 방 올리기
 router.get('/:id',needAuth, catchErrors( async (req , res, next) => {
   rent = new Rent();
-  res.render('rent/_rent_upload' , {rent : rent});
+  res.render('rent/upload' , {rent : rent});
 }));
 
 var option = function(form , rent){
@@ -70,7 +70,7 @@ var option = function(form , rent){
 // 방 올리기 post
 router.post('/:id/', needAuth ,catchErrors( async (req , res, next ) => {
   var rent = new Rent({
-    author: req.user.id,
+    author: req.params.id,
     locate: req.body.locate,
     detail_address: req.body.detail_address,
     start_time: req.body.start_time,
