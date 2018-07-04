@@ -13,7 +13,7 @@ nav.nav.navbar.navbar-expand-lg.navbar-light.bg-light
         a.nav-link(href='/recipe') 레시피
       |
       li.nav-item
-        a.nav-link(href='') 리뷰
+        a.nav-link(href='/review') 건물평가
       |
       li.nav-item
         a.nav-link(href='/rent') 니방대여
@@ -31,7 +31,7 @@ nav.nav.navbar.navbar-expand-lg.navbar-light.bg-light
           a.nav-link(href='/user/signup') 회원가입
       else
         li.nav-item
-          a.nav-link(href='/user/mypage') 마이페이지
+          a.nav-link(href=`/user/mypage/${currentUser.id}`) 마이페이지
         |
         li.nav-item
           a.nav-link(href='/signout') 로그아웃
