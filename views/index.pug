@@ -41,7 +41,7 @@ block content
       a.navbar-brand.justify-content-center(href='/')#mainlogo
         img(src='https://wpclassevent.s3.amazonaws.com/0058c4c4-44d3-4d7a-b510-68d73482698f/mainlogo2.png', width='160', height='auto', alt='logo')
 
-  img.d-block.w-100(src='https://wpclassevent.s3.amazonaws.com/d6aeed5b-da0c-4086-a720-34c6651a1639/mainimg11.jpg', alt='mainimg')#mainimg
+  img.d-block.w-100(src='https://wpclassevent.s3.amazonaws.com/1d79c724-d41c-4b32-bdca-1169495b9eed/test.jpg', alt='mainimg')#mainimg
   img.d-block.w-100(src='https://wpclassevent.s3.amazonaws.com/bd50995e-0326-4431-81ea-ca75c7c48517/maincomment2.png', alt='maincomment')#maincomment
   main.img
   
@@ -69,8 +69,8 @@ block content
     if (!currentUser)
       .card.col-lg-2.col-md-4.col-sm-6.mx-auto.border-0
         .card-body.center-icon.main-icon-color
-            #fourthicon.i.fas.fa-sign-in-alt.fa-4x( data-toggle='modal', data-target='#exampleModal', data-whatever='@mdo') 
-            p 로그인
+            #signinicon.i.fas.fa-sign-in-alt.fa-4x( data-toggle='modal', data-target='#exampleModal', data-whatever='@mdo', style = 'cursor:pointer') 
+            p#signintext(style='cursor:pointer') 로그인
             include ./_signin
          
       .card.col-lg-2.col-md-4.col-sm-6.mx-auto.border-0
