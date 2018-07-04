@@ -6,8 +6,11 @@ const catchErrors = require('../lib/async-error');
 var Rent = require('../models/rent');
 var Comment = require('../models/comment');
 var LikeLog = require('../models/like-log');
+var User = require('../models/user');
 
 const needAuth = require('../lib/need-auth');
+
+var nodemail = require('../lib/node-mail');
 
 // rent
 router.get('/', catchErrors( async( req, res, next ) => {
@@ -17,7 +20,7 @@ router.get('/', catchErrors( async( req, res, next ) => {
 
 // 방세부정보
 router.get('/detail/:id', catchErrors( async( req, res, next) => {
-  rent = await Rent.findById(req.params.id);
+  rent = await Rent.findById(req.params.id).populate('author');
   comment = await Comment.find({rent : rent._id}).populate('author');
   res.render('rent_detail/index', {rent:rent , comments : comment});
 }));
@@ -101,6 +104,16 @@ router.post('/detail/comment/:id', needAuth, catchErrors(async (req , res, next)
   res.redirect('back');
 }));
 
+
+// email 보내기
+router.post('/:id/:cid/email', needAuth, catchErrors(async (req, res , next) => {
+  rent = await Rent.findById(req.params.id).populate('author');
+  user = await User.findById(req.params.cid);
+  console.log(rent.author.email);
+  console.log(user.email);
+  nodemail.test(rent.author.email, user.email , rent.detail_address);
+  res.redirect('back');  
+}));
 
 //방 댓글 삭제
 router.delete('/detail/comment/:id/', needAuth , catchErrors(async (req, res, next) => {
