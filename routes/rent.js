@@ -115,7 +115,7 @@ router.post('/detail/comment/:id', needAuth, catchErrors(async (req , res, next)
 router.post('/:id/:cid/email', needAuth, catchErrors(async (req, res , next) => {
   rent = await Rent.findById(req.params.id).populate('author');
   user = await User.findById(req.params.cid);
-  if(!user){
+  if(user.email=='no-email'){
     req.flash('danger','이메일을 설정해 주세요~!');
     res.redirect('/');
   }
