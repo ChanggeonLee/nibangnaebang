@@ -163,7 +163,7 @@ router.put('/:id/sell', catchErrors(async (req, res, next)=>{
 //방 수정
 router.get('/:id/edit' , catchErrors(async (req , res, next)=> {
   const rent = await Rent.findById(req.params.id);
-  res.render('rent/_edit' ,{ rent : rent});
+  res.render('rent/edit' ,{ rent : rent});
 }));
 
 //방정보 변경
