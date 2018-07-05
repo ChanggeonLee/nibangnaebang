@@ -98,14 +98,14 @@ router.post('/:id/', needAuth ,catchErrors( async (req , res, next ) => {
 
 // 방 댓글 달기
 router.post('/detail/comment/:id', needAuth, catchErrors(async (req , res, next) => {
-  // console.log(req.body);
+
   var rent = await Rent.findById(req.params.id).populate('author');
   var comment = new Comment({
     author : req.user.id,
     rent : rent._id,
     content : req.body.content
   });
-  console.log(comment);
+
   await comment.save();
   res.redirect('back');
 }));
@@ -117,7 +117,7 @@ router.post('/:id/:cid/email', needAuth, catchErrors(async (req, res , next) => 
   user = await User.findById(req.params.cid);
   if(user.email=='no-email'){
     req.flash('danger','이메일을 설정해 주세요~!');
-    res.redirect('/');
+    return res.redirect('/');
   }
   
   nodemail.test(rent.author.email, user.email , rent.detail_address);
@@ -140,7 +140,7 @@ router.delete('/:id/', catchErrors(async (req, res, next)=> {
   await Comment.findOneAndRemove({rent : rent._id});
   await rent.remove();
 
-  res.redirect('/rent/');
+  res.redirect('/rent');
 }));
 
 
@@ -149,7 +149,7 @@ router.put('/:id/sell', catchErrors(async (req, res, next)=>{
   var rent = await Rent.findById(req.params.id);
   if(!rent){
     req.flash('success','방이 존재 하지 않아요');
-    res.redirect('/');
+    return res.redirect('/');
   }
   rent.sell = true;
 
@@ -168,7 +168,7 @@ router.get('/:id/edit' , catchErrors(async (req , res, next)=> {
 
 //방정보 변경
 router.put('/:id/', catchErrors(async (req, res, next)=>{
- // console.log("dfadsf");
+
   var rent = await Rent.findById(req.params.id);
   
   rent.locate = req.body.locate;
