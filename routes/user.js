@@ -135,7 +135,6 @@ router.delete('/:id' ,needAuth , catchErrors( async(req,res,next) => {
 router.get('/mypage/:id',needAuth, catchErrors( async( req, res, next ) => {
   var user = await User.findById(req.params.id);
   var like_logs = await LikeLog.find({author : req.params.id}).populate('rent');
-  // console.log(like_log);
   res.render('./mypage/index' , {user:user , like_logs:like_logs});
 }));
 
