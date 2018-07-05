@@ -78,7 +78,7 @@ router.post('/signup' , catchErrors( async( req , res , next) => {
   await user.save();
   req.flash('success', "회원가입 성공~!!!");
   // 홈화면으로 리다이렉션 해주자.
-  return res.redirect('/mypage/:id');
+  return res.redirect('/');
 
 }));
 
