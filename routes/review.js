@@ -18,7 +18,7 @@ router.get('/', catchErrors( async( req, res, next ) => {
 // review detail
 router.get('/detail/:id',catchErrors( async( req, res , next) => {
   building_detail = await Building_detail.findOne({ building_name : req.params.id });
-  comments = await Comment.find({building_detail : building_detail._id});
+  comments = await Comment.find({building_detail : building_detail._id}).populate('author');
 
   res.render('review_detail/index', {building_detail:building_detail , comments:comments});
 }));

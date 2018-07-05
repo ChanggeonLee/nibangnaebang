@@ -9,7 +9,7 @@ $(function() {
       method: 'POST',
       dataType: 'json',
       success: function(data) {
-        $('.review .num-likes').text(data.numLikes);
+        $('.recommendation').val(data.numLikes);
         $('.review-like-btn').hide();
       },
       error: function(data, status) {

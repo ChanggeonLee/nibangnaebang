@@ -1,9 +1,9 @@
 .col-10.center
   h1.center=building_detail.building_name
-  img.img-fluid(src=building_detail.img,alt="Responsive image")
+  img.img-fluid.center(src=building_detail.img,alt="Responsive image")
 
-h2.col-10.center
-  | 좋아요~~~ #{building_detail.numLikes}
+h2.col-10.center.recommendation
+  | 추천해요~! #{building_detail.numLikes}
 
 .col-10.center
   if currentUser
