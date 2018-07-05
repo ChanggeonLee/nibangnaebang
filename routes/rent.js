@@ -101,7 +101,7 @@ router.post('/detail/comment/:id', needAuth, catchErrors(async (req , res, next)
   // console.log(req.body);
   var rent = await Rent.findById(req.params.id).populate('author');
   var comment = new Comment({
-    author : rent.author,
+    author : req.user.id,
     rent : rent._id,
     content : req.body.content
   });
@@ -115,10 +115,14 @@ router.post('/detail/comment/:id', needAuth, catchErrors(async (req , res, next)
 router.post('/:id/:cid/email', needAuth, catchErrors(async (req, res , next) => {
   rent = await Rent.findById(req.params.id).populate('author');
   user = await User.findById(req.params.cid);
+  if(!user){
+    req.flash('danger','이메일을 설정해 주세요~!');
+    res.redirect('/');
+  }
   
   nodemail.test(rent.author.email, user.email , rent.detail_address);
   
-  req.falsh('success' , "이메일 전송 완료~!");
+  req.flash('success' , "이메일 전송 완료~!");
   res.redirect('back');  
 }));
 
@@ -143,12 +147,16 @@ router.delete('/:id/', catchErrors(async (req, res, next)=> {
 // 방 판매
 router.put('/:id/sell', catchErrors(async (req, res, next)=>{
   var rent = await Rent.findById(req.params.id);
+  if(!rent){
+    req.flash('success','방이 존재 하지 않아요');
+    res.redirect('/');
+  }
   rent.sell = true;
 
   await rent.save();
 
   req.flash('success', '방 판매 완료~');
-  res.redirect('/rent/');
+  res.redirect('/rent');
 }));
 
 
