@@ -24,7 +24,7 @@ schema.methods.generateHash = function(password) {
 };
 
 schema.methods.validatePassword = function(password) {
-  if(!password){
+  if(!this.password){
     return false;
   }
   return bcrypt.compare(password, this.password); // return Promise
