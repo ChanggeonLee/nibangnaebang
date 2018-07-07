@@ -11,9 +11,7 @@ var schema = new Schema({
   google: {id: String, token: String, photo: String},
   rooms:[],
   recipes:[],
-  createdAt: {type: Date, default: Date.now},
-  // 관리자 권한
-  rootuser: {type: Boolean, default: false}
+  createdAt: {type: Date, default: Date.now}
 }, {
   toJSON: { virtuals: true},
   toObject: {virtuals: true}
