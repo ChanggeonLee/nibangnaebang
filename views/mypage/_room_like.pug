@@ -3,11 +3,12 @@
 .row.col-lg-12.col-12.mx-auto.mt-3.no-gutters
   //- -for
   each like_log in like_logs
-    a.border-4.card.mb-3.col-lg-4.col-md-6.col-sm-12.mt-3.rent_room(href=`/rent/detail/${like_log.rent.id}`)
-      img.card-img-top#rentimg(src=like_log.rent.img[0], alt='Card image cap')
-      .card-body
-        p.card-text
-          p=like_log.rent.locate
-          p=like_log.rent.detail_address
+    if like_log.rent
+      a.border-4.card.mb-3.col-lg-4.col-md-6.col-sm-12.mt-3.rent_room(href=`/rent/detail/${like_log.rent.id}`)
+        img.card-img-top#rentimg(src=like_log.rent.img[0], alt='Card image cap')
+        .card-body
+          p.card-text
+            p=like_log.rent.locate
+            p=like_log.rent.detail_address
       
   
