@@ -1,0 +1,11 @@
+.col-8.center
+  each process in recipe_process
+    .card.mb-3
+      if process.STRE_STEP_IMAGE_URL
+        img.card-img-top(src=process.STRE_STEP_IMAGE_URL, alt='Card image cap')
+      .card-body
+        h5.card-title
+          |STEP #{process.COOKING_NO} 
+        p.card-text=process.COOKING_DC
+        p.card-text
+          small.text-muted 
