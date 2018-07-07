@@ -1,11 +1,12 @@
 button.btn.btn-primary(type='button') 전체
 button.btn.btn-primary(type='button') 추천
-each recipe in recipe_default.docs
-  a.border-4.card.mb-3.col-lg-4.col-md-6.col-sm-12.mt-3.rent_room(href=`/recipe/detail/${recipe._id}`)
-    img.card-img-top#rentimg(src=recipe.IMG_URL, alt='Card image cap')
-    .card-body
-      p.card-text
-        p=recipe.RECIPE_NM_KO
-        p=recipe.LEVEL_NM
-
-+paginate(recipe_default, '/recipe')
+.row.col-lg-10.col-md-12.col-sm-12.mx-auto.no-gutters.rent_list
+  each recipe in recipe_default.docs
+    a.border-4.card.mb-3.col-lg-4.col-md-6.col-sm-12.mt-3.rent_room(href=`/recipe/detail/${recipe._id}`)
+      img.card-img-top#rentimg(src=recipe.IMG_URL, alt='recipe img')
+      .card-body
+        p.card-text
+          p=recipe.RECIPE_NM_KO
+          p=recipe.LEVEL_NM
+.div.col-10.center
+  +paginate(recipe_default, '/recipe')  

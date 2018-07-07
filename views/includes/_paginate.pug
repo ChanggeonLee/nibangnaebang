@@ -8,9 +8,11 @@ mixin paginate(docs, link, params)
     }
     if (query) {
       //- var url = `${link}?${querystring.stringify(query)}&page=`;
+      var url = `${link}?page=`;
     } else {
       var url = `${link}?page=`;
     }
+
 
   if docs.pages > 1
     - start = Math.max(docs.page - 5, 1);
