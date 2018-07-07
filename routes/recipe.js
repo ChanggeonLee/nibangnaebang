@@ -9,12 +9,21 @@ router.get('/', catchErrors( async( req, res, next ) => {
   const page = parseInt(req.query.page) || 1;
   const limit = parseInt(req.query.limit) || 5;
 
-  var recipe_default = await Recipe_default.paginate({ 
-    sort: {RECIPE_ID:1}, 
+  var query = {};
+  // const term = req.query.term;
+  // // if (term) {
+  // //   query = {$or: [
+  // //     {title: {'$regex': term, '$options': 'i'}},
+  // //     {locate: {'$regex': term, '$options': 'i'}},
+  // //     {event_field: {'$regex': term, '$options': 'i'}}
+  // //   ]};
+  // // }
+
+  const recipe_default = await Recipe_default.paginate(query, {
+    sort: {RECIPE_ID: 1}, 
     page: page, limit: limit
   });
-
-  // console.log(recipe_default.data);
-  res.render('recipe/index' , {recipe_default:recipe_default });
+  console.log(recipe_default);
+  res.render('recipe/index',{recipe_default:recipe_default});
 }));
 module.exports = router;
