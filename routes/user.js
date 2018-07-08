@@ -6,6 +6,7 @@ const catchErrors = require('../lib/async-error');
 var User = require('../models/user');
 var LikeLog = require('../models/like-log');
 
+
 // 로그인 확인
 const needAuth = require('../lib/need-auth');
 
@@ -133,7 +134,7 @@ router.delete('/:id' ,needAuth , catchErrors( async(req,res,next) => {
 // mypage
 router.get('/mypage/:id',needAuth, catchErrors( async( req, res, next ) => {
   var user = await User.findById(req.params.id);
-  var like_logs = await LikeLog.find({author : req.params.id}).populate('rent');
+  var like_logs = await LikeLog.find({author : req.params.id}).populate('rent').populate('recipe_default');
   console.log(like_logs);
   res.render('./mypage/index' , {user:user , like_logs:like_logs});
 }));

@@ -117,14 +117,6 @@ router.get('/rent/:id', catchErrors(async (req, res, next) => {
   return res.json(rent);
 }));
 
-
-// //send email
-// router.get('/rent/:id/sendemail', catchErrors(async (req , res, next) => {
-//   console.log(req.params.id);
-// }));
-
-
-
 router.use((err, req, res, next) => {
   res.status(err.status || 500);
   res.json({
