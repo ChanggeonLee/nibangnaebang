@@ -73,8 +73,51 @@ var option = function(form , rent){
   return rent;
 }
 
+// 니방올리기 폼을 검사하는 함수 만들어야됨
+function validateRentform (form){
+  var detail_address = form.detail_address || "";
+  var start_time = form.start_time || "";
+  var end_time = form.end_time || "";
+  var amount = form.amount || "";
+  //var suitable_person = form.sutiable_person || "";
+
+  detail_address = detail_address.trim();
+  start_time = start_time.trim();
+  end_time = end_time.trim();
+  amount = amount.trim();
+  //suitable_person = suitable_person.trim();
+
+  if( !detail_address){
+    return "건물이름과 호수를 입력하세요";
+  }
+
+  if( !start_time ){
+    return "시작 날짜를 입력하세요";
+  }
+
+  if( !end_time ){
+    return "종료 날짜를 입력하세요";
+  }
+
+  if( !amount ){
+    return "가격을 입력하세요";
+  }
+
+  //if( !suitable_person ){
+    //return "적정 인원을 입력하세요";
+  //}
+
+  return null;
+}
+
 // 방 올리기 post
 router.post('/:id/', needAuth ,catchErrors( async (req , res, next ) => {
+
+  var err = validateRentform(req.body);
+  if(err){
+    req.flash('danger',err);
+    return res.redirect('back');
+  }
   var rent = new Rent({
     author: req.params.id,
     locate: req.body.locate,
@@ -169,6 +212,11 @@ router.get('/:id/edit' , catchErrors(async (req , res, next)=> {
 //방정보 변경
 router.put('/:id/', catchErrors(async (req, res, next)=>{
 
+  var err = validateRentform(req.body);
+  if(err){
+    req.flash('danger',err);
+    return res.redirect('back');
+  }
   var rent = await Rent.findById(req.params.id);
   
   rent.locate = req.body.locate;
