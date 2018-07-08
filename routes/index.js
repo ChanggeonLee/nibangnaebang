@@ -12,18 +12,23 @@ router.get('/', catchErrors( async( req, res, next ) => {
 
 
 // Keras model import
+const model = new KerasJS.Model({
+  filepath: '../opt_recipe.pb',
+  filesystem: true
+});
 
-
-
-
-
-
-
-
-
-
-
-
+router.get('/recommend', catchErrors( async(req, res, next) => {
+  try {
+    await model.ready()
+    const inputData = {
+      input_1: new Float32Array(data)
+    }
+    const outputData = await model.predict(inputData)
+  } catch (err) {
+    // handle error
+  }
+  return outputData;
+}));
 
 // AWS 이미지 업로드
 const S3_BUCKET = process.env.S3_BUCKET;
