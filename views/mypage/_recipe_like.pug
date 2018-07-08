@@ -2,32 +2,11 @@
 //-   h1 이 레시피 좋아요!
 .row.col-lg-12.col-12.mx-auto.mt-3.no-gutters
   //- -for
-  .card.col-lg-4.col-md-6.col-12.mb-3(style='width: 18rem;')
-    img.card-img-top(src='.../100px180/', alt='Card image cap')
-    .card-body
-      h5.card-title Card title
-      p.card-text
-        | Some quick example text to build on the card title and make up the bulk of the card's content.
-      a.btn.btn-primary(href='#') Go somewhere
-  .card.col-lg-4.col-md-6.col-12.mb-3(style='width: 18rem;')
-    img.card-img-top(src='.../100px180/', alt='Card image cap')
-    .card-body
-      h5.card-title Card title
-      p.card-text
-        | Some quick example text to build on the card title and make up the bulk of the card's content.
-      a.btn.btn-primary(href='#') Go somewhere
-  .card.col-lg-4.col-md-6.col-12.mb-3(style='width: 18rem;')
-    img.card-img-top(src='.../100px180/', alt='Card image cap')
-    .card-body
-      h5.card-title Card title
-      p.card-text
-        | Some quick example text to build on the card title and make up the bulk of the card's content.
-      a.btn.btn-primary(href='#') Go somewhere
-  .card.col-lg-4.col-md-6.col-12.mb-3(style='width: 18rem;')
-    img.card-img-top(src='.../100px180/', alt='Card image cap')
-    .card-body
-      h5.card-title Card title
-      p.card-text
-        | Some quick example text to build on the card title and make up the bulk of the card's content.
-      a.btn.btn-primary(href='#') Go somewhere
-      
+  each like_log in like_logs
+    if like_log.recipe_default
+      a.border-4.card.mb-3.col-lg-4.col-md-6.col-sm-12.mt-3.rent_room(href=`/recipe/detail/${like_log.recipe_default.id}`)
+        img.card-img-top#rentimg(src=like_log.recipe_default.IMG_URL, alt='Card image cap')
+        .card-body
+          p.card-text
+            p=like_log.recipe_default.RECIPE_NM_KO
+            p=like_log.recipe_default.LEVEL_NM

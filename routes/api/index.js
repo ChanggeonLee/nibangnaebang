@@ -8,6 +8,7 @@ const Rent = require('../../models/rent');
 const Building = require('../../models/building');
 const Building_detail = require('../../models/building_detail');
 const User = require('../../models/user');
+const Recipe_default = require('../../models/recipe_default');
 
 // Like for Rent
 router.post('/rent/:id/like', catchErrors(async (req, res, next) => {
@@ -72,6 +73,29 @@ router.post('/review/:id/like', catchErrors(async (req, res, next) => {
   return res.json(building_detail);
 }));
 
+// recipe for Rent
+router.post('/recipe/:id/like', catchErrors(async (req, res, next) => {
+  const recipe_default = await Recipe_default.findById(req.params.id);
+  const user = await User.findById(req.user.id);
+  
+  if (!recipe_default.id) {
+    return next({status: 404, msg: 'Not exist review'});
+  }
+
+  var likeLog = await LikeLog.findOne({author: req.user.id, recipe_default: recipe_default._id});
+  if (!likeLog) {
+    await Promise.all([
+      LikeLog.create({
+        author: req.user._id, 
+        recipe_default: recipe_default._id,
+        recipe_name: user.name
+      })
+    ]);
+  }
+  return res.json();
+}));
+
+
 // review select
 router.get('/review/select/:id', catchErrors(async (req, res, next) => {
   const building = await Building.findOne({locate : req.params.id});
@@ -91,12 +115,6 @@ router.get('/rent/:id', catchErrors(async (req, res, next) => {
 
   // console.log(rent);
   return res.json(rent);
-}));
-
-
-//send email
-router.get('/rent/:id/sendemail', catchErrors(async (req , res, next) => {
-  console.log(req.params.id);
 }));
 
 router.use((err, req, res, next) => {

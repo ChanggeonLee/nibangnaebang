@@ -7,3 +7,6 @@ include ./_material
 h1
   |요리과정
 include ./_process
+if currentUser
+  button.btn.btn-outline-danger.recipe-like-btn(type='button' data-id=recipe_default.id) 좋아요
+script(src='/javascripts/recipe_like.js')

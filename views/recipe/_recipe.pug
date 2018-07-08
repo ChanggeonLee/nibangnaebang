@@ -8,5 +8,7 @@ button.btn.btn-primary(type='button') 추천
         p.card-text
           p=recipe.RECIPE_NM_KO
           p=recipe.LEVEL_NM
+          
+
 .div.col-10.center
   +paginate(recipe_default, '/recipe')  
