@@ -3,11 +3,26 @@ const catchErrors = require('../lib/async-error');
 const router = express.Router();
 const aws = require('aws-sdk');
 const uuidv4 = require('uuid/v4');
+const KerasJS = require('keras-js')
 
 /* GET home page. */
 router.get('/', catchErrors( async( req, res, next ) => {
     res.render('index', { title: '똥땅이네'});
 }));
+
+
+// Keras model import
+
+
+
+
+
+
+
+
+
+
+
 
 
 // AWS 이미지 업로드
