@@ -15,9 +15,7 @@ router.get('/', catchErrors( async( req, res, next ) => {
   const term = req.query.term;
   if (term) {
     query = {$or: [
-      // {title: {'$regex': term, '$options': 'i'}},
-      // {locate: {'$regex': term, '$options': 'i'}},
-      // {event_field: {'$regex': term, '$options': 'i'}}
+      {RECIPE_NM_KO: {'$regex': term, '$options': 'i'}}
     ]};
   }
 
@@ -26,7 +24,7 @@ router.get('/', catchErrors( async( req, res, next ) => {
     page: page, limit: limit
   });
   console.log(recipe_default);
-  res.render('recipe/index',{recipe_default:recipe_default});
+  res.render('recipe/index',{recipe_default:recipe_default, term: term, query: req.query});
 }));
 
 router.get('/detail/:id', catchErrors( async(req,res,next) => {
