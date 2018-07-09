@@ -1,17 +1,19 @@
-p
-  | 주재료 
-  each main in recipe_material_main
-    p
-      | #{main.IRDNT_NM} #{main.IRDNT_CPCTY}
-
-p
-  | 부재료
-  each sub in recipe_material_sub
-    p
-      | #{sub.IRDNT_NM} #{sub.IRDNT_CPCTY}
-
-p
-  | 양념 
-  each sauce in recipe_material_sauce
-    p
-      | #{sauce.IRDNT_NM} #{sauce.IRDNT_CPCTY}
+.row.mx-auto
+  .col-lg-3.col-md-3.col-sm-12.mx-auto
+    h3
+      | 주재료 
+    each main in recipe_material_main
+      p
+        | #{main.IRDNT_NM} #{main.IRDNT_CPCTY}
+  .col-lg-3.col-md-3.col-sm-12.mx-auto
+    h3
+      | 부재료
+    each sub in recipe_material_sub
+      p
+        | #{sub.IRDNT_NM} #{sub.IRDNT_CPCTY}
+  .col-lg-3.col-md-3.col-sm-12.mx-auto
+    h3
+      | 양념 
+    each sauce in recipe_material_sauce
+      p
+        | #{sauce.IRDNT_NM} #{sauce.IRDNT_CPCTY}
