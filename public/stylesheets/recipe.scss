@@ -1,0 +1,9 @@
+#recipeimg {
+    height: 500px;
+}
+
+@media only screen and (max-device-width : 576px) {
+    #recipeimg {
+        height: 200px;
+    }    
+}

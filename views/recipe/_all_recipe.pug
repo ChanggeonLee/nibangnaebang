@@ -1,4 +1,10 @@
 // Nav tabs
+.input-group
+  //- form()
+  form.form-inline.search-input-group.mx-auto(action='/recipe', method='GET')                      
+    input.form-control.mr-sm-2(type='text', name='term', placeholder='Search recipe', aria-label='Search', value=term)
+    button.btn#recipe_search(type='submit') Search 
+
 ul#myTab.nav.nav-tabs.row.col-lg-9.col-12.mx-auto(role='tablist')
   li.nav-item
     a#recipe-tab.nav-link.active(data-toggle='tab', href='#recipe', role='tab', aria-controls='roomlike', aria-selected='true') 전체 레시피
@@ -8,7 +14,7 @@ ul#myTab.nav.nav-tabs.row.col-lg-9.col-12.mx-auto(role='tablist')
 |
 // Tab panes
 .tab-content.row.col-lg-9.col-12.mx-auto
-  #recipe.tab-pane.active(role='tabpanel', aria-labelledby='recipe-tab') 
+  #recipe.tab-pane.active.col-lg-12.col-md-12.col-sm-12(role='tabpanel', aria-labelledby='recipe-tab') 
     include _recipe
-  #recommend.tab-pane(role='tabpanel', aria-labelledby='recommend-tab')
+  #recommend.tab-pane.col-lg-12.col-md-12.col-sm-12(role='tabpanel', aria-labelledby='recommend-tab')
     include _recommend
