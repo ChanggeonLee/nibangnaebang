@@ -1,8 +1,10 @@
+script(src='/javascripts/rent_search.js')
 .input-group
   //- form()
   form.form-inline.search-input-group.mx-auto(action='/rent', method='GET')                      
-    input.form-control.mr-sm-2(type='text', name='term', placeholder='Search events or categories', aria-label='Search', value=term)
-    button.btn.btn-success.btn-lg(type='submit') Search 
+    input#autocomplete.form-control.mr-sm-2(type='text', name='term', placeholder='Search events or categories', aria-label='Search', value=term)
+    button.btn#rent_search(type='submit') Search 
+  
 
 .row.col-lg-10.col-md-10.col-sm-12.col-12.mx-auto.mt-4        
   if (currentUser)
@@ -21,4 +23,3 @@
           p.card-text
             p=rent.locate
             p=rent.detail_address
-
