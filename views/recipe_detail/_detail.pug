@@ -1,12 +1,17 @@
-h1
-  |제목
-include ./_title 
-h1
-  |재료
-include ./_material
-h1
+.row.col-12.mx-auto.mt-3
+  h1.col-lg-9.col-12.mx-auto
+    include ./_title
+  | 
+.row.col-12.mx-auto.mt-3
+  h1.col-lg-9.col-12
+    |재료
+  include ./_material
+  |
+h1.center
   |요리과정
 include ./_process
-if currentUser
-  button.btn.btn-outline-danger.recipe-like-btn(type='button' data-id=recipe_default.id) 좋아요
+|
+.row.col-6.mx-auto
+  if currentUser
+    button.btn.btn-outline-danger.recipe-like-btn(type='button' data-id=recipe_default.id) 좋아요
 script(src='/javascripts/recipe_like.js')
