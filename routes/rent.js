@@ -13,9 +13,33 @@ const needAuth = require('../lib/need-auth');
 var nodemail = require('../lib/node-mail');
 
 // rent
-router.get('/', catchErrors( async( req, res, next ) => {
-  rents = await Rent.find();
-  res.render('rent/index',{rent : rents});
+// router.get('/', catchErrors( async( req, res, next ) => {
+//   console.log("zzzz");
+//   rents = await Rent.find();
+//   res.render('rent/index',{rent : rents});
+// }));
+
+router.get('/', catchErrors( async(req, res, next) => {
+  console.log("zzzz");
+  const page = parseInt(req.query.page) || 1;
+  const limit = parseInt(req.query.limit) || 5;
+
+  var query = {};
+  const term = req.query.term;
+  if (term) {
+    query = {$or: [
+      {locate: {'$regex': term, '$options': 'i'}},
+      {detail_address: {'$regex': term, '$options': 'i'}}
+    ]};
+  }
+  const rents = await Rent.paginate(query, {
+    sort: {createdAt: -1}, 
+    populate: 'author', 
+    page: page, limit: limit
+  });
+  console.log(rents.docs);
+  res.render('rent/index', {rents: rents, term: term, query: req.query});
+  
 }));
 
 // 방세부정보
@@ -211,7 +235,7 @@ router.get('/:id/edit' , catchErrors(async (req , res, next)=> {
 
 //방정보 변경
 router.put('/:id/', catchErrors(async (req, res, next)=>{
-
+  
   var err = validateRentform(req.body);
   if(err){
     req.flash('danger',err);
@@ -235,5 +259,8 @@ router.put('/:id/', catchErrors(async (req, res, next)=>{
  
 }));
 
+
+
+// event index page
 
 module.exports = router;
