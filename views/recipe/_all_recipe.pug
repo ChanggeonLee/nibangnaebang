@@ -1,0 +1,14 @@
+// Nav tabs
+ul#myTab.nav.nav-tabs.row.col-lg-9.col-12.mx-auto(role='tablist')
+  li.nav-item
+    a#recipe-tab.nav-link.active(data-toggle='tab', href='#recipe', role='tab', aria-controls='roomlike', aria-selected='true') 전체 레시피
+  if currentUser
+    li.nav-item
+      a#recommend-tab.nav-link(data-toggle='tab', href='#recommend', role='tab', aria-controls='recipelike', aria-selected='false') 레시피 추천
+|
+// Tab panes
+.tab-content.row.col-lg-9.col-12.mx-auto
+  #recipe.tab-pane.active(role='tabpanel', aria-labelledby='recipe-tab') 
+    include _recipe
+  #recommend.tab-pane(role='tabpanel', aria-labelledby='recommend-tab')
+    include _recommend
