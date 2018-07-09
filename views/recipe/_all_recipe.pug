@@ -3,7 +3,7 @@
   //- form()
   form.form-inline.search-input-group.mx-auto(action='/recipe', method='GET')                      
     input.form-control.mr-sm-2(type='text', name='term', placeholder='Search recipe', aria-label='Search', value=term)
-    a.btn.btn-success.btn-lg(type='submit') Search 
+    button.btn#recipe_search(type='submit') Search 
 
 ul#myTab.nav.nav-tabs.row.col-lg-9.col-12.mx-auto(role='tablist')
   li.nav-item
