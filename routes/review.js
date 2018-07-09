@@ -20,6 +20,10 @@ router.get('/detail/:id',catchErrors( async( req, res , next) => {
   building_detail = await Building_detail.findOne({ building_name : req.params.id });
   comments = await Comment.find({building_detail : building_detail._id}).populate('author');
 
+  if(!building_detail){
+    req.flash('danger','방이 아직 없어용');
+    return res.redirect('back');
+  }
   res.render('review_detail/index', {building_detail:building_detail , comments:comments});
 }));
 
