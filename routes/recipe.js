@@ -2,12 +2,32 @@ var express = require('express');
 var router = express.Router();
 const catchErrors = require('../lib/async-error');
 
+// D.B
 const Recipe_default = require('../models/recipe_default');
 const Recipe_process = require('../models/recipe_process');
 const Recipe_material = require('../models/recipe_material');
+const Likelog = require('../models/like-log');
+
+var what_you_like = function(data){
+  for (like of data) {
+    if (like.recipe_default){
+      return like.recipe_default.NATION_NM;
+    }
+  }
+  return null;
+}
 
 /* GET home page. */
 router.get('/', catchErrors( async( req, res, next ) => {
+  if(req.user){
+    var category = what_you_like(await Likelog.find({author:req.user.id}).populate('recipe_default').sort({'createdAt': -1}));
+  }else{
+    var category = "";
+  }
+
+  console.log(category);
+  var recommends = await Recipe_default.find({NATION_NM:category}).limit(6);
+
   const page = parseInt(req.query.page) || 1;
   const limit = parseInt(req.query.limit) || 6;
 
@@ -23,8 +43,8 @@ router.get('/', catchErrors( async( req, res, next ) => {
     sort: {RECIPE_ID: 1}, 
     page: page, limit: limit
   });
-  console.log(recipe_default);
-  res.render('recipe/index',{recipe_default:recipe_default, term: term, query: req.query});
+  // console.log(recipe_default);
+  res.render('recipe/index',{recipe_default:recipe_default, term: term, query: req.query , recommends:recommends});
 }));
 
 router.get('/detail/:id', catchErrors( async(req,res,next) => {
