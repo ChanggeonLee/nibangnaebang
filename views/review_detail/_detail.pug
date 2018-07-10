@@ -7,11 +7,16 @@
     | 추천해요~! #{building_detail.numLikes}
 
   .col-lg-12.col-md-12.col-sm-12.mx-auto
-    if currentUser
+    if currentUser && !flag
       button.btn.btn-color.review-like-btn(data-id=building_detail.id) 
         span.for-loading #[i.fa.fa-spin.fa-refresh] Loading
         span #[i.fa.fa-thumbs-up] Like
       script(src='/javascripts/review_like.js')
+    else if currentUser && flag
+      button.btn.btn-color.review-dislike-btn(data-id=building_detail.id) 
+        span.for-loading #[i.fa.fa-spin.fa-refresh] Loading
+        span #[i.fa.fa-thumbs-up] DisLike
+      script(src='/javascripts/review_dislike.js')
 
 .row.col-lg-9.col-md-12.col-sm-12.mx-auto.mt-3 
   .col-lg-12.col-md-12.col-sm-12.mx-auto

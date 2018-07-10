@@ -73,6 +73,23 @@ router.post('/review/:id/like', catchErrors(async (req, res, next) => {
   return res.json(building_detail);
 }));
 
+// Review dislike
+router.post('/review/:id/dislike', catchErrors(async (req, res, next) => {
+  const building_detail = await Building_detail.findById(req.params.id);
+  
+  if (!building_detail) {
+    return next({status: 404, msg: 'Not exist review'});
+  }
+
+  var likeLog = await LikeLog.findOne({author: req.user._id, building_detail: building_detail._id});
+  await likeLog.remove();
+
+  return res.json(true);
+}));
+
+
+
+
 // Recipe like
 router.post('/recipe/:id/like', catchErrors(async (req, res, next) => {
   const recipe_default = await Recipe_default.findById(req.params.id);
