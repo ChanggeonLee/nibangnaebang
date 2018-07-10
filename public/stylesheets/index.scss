@@ -1,9 +1,16 @@
 body{
     margin: 0;
     //padding: 50px;
-    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
+    font: 14px "나눔바른고딕","Lucida Grande", Helvetica, Arial, sans-serif;
   
+}
+a{
+  color: #0738be;
+}
+hr{
+  border-color: rgba(202, 198, 198, 0.918);
+  border-width: 0.1em;
+}
 .main-icon-color{
   color: #0738be;
 }
@@ -11,20 +18,22 @@ body{
   margin: 0 auto;
   float: none;
 }
-nav.navbar{
 
+nav.navbar{
   background-color: white!important;
+  border-color: black!important;
   //height: 7em!important;
   padding: 0;
-  #logo{
-    position: relative;
-    // left: 44%;
-  }
+
   ul{
+    margin-top: 1em;
     a{
       color:black!important;
       background-color: white!important;
       font-size: 1.2em;
+    }
+    a:hover{
+      color: #0738be!important;
     }
   }
 }
