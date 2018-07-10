@@ -1,9 +1,9 @@
 script(src='/javascripts/rent_search.js')
-.input-group
+.input-group.row.col-lg-9.col-md-12.col-sm-12.mx-auto.mb-3
   //- form()
-  form.form-inline.search-input-group.mx-auto(action='/rent', method='GET')                      
-    input#autocomplete.form-control.mr-sm-2(type='text', name='term', placeholder='Search locate or building', aria-label='Search', value=term)
-    button.btn#rent_search(type='submit') Search 
+  form.form-inline.search-input-group.col-lg-11.col-md-12.col-sm-12.justify-content-end(action='/rent', method='GET')                      
+    input#autocomplete.form-control.mr-sm-2.col-lg-4.col-md-6.col-sm-8(type='text', name='term', placeholder='Search locate or building', aria-label='Search', value=term)
+    button.btn#rent_search.col-lg-2.col-md-2.col-sm-2(type='submit') Search 
   
 
 .row.col-lg-10.col-md-10.col-sm-12.col-12.mx-auto.mt-4        
