@@ -10,7 +10,7 @@ const Building_detail = require('../../models/building_detail');
 const User = require('../../models/user');
 const Recipe_default = require('../../models/recipe_default');
 
-// Like for Rent
+// Rent like
 router.post('/rent/:id/like', catchErrors(async (req, res, next) => {
   const rent = await Rent.findById(req.params.id).populate('author');
   if (!rent) {
@@ -32,7 +32,7 @@ router.post('/rent/:id/like', catchErrors(async (req, res, next) => {
 }));
 
 
-// Like for Rent
+// Rent dislike
 router.post('/rent/:id/dislike', catchErrors(async (req, res, next) => {
   const rent = await Rent.findById(req.params.id).populate('author');
   if (!rent) {
@@ -49,7 +49,7 @@ router.post('/rent/:id/dislike', catchErrors(async (req, res, next) => {
   return res.json(rent);
 }));
 
-// Review for Rent
+// Review like
 router.post('/review/:id/like', catchErrors(async (req, res, next) => {
   const building_detail = await Building_detail.findById(req.params.id);
   const user = await User.findById(req.user.id);
@@ -73,7 +73,24 @@ router.post('/review/:id/like', catchErrors(async (req, res, next) => {
   return res.json(building_detail);
 }));
 
-// recipe for Rent
+// Review dislike
+router.post('/review/:id/dislike', catchErrors(async (req, res, next) => {
+  const building_detail = await Building_detail.findById(req.params.id);
+  
+  if (!building_detail) {
+    return next({status: 404, msg: 'Not exist review'});
+  }
+
+  var likeLog = await LikeLog.findOne({author: req.user._id, building_detail: building_detail._id});
+  await likeLog.remove();
+
+  return res.json(true);
+}));
+
+
+
+
+// Recipe like
 router.post('/recipe/:id/like', catchErrors(async (req, res, next) => {
   const recipe_default = await Recipe_default.findById(req.params.id);
   const user = await User.findById(req.user.id);
@@ -92,8 +109,21 @@ router.post('/recipe/:id/like', catchErrors(async (req, res, next) => {
       })
     ]);
   }
-  return res.json();
+  return res.json(true);
 }));
+
+// Recipe dislike
+router.post('/recipe/:id/dislike', catchErrors(async (req, res, next) => {
+  const recipe_default = await Recipe_default.findById(req.params.id);
+  if (!recipe_default.id) {
+    return next({status: 404, msg: 'Not exist review'});
+  }
+  var likeLog = await LikeLog.findOne({author: req.user.id, recipe_default: recipe_default._id});
+  await likeLog.remove();
+
+  return res.json(true);
+}));
+
 
 
 // review select

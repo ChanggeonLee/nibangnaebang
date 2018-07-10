@@ -12,15 +12,8 @@ const needAuth = require('../lib/need-auth');
 
 var nodemail = require('../lib/node-mail');
 
-// rent
-// router.get('/', catchErrors( async( req, res, next ) => {
-//   console.log("zzzz");
-//   rents = await Rent.find();
-//   res.render('rent/index',{rent : rents});
-// }));
 
 router.get('/', catchErrors( async(req, res, next) => {
-  console.log("zzzz");
   const page = parseInt(req.query.page) || 1;
   const limit = parseInt(req.query.limit) || 5;
 
@@ -37,22 +30,24 @@ router.get('/', catchErrors( async(req, res, next) => {
     populate: 'author', 
     page: page, limit: limit
   });
-  console.log(rents.docs);
   res.render('rent/index', {rents: rents, term: term, query: req.query});
   
 }));
 
 // 방세부정보
 router.get('/detail/:id', catchErrors( async( req, res, next) => {
-  rent = await Rent.findById(req.params.id).populate('author');
-  comment = await Comment.find({rent : rent._id}).populate('author');
+  var rent = await Rent.findById(req.params.id).populate('author');
+  var comment = await Comment.find({rent : rent._id}).populate('author');
   if(req.user){
-    likelog = await LikeLog.find({rent : rent._id , author : req.user.id});
-    console.log(likelog);
-    res.render('rent_detail/index', {rent:rent , comments : comment , likelog : likelog});
-  }else{
-    res.render('rent_detail/index', {rent:rent , comments : comment});
+    var likelog = await LikeLog.findOne({rent : rent._id , author : req.user.id});
+    if (likelog){
+      var flag = true;
+    }else{
+      var flag = false;
+    }
   }
+  res.render('rent_detail/index', {rent:rent , comments : comment , flag : flag});
+ 
 }));
 
 // 방 올리기

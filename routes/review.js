@@ -6,6 +6,7 @@ const catchErrors = require('../lib/async-error');
 var Building = require('../models/building');
 var Building_detail = require('../models/building_detail');
 var Comment = require('../models/comment');
+var LikeLog = require('../models/like-log');
 
 const needAuth = require('../lib/need-auth');
 
@@ -24,7 +25,17 @@ router.get('/detail/:id',catchErrors( async( req, res , next) => {
     req.flash('danger','방이 아직 없어용');
     return res.redirect('back');
   }
-  res.render('review_detail/index', {building_detail:building_detail , comments:comments});
+
+  if(req.user){
+    var likelog = await LikeLog.findOne({building_detail : building_detail._id , author : req.user.id});
+    if (likelog){
+      var flag = true;
+    }else{
+      var flag = false;
+    }
+  }
+
+  res.render('review_detail/index', {building_detail:building_detail , comments:comments, flag:flag});
 }));
 
 // review comment post

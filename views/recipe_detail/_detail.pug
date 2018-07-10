@@ -11,6 +11,9 @@
   include ./_process
 |
 .row.col-4.mx-auto.mb-3
-  if currentUser
+  if currentUser && !flag
     button.btn-block.btn.btn-outline-danger.recipe-like-btn(type='button' data-id=recipe_default.id) 좋아요
-script(src='/javascripts/recipe_like.js')
+    script(src='/javascripts/recipe_like.js')
+  else if currentUser && flag
+    button.btn-block.btn.btn-outline-danger.recipe-dislike-btn(type='button' data-id=recipe_default.id) 좋아요 취소
+    script(src='/javascripts/recipe_dislike.js')
