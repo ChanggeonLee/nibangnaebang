@@ -53,6 +53,14 @@ router.get('/detail/:id', catchErrors( async(req,res,next) => {
   var recipe_material_main = await Recipe_material.find({RECIPE_ID:recipe_default.RECIPE_ID , IRDNT_TY_NM:'주재료'});
   var recipe_material_sub = await Recipe_material.find({RECIPE_ID:recipe_default.RECIPE_ID , IRDNT_TY_NM:'부재료'});
   var recipe_material_sauce = await Recipe_material.find({RECIPE_ID:recipe_default.RECIPE_ID , IRDNT_TY_NM:'양념'});
-  res.render('recipe_detail/index',{recipe_default:recipe_default , recipe_process:recipe_process , recipe_material_main:recipe_material_main , recipe_material_sub: recipe_material_sub , recipe_material_sauce:recipe_material_sauce});
+  if(req.user){
+    var likelog = await Likelog.findOne({recipe_default : recipe_default._id , author : req.user.id});
+    if (likelog){
+      var flag = true;
+    }else{
+      var flag = false;
+    }
+  }
+  res.render('recipe_detail/index',{recipe_default:recipe_default , recipe_process:recipe_process , recipe_material_main:recipe_material_main , recipe_material_sub: recipe_material_sub , recipe_material_sauce:recipe_material_sauce , flag:flag});
 }));
 module.exports = router;

@@ -46,8 +46,6 @@ router.get('/detail/:id', catchErrors( async( req, res, next) => {
       var flag = false;
     }
   }
-  
-  console.log(flag);
   res.render('rent_detail/index', {rent:rent , comments : comment , flag : flag});
  
 }));
