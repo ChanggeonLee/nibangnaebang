@@ -26,12 +26,12 @@
       p 적정인원 : #{rent.suitable_person}
       p.num-likes 좋아요 : #{rent.numLikes}
       .buttons
-        if currentUser && !likelog
+        if currentUser && !flag
           button.btn.btn-color.rent-like-btn(data-id=rent.id) 
             span.for-loading #[i.fa.fa-spin.fa-refresh] Loading
             span #[i.fa.fa-thumbs-up] Like
           script(src='/javascripts/rent_like.js')
-        else if currentUser
+        else if currentUser && flag
           button.btn.btn-color.rent-dislike-btn(data-id=rent.id) 
             span.for-loading #[i.fa.fa-spin.fa-refresh] Loading
             span #[i.fa.fa-thumbs-up] Dislike

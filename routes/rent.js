@@ -36,15 +36,20 @@ router.get('/', catchErrors( async(req, res, next) => {
 
 // 방세부정보
 router.get('/detail/:id', catchErrors( async( req, res, next) => {
-  rent = await Rent.findById(req.params.id).populate('author');
-  comment = await Comment.find({rent : rent._id}).populate('author');
+  var rent = await Rent.findById(req.params.id).populate('author');
+  var comment = await Comment.find({rent : rent._id}).populate('author');
   if(req.user){
-    likelog = await LikeLog.find({rent : rent._id , author : req.user.id});
-    console.log(likelog);
-    res.render('rent_detail/index', {rent:rent , comments : comment , likelog : likelog});
-  }else{
-    res.render('rent_detail/index', {rent:rent , comments : comment});
+    var likelog = await LikeLog.findOne({rent : rent._id , author : req.user.id});
+    if (likelog){
+      var flag = true;
+    }else{
+      var flag = false;
+    }
   }
+  
+  console.log(flag);
+  res.render('rent_detail/index', {rent:rent , comments : comment , flag : flag});
+ 
 }));
 
 // 방 올리기

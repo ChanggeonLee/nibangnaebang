@@ -9,7 +9,7 @@ $(function() {
       method: 'POST',
       dataType: 'json',
       success: function(data) {
-        // $('.num-likes').text(data.numLikes);
+        $('.card-body .num-likes').text('좋아요 :' + data.numLikes);
         $('.rent-like-btn').hide();
         location = '';
       },
