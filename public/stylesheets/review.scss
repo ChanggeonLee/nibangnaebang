@@ -11,6 +11,9 @@
  float: none;
 }
 
+#detailimg {
+  height: 600px!important;
+}
 
 .review-like-btn {
   .for-loading {display: none;}
@@ -43,5 +46,11 @@
   &.disabled {
     color: #bbb;
     cursor: default;
+  }
+}
+
+@media only screen and (max-device-width : 576px) {
+  #detailimg {
+    height: 200px!important;
   }
 }

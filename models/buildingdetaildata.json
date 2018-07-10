@@ -2,32 +2,27 @@
   {
     "building_name": "성현빌딩",
     "numLikes" : 0,
-    "img" : ""
+    "img" : "https://wpclassevent.s3.amazonaws.com/80027d99-75df-4782-9b9f-91afa431c756/성현빌딩.jpg"
   },
   {
     "building_name": "우영빌딩",
     "numLikes" : 0,
-    "img" : ""
+    "img" : "https://wpclassevent.s3.amazonaws.com/f6ca2252-76a6-42a6-a8e3-128682352ebe/우영빌딩.PNG"
   },
   {
     "building_name": "꿈의 도시텔",
     "numLikes" : 0,
-    "img" : ""
+    "img" : "https://wpclassevent.s3.amazonaws.com/15de97e5-32e3-41f6-986d-00d264371ae4/꿈의도시텔.PNG"
   },
   {
-    "building_name": "황제관",
+    "building_name": "황제궁",
     "numLikes" : 0,
-    "img" : ""
-  },
-  {
-    "building_name": "해와별",
-    "numLikes" : 0,
-    "img" : ""
+    "img" : "https://wpclassevent.s3.amazonaws.com/22caedd0-18bc-495f-949e-e2f508b97107/황제궁.PNG"
   },
   {
     "building_name": "힐 하우스",
     "numLikes" : 0,
-    "img" : ""
+    "img" : "https://wpclassevent.s3.amazonaws.com/a1b2c049-8969-4958-9905-5bbb7779a1f1/힐하우스.PNG"
   },
   {
     "building_name":"트라움 하우스",
@@ -37,12 +32,63 @@
   {
     "building_name":"59빌",
     "numLikes" : 0,
-    "img" : ""
+    "img" : "https://wpclassevent.s3.amazonaws.com/2ead3ea3-170b-4c77-81df-ea9bbddc8791/59빌.PNG"
   },
   {
     "building_name":"테마하우스",
     "numLikes" : 0,
-    "img" : "https://wpclassevent.s3.amazonaws.com/4c67a897-d9a6-46b5-81ba-01b3e423f922/KakaoTalk_20180710_201456519.jpg"
+    "img" : "https://wpclassevent.s3.amazonaws.com/4204928f-9826-4684-9fc4-ebfe56610770/테마하우스.jpg"
+  },
+  {
+    "building_name":"우리원룸",
+    "numLikes" : 0,
+    "img" : "https://wpclassevent.s3.amazonaws.com/9b6907b0-c734-42ca-b1e9-df42fef72904/우리원룸.jpg"
+  },
+  {
+    "building_name":"명지원룸",
+    "numLikes" : 0,
+    "img" : "https://wpclassevent.s3.amazonaws.com/161a5b9a-04f3-4e31-ac61-ae32c74d9f98/명지원룸.PNG"
+  },
+  {
+    "building_name":"웅지원룸",
+    "numLikes" : 0,
+    "img" : "https://wpclassevent.s3.amazonaws.com/f0e570ee-4db2-48d1-9286-7645aa8b5fea/웅지원룸.PNG"
+  },
+  {
+    "building_name":"그린빌",
+    "numLikes" : 0,
+    "img" : "https://wpclassevent.s3.amazonaws.com/b851a855-20c8-4345-abf1-6e423a4ba747/그린빌.PNG"
+  },
+  {
+    "building_name":"양지원룸",
+    "numLikes" : 0,
+    "img" : "https://wpclassevent.s3.amazonaws.com/6e696bf7-3965-4b3b-b1af-0b81e344e278/양지원룸.PNG"
+  },
+  {
+    "building_name":"시온빌",
+    "numLikes" : 0,
+    "img" : "https://wpclassevent.s3.amazonaws.com/5712daa9-4527-4d23-9976-1ba229cfb120/시온빌.PNG"
+  },
+  {
+    "building_name":"다성빌",
+    "numLikes" : 0,
+    "img" : "https://wpclassevent.s3.amazonaws.com/c31a15ed-ade9-4207-ad9b-fd19c906add1/다성빌.PNG"
+  },
+  {
+    "building_name":"월드하우스",
+    "numLikes" : 0,
+    "img" : "https://wpclassevent.s3.amazonaws.com/f126d208-1b38-4207-b809-898982c2cde8/월드하우스.PNG"
+  },
+  {
+    "building_name":"블루빌",
+    "numLikes" : 0,
+    "img" : "https://wpclassevent.s3.amazonaws.com/3ca8656e-6976-40bb-92ec-5e93064977ee/블루빌.PNG"
+  },
+  {
+    "building_name":"학사원룸",
+    "numLikes" : 0,
+    "img" : "https://wpclassevent.s3.amazonaws.com/caa8bee9-5be2-4cb2-b654-492dfdc0d3f6/학사원룸.PNG"
   }
+
 ]
 
