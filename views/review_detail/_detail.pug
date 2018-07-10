@@ -1,23 +1,47 @@
-.row.col-lg-9.col-md-12.col-sm-12.mx-auto
-  .col-lg-12.col-md-12.col-sm-12.mx-auto
-    h1.mb-3.center=building_detail.building_name
+hr
+.row.col-lg-10.col-md-12.col-sm-12.mx-auto#detail_row
+  .col-lg-5.col-md-12.col-sm-12.mx-auto
     img#detailimg.img-fluid.center(src=building_detail.img,alt="Responsive image")
+  .col-lg-5.col-md-12.col-sm-12.mx-auto
+    .card
+        .card-header
+          h2.mb-3.center=building_detail.building_name
+        |   
+        .card-body
+          if currentUser && !flag
+            button.btn.btn-color.review-like-btn(data-id=building_detail.id) 
+              span.for-loading #[i.fa.fa-spin.fa-refresh] Loading
+              span #[i.fa.fa-thumbs-up] recommend #{building_detail.numLikes}
+            script(src='/javascripts/review_like.js')
+          else if currentUser && flag
+            button.btn.btn-color.review-dislike-btn(data-id=building_detail.id) 
+              span.for-loading #[i.fa.fa-spin.fa-refresh] Loading
+              span #[i.fa.fa-thumbs-up] cancel 
+            script(src='/javascripts/review_dislike.js')
+          |
+          button.btn.btn-primary(type='button', data-toggle='collapse', data-target='#collapseExample', aria-expanded='false', aria-controls='collapseExample')
+            | 댓글
+          hr
+          include _comment
+                
 
-  h2.col-lg-12.col-md-12.col-sm-12.mx-auto.recommendation.mt-3
-    | 추천해요~! #{building_detail.numLikes}
 
-  .col-lg-12.col-md-12.col-sm-12.mx-auto
-    if currentUser && !flag
-      button.btn.btn-color.review-like-btn(data-id=building_detail.id) 
-        span.for-loading #[i.fa.fa-spin.fa-refresh] Loading
-        span #[i.fa.fa-thumbs-up] Like
-      script(src='/javascripts/review_like.js')
-    else if currentUser && flag
-      button.btn.btn-color.review-dislike-btn(data-id=building_detail.id) 
-        span.for-loading #[i.fa.fa-spin.fa-refresh] Loading
-        span #[i.fa.fa-thumbs-up] DisLike
-      script(src='/javascripts/review_dislike.js')
-
-.row.col-lg-9.col-md-12.col-sm-12.mx-auto.mt-3 
-  .col-lg-12.col-md-12.col-sm-12.mx-auto
-    include _comment
+//- .row.col-lg-6.col-md-12.col-sm-6.mx-auto#detail_row
+//-   .col-lg-3.col-md-5.col-sm-6.mx-auto
+//-     h2.mb-3.center=building_detail.building_name
+    
+//-   .col-lg-3.col-md-3.col-sm-3.mx-auto 
+//-     if currentUser && !flag
+//-       button.btn.btn-color.review-like-btn(data-id=building_detail.id) 
+//-         span.for-loading #[i.fa.fa-spin.fa-refresh] Loading
+//-         span #[i.fa.fa-thumbs-up] recommend #{building_detail.numLikes}
+//-       script(src='/javascripts/review_like.js')
+//-     else if currentUser && flag
+//-       button.btn.btn-color.review-dislike-btn(data-id=building_detail.id) 
+//-         span.for-loading #[i.fa.fa-spin.fa-refresh] Loading
+//-         span #[i.fa.fa-thumbs-up] DisLike 
+//-       script(src='/javascripts/review_dislike.js')
+//-   .col-lg-3.col-md-4.col-sm-4.mx-auto
+//-     button.btn.btn-primary(type='button', data-toggle='collapse', data-target='#collapseExample', aria-expanded='false', aria-controls='collapseExample')
+//-       | 댓글
+//-   include _comment

@@ -1,5 +1,6 @@
-.row.col-lg-12.col-md-12.col-sm-12.col-12.mx-auto.mt-3.no-gutters
-  #carouselExampleFade.carousel.slide.carousel-fade.col-lg-8.col-md-8.col-sm-12(data-ride='carousel')
+hr
+.row.col-lg-12.col-md-12.col-sm-12.col-12.mx-auto.mt-3.no-gutters#rentrow
+  #carouselExampleFade.carousel.slide.carousel-fade.col-lg-6.col-md-8.col-sm-12(data-ride='carousel')
     .carousel-inner
       .carousel-item.active
         img.d-block.w-100#slideimg(src=rent.img[0], alt='First slide')
@@ -17,8 +18,8 @@
       span.sr-only Next
      
 
-  .row
-    .card-body    
+  .col-lg-5
+    .card-body#rentcard    
       p 지역 : #{rent.locate}
       p 건물이름 : #{rent.detail_address}
       p 기간 : #{rent.start_time} ~ #{rent.end_time}

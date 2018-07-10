@@ -1,7 +1,12 @@
 #recipeimg {
     height: 500px;
 }
-
+.card-text{
+    font-size: 1.5em;
+}
+h5{
+    color: #0738be;
+}
 @media only screen and (max-device-width : 576px) {
     #recipeimg {
         height: 200px;

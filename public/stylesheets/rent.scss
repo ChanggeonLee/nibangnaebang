@@ -32,11 +32,6 @@
   }
 }
 
-#slideimg {
-  width: 700px;
-  height: 600px;
-}
-
 #rentimg {
   height: 300px;
 }
@@ -44,6 +39,28 @@
 // .rentcard {
 //   width: 18rem;
 // }
+#rentcard{
+  margin: auto;
+  float: none;
+
+  p{
+    font-size: 1.5em;
+    line-height: 1.5em;
+  }
+  
+}
+.btn-primary{
+  background-color:  #0738be;
+}
+#carouselExampleFade{
+  margin: auto;
+  float: none;
+  #slideimg {
+    height: 500px;
+    border-radius: 1%;
+  }
+}
+
 
 @media only screen and (max-device-width : 576px) {
   #slideimg {
