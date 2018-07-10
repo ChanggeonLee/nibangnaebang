@@ -12,15 +12,8 @@ const needAuth = require('../lib/need-auth');
 
 var nodemail = require('../lib/node-mail');
 
-// rent
-// router.get('/', catchErrors( async( req, res, next ) => {
-//   console.log("zzzz");
-//   rents = await Rent.find();
-//   res.render('rent/index',{rent : rents});
-// }));
 
 router.get('/', catchErrors( async(req, res, next) => {
-  console.log("zzzz");
   const page = parseInt(req.query.page) || 1;
   const limit = parseInt(req.query.limit) || 5;
 
@@ -37,7 +30,6 @@ router.get('/', catchErrors( async(req, res, next) => {
     populate: 'author', 
     page: page, limit: limit
   });
-  console.log(rents.docs);
   res.render('rent/index', {rents: rents, term: term, query: req.query});
   
 }));
