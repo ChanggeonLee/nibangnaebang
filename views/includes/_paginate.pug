@@ -15,8 +15,8 @@ mixin paginate(docs, link, params)
 
 
   if docs.pages > 1
-    - start = Math.max(docs.page - 5, 1);
-    - end = Math.min(docs.page + 5, docs.pages);
+    - start = Math.max(docs.page - 3, 1);
+    - end = Math.min(docs.page + 3, docs.pages);
     nav(aria-label="page navigation")
       ul.pagination
         li.page-item(class= (1 === docs.page) && 'disabled')
