@@ -6,7 +6,7 @@ const catchErrors = require('../lib/async-error');
 var User = require('../models/user');
 var LikeLog = require('../models/like-log');
 var Rent = require('../models/rent');
-
+var Comment = require('../models/comment');
 
 // 로그인 확인
 const needAuth = require('../lib/need-auth');
@@ -126,8 +126,16 @@ router.put('/:id' ,needAuth , catchErrors( async( req , res , next ) => {
 
 router.delete('/:id' ,needAuth , catchErrors( async(req,res,next) => {
   var user = await User.findById(req.params.id);
+  var comment = await Comment.find({author:user.id});
+  var like_logs = await LikeLog.find({author:user.id});
+  var rent = await Rent.find({author:user.id});
+
   // 다른거 지울거 있으면 같이 지우자~!
+  await comment.remove();
+  await like_logs.remove();
+  await rent.remove();
   await user.remove();
+  
   req.flash('danger', '회원탈퇴 완료~!');
   res.redirect('/signout');
 }));
