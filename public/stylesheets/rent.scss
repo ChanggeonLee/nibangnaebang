@@ -60,7 +60,11 @@
     border-radius: 1%;
   }
 }
-
+#rentoption{
+  i{
+    color: red;
+  }
+}
 
 @media only screen and (max-device-width : 576px) {
   #slideimg {

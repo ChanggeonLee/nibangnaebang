@@ -14,6 +14,9 @@ hr{
 .main-icon-color{
   color: #0738be;
 }
+#signinicon{
+  color: #0738be!important;
+}
 #mainlogo{
   margin: 0 auto;
   float: none;
@@ -85,13 +88,6 @@ nav.navbar{
   border : 0;
 }
 
-#signinicon{
-  color:#007bff!important;
-}
-
-#signinicon:hover{
-   color:#0738be!important;
-}
 
 #signintext:hover{
   text-decoration: underline;
