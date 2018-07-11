@@ -25,6 +25,8 @@ hr
       p 기간 : #{rent.start_time} ~ #{rent.end_time}
       p 가격 : #{rent.amount}
       p 적정인원 : #{rent.suitable_person}
+      p=" < 세부 정보 > "
+      p!=rent.info
       p.num-likes 좋아요 : #{rent.numLikes}
       .buttons
         if currentUser && !flag
