@@ -1,0 +1,9 @@
+.row.col-lg-12.col-md-12.col-sm-12.mx-auto.mt-3.no-gutters
+  each rent in rents
+    if (!rent.sell)
+      a.border-4.card.mb-3.col-lg-4.col-md-6.col-sm-12.mt-3.rent_room(href=`/rent/detail/${rent.id}`)
+        img.card-img-top#rentimg(src=rent.img[0], alt='Card image cap')
+        .card-body
+          p.card-text
+            p=rent.locate
+            p=rent.detail_address
