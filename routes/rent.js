@@ -254,6 +254,8 @@ router.put('/:id/', catchErrors(async (req, res, next)=>{
   rent.info = req.body.info;
   rent.amount = req.body.amount;
 
+  rent = option(req.body , rent);
+
   await rent.save();
 
   req.flash('success', '방 수정 완료~!~!');
