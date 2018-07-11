@@ -13,7 +13,7 @@
             a.btn.btn-sm.need-confirm-btn(href=`/rent/detail/comment/${comment._id}?_method=DELETE`)
               | 댓글 삭제
             button.btn.btn-sm.need-confirm-btn.edit(type='button' data-content=comment.content data-id=comment._id) 댓글 수정
-    script(src='/javascripts/comment_edit.js')
+    script(src='/javascripts/rent_comment_edit.js')
           
     form(action=`/rent/detail/comment/${rent._id}`,method='POST')
       .input-group.mb-3

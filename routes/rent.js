@@ -190,8 +190,6 @@ router.post('/:id/:cid/email', needAuth, catchErrors(async (req, res , next) => 
 
 // 방 댓글 수정
 router.put('/detail/comment/:id/' , needAuth , catchErrors(async (req, res , next) => {
-  console.log("댓글 수정");
-  console.log(req.body.comment);
   var comment = await Comment.findById(req.params.id);
   comment.content = req.body.comment;
   await comment.save();
