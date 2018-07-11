@@ -80,7 +80,8 @@ router.post('/review/:id/dislike', catchErrors(async (req, res, next) => {
   if (!building_detail) {
     return next({status: 404, msg: 'Not exist review'});
   }
-
+  building_detail.numLikes--;
+  await building_detail.save();
   var likeLog = await LikeLog.findOne({author: req.user._id, building_detail: building_detail._id});
   await likeLog.remove();
 

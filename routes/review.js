@@ -38,6 +38,14 @@ router.get('/detail/:id',catchErrors( async( req, res , next) => {
   res.render('review_detail/index', {building_detail:building_detail , comments:comments, flag:flag});
 }));
 
+// 방 댓글 수정
+router.put('/detail/comment/:id/' , needAuth , catchErrors(async (req, res , next) => {
+  var comment = await Comment.findById(req.params.id);
+  comment.content = req.body.comment;
+  await comment.save();
+  res.redirect('back');
+}));
+
 // review comment post
 router.post('/detail/comment/:id', needAuth, catchErrors(async (req , res, next) => {
   // console.log(req.body);
