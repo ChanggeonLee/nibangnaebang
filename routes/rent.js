@@ -188,6 +188,16 @@ router.post('/:id/:cid/email', needAuth, catchErrors(async (req, res , next) => 
   res.redirect('back');  
 }));
 
+// 방 댓글 수정
+router.put('/detail/comment/:id/' , needAuth , catchErrors(async (req, res , next) => {
+  console.log("댓글 수정");
+  console.log(req.body.comment);
+  var comment = await Comment.findById(req.params.id);
+  comment.content = req.body.comment;
+  await comment.save();
+  res.redirect('back');
+}));
+
 //방 댓글 삭제
 router.delete('/detail/comment/:id/', needAuth , catchErrors(async (req, res, next) => {
   await Comment.findByIdAndRemove(req.params.id);
