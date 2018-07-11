@@ -12,7 +12,13 @@
 }
 
 #detailimg {
-  height: 600px!important;
+  width: 800px!important;
+  height: 750px!important;
+  
+  // margin: 0 auto;
+  float: left;
+  border-radius: 1%;
+  margin-bottom: 3em;
 }
 
 .review-like-btn {
@@ -46,6 +52,23 @@
   &.disabled {
     color: #bbb;
     cursor: default;
+  }
+}
+#detail_row{
+  margin-top:4em;
+  .col-lg-3{
+    margin: 2em 0;
+  }
+  .btn-primary{
+    width: 9em;
+    background-color:  #0738be;
+  }
+}
+
+.card{
+  text-align: center;
+  p{
+    font-size: 1em;
   }
 }
 
