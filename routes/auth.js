@@ -59,9 +59,8 @@ module.exports = (app, passport) => {
 
   // logout
   app.get('/signout', (req, res) => {
-    console.log("로그아웃 성공~");
     req.logout();
-    req.flash('success', '회원 탈퇴 되었습니다');
+    req.flash('success', '로그아웃 성공~');
     res.redirect('/');
   });
 };
