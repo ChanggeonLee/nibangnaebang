@@ -135,7 +135,7 @@ router.delete('/:id' ,needAuth , catchErrors( async(req,res,next) => {
   await like_logs.remove();
   await rent.remove();
   await user.remove();
-  
+
   req.flash('danger', '회원탈퇴 완료~!');
   res.redirect('/signout');
 }));
