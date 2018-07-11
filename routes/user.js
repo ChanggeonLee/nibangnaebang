@@ -126,23 +126,12 @@ router.put('/:id' ,needAuth , catchErrors( async( req , res , next ) => {
 
 router.delete('/:id' ,needAuth , catchErrors( async(req,res,next) => {
   var user = await User.findById(req.params.id);
-  var comment = await Comment.find({author:user.id});
-  var like_logs = await LikeLog.find({author:user.id});
-  var rent = await Rent.find({author:user.id});
+  await Comment.find({author:user.id}).remove();
+  await LikeLog.find({author:user.id}).remove();
+  await Rent.find({author:user.id}).remove();
 
-  // 다른거 지울거 있으면 같이 지우자~!
-  if (comment){
-    await comment.remove();
-  }
-  if (like_logs){
-    await like_logs.remove();
-  }
-  if (rent){
-    await rent.remove();
-  }
-  if (user){
-    await user.remove();
-  }
+  // 다른거 지울거 있으면 같이 지우자~!  
+  await user.remove();
 
   req.flash('danger', '회원탈퇴 완료~!');
   res.redirect('/signout');
