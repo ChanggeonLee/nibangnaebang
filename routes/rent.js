@@ -59,34 +59,50 @@ router.get('/:id',needAuth, catchErrors( async (req , res, next) => {
 var option = function(form , rent){
   if(form.tv){
     rent.tv=true;
+  }else{
+    rent.tv=false;
   }
 
   if(form.elevator){
     rent.elevator=true;
+  }else{
+    rent.elevator=false;
   }
 
   if(form.bed){
     rent.bed=true;
+  }else{
+    rent.bed=false;
   }
 
   if(form.wardrobe){
     rent.wardrobe=true;
+  }else{
+    rent.wardrobe=false;
   }
 
   if(form.washer){
     rent.washer=true;
+  }else{
+    rent.washer=false;
   }
 
   if(form.gaslens){
     rent.gaslens=true;
+  }else{
+    rent.gaslens=false;
   }
 
   if(form.internet){
     rent.internet=true;
+  }else{
+    rent.internet=false;
   }
 
   if(form.water){
     rent.water=true;
+  }else{
+    rent.water=false;
   }
 
   return rent;
