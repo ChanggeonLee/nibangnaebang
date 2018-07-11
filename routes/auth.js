@@ -7,9 +7,9 @@ module.exports = (app, passport) => {
   
   // local login
   app.post('/signin', passport.authenticate('local-signin', {
-    successRedirect : '/', // redirect to the secure profile section
-    failureRedirect : '/', // redirect back to the signup page if there is an error
-    failureFlash : true // allow flash messages
+    successRedirect : '/',
+    failureRedirect : '/',
+    failureFlash : true 
   }));
   
   // facebook login
@@ -22,7 +22,7 @@ module.exports = (app, passport) => {
       failureRedirect : '/signin',
       failureFlash : true // allow flash messages
     }), (req, res, next) => {
-      req.flash('success', 'Welcome!');
+      req.flash('success', '로그인 성공~!');
       res.redirect('/');
     }
   );
@@ -37,7 +37,7 @@ module.exports = (app, passport) => {
       failureRedirect : '/signin',
       failureFlash : true // allow flash messages
     }), (req, res, next) => {
-      req.flash('success', 'Welcome!');
+      req.flash('success', '로그인 성공~!');
       res.redirect('/');
     }
   );
@@ -52,7 +52,7 @@ module.exports = (app, passport) => {
       failureRedirect : '/signin',
       failureFlash : true // allow flash messages
     }), (req, res, next) => {
-      req.flash('success', 'Welcome!');
+      req.flash('success', '로그인 성공~!');
       res.redirect('/');
     }
   );
@@ -61,7 +61,7 @@ module.exports = (app, passport) => {
   app.get('/signout', (req, res) => {
     console.log("로그아웃 성공~");
     req.logout();
-    req.flash('success', 'Successfully signed out');
+    req.flash('success', '회원 탈퇴 되었습니다');
     res.redirect('/');
   });
 };

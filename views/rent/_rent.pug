@@ -1,6 +1,6 @@
 hr
-.row.col-lg-10.col-md-12.col-sm-12.col-12.mt-3.mx-auto
-  select#inlineFormCustomSelect.custom-select.mr-sm-2.col-lg-2.col-md-5.col-sm-12.rent_select
+.row.col-lg-10.col-md-12.col-sm-12.col-12.mt-3.mx-auto.justify-content-end
+  select#inlineFormCustomSelect.custom-select.col-lg-5.col-md-5.col-sm-11.mx-auto.rent_select
     option(selected='', value='전체') 전체
     option(value='명지대정문') 명지대정문
     option(value='명지대후문') 명지대후문
@@ -8,14 +8,14 @@ hr
     option(value='동진마을') 동진마을
   script(src='/javascripts/select_rent.js')
   
-  .input-group.row.col-lg-6.col-md-7.col-sm-12.mb-3
+  .input-group.row.col-lg-5.col-md-5.col-sm-12.mb-3.no-gutters
     //- form()
-    form.form-inline.search-input-group.justify-content-end(action='/rent', method='GET')                      
-      input#autocomplete.form-control.col-lg-7.col-md-4.col-sm-12(type='text', name='term', placeholder='Search locate or building', aria-label='Search', value=term)
-      button.btn.col-lg-3#rent_search.col-md-3.col-sm-12(type='submit') Search 
+    form.form-inline.search-input-group.col-lg-12.col-md-12.col-sm-12.justify-content-end(action='/rent', method='GET')                      
+      input#autocomplete.form-control.col-lg-7.col-md-7.col-sm-12(type='text', name='term', placeholder='Search locate or building', aria-label='Search', value=term)
+      button.btn#rent_search.col-lg-5.col-md-5.col-sm-12(type='submit') Search 
   script(src='/javascripts/rent_search.js')
 
-.row.col-lg-10.col-md-10.col-sm-12.col-11.mx-auto.mt-4      
+.row.col-lg-10.col-md-12.col-sm-12.col-12.mx-auto.mt-4      
   if (currentUser)
     a.btn.btn-primary(href=`/rent/${currentUser._id}?_method=GET`)
       | 니방 올리기
