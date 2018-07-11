@@ -131,10 +131,18 @@ router.delete('/:id' ,needAuth , catchErrors( async(req,res,next) => {
   var rent = await Rent.find({author:user.id});
 
   // 다른거 지울거 있으면 같이 지우자~!
-  await comment.remove();
-  await like_logs.remove();
-  await rent.remove();
-  await user.remove();
+  if (comment){
+    await comment.remove();
+  }
+  if (like_logs){
+    await like_logs.remove();
+  }
+  if (rent){
+    await rent.remove();
+  }
+  if (user){
+    await user.remove();
+  }
 
   req.flash('danger', '회원탈퇴 완료~!');
   res.redirect('/signout');
