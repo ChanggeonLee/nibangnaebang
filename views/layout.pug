@@ -14,21 +14,6 @@ html(lang='en')
     // stylesheet link
     link(rel='stylesheet', href='/stylesheets/style.css')
     link(rel='stylesheet', href='//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css')     
-
-    
-
-    title NibangNaebang
-  body    
-    include ./topnav
-    if flashMessages
-      each texts, type in flashMessages
-        .container.fixed-top.mt-5
-          .alert.alert-dismissible.fade.show(class=`alert-${type}`)
-            each msg in texts
-              | #{msg} 
-            button.close(type='button', data-dismiss='alert', aria-label='close')
-              span(aria-hidden='true') &times;
-    block content
     // Optional JavaScript
     // jQuery first, then Popper.js, then Bootstrap JS
     script(src='https://code.jquery.com/jquery-3.2.1.min.js')
@@ -41,5 +26,18 @@ html(lang='en')
     //script(src='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js')
     script(src='https://code.jquery.com/jquery-1.12.4.js')
     script(src='https://code.jquery.com/ui/1.12.1/jquery-ui.js')
+    title NibangNaebang
+  body    
+    include ./topnav
+    if flashMessages
+      each texts, type in flashMessages
+        .container.fixed-top.mt-5
+          .alert.alert-dismissible.fade.show(class=`alert-${type}`)
+            each msg in texts
+              | #{msg} 
+            button.close(type='button', data-dismiss='alert', aria-label='close')
+              span(aria-hidden='true') &times;
+    block content
+    
 
     
