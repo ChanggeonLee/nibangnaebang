@@ -9,7 +9,7 @@ node js
 
    https://nodejs.org/ko/
 
-2. git clone https://github.com/Leechanggun/teamA.git
+2. git clone https://github.com/Leechanggun/nibangnaebang
 
 3. cd teamA
 
